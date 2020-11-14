@@ -63,7 +63,7 @@ __asm("MRS r0, control");
 
 	NVIC_ClearPendingInterrupt(INTERRUPT_VT_GPIO_PORT_A);
 	
-	//NVIC_SWActivateInterrupt();
+	//NVIC_SWActivateInterrupt(); 
 	while(1);
 	
 }
