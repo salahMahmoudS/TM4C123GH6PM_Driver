@@ -16,7 +16,7 @@
 #include "Bit_Math.h"
 #include "TM4C123GH6PM_Hw.h"
 #include "NVIC_Types.h"
-#include "NVIC_Config.h"
+#include "NVIC_Cfg.h"
 #include "NVIC_Int.h"
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -129,8 +129,9 @@ uint8 NVIC_SetEnableInterrupt(uint8 interruptVTValue)
 	}
 	return NVIC_SUCCESS;
 }	
+
 uint8 NVIC_DisableInterrupt(uint8 interruptVTValue)
-{//Not yet tested
+{//WARNING:Not yet tested
 	NVIC_InterruptLocation resultLocationOfInterrupt;
 	resultLocationOfInterrupt= NVIC_InterruptVTRegMapper(interruptVTValue);
 	

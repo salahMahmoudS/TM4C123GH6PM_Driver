@@ -19,18 +19,25 @@
 /******************* BASE ADDRESSES ***************************************************************************************/
 
 #define CORE_PERIPHERAL_BASE_ADDRESS 		0xE000E000
-
+#define SYSTEM_CONTROL_BASE_ADDRESS			0x400FE000
 /******************************************************************************************************************************/
 
 /*******************************************System control block (SCB) registers **********************************************/
 
 #define APINT 			*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0xD0C ))  		//Application Interrupt and Reset Control
-											//Application manager and reset control vectorkey to use register
+#define RCGCGPIO		*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS +  0x608 ))		//General-Purpose Input/Output Run Mode Clock Gating control	
+#define R0			0		   //pin for portA clock
+#define R1			1          //pin for portB clock
+#define R2			2          //pin for portC clock
+#define R3			3          //pin for portD clock
+#define R4			4          //pin for portE clock
+#define R5			5          //pin for portF clock
 
+#define SYSCTL_RCGC2_R          (*((volatile unsigned long *)0x400FE108))
 
 /****************** Nested Vectored Interrupt Controller (NVIC) Registers *****************************************************/
 #define DDRA *((u8 volatile *) 0x3A)
-#define	 EN0           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x100 ))		// Interrupt 0-31 Set Enable
+#define	 EN0           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x100 ))			// Interrupt 0-31 Set Enable
 #define	 EN1           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x104 ))        // Interrupt 32-63 Set Enable 
 #define	 EN2           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x108 ))        // Interrupt 64-95 Set Enable 
 #define	 EN3           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x10C ))        // Interrupt 96-127 Set Enable
@@ -92,66 +99,99 @@
 #define	 PRI34         *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x488 ))        // Interrupt 136-138 Priority 
 #define	 SWTRIG        *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0xF00 ))        // Software Trigger Interrupt
 
-/***********************************************************************************/
 
 
 
+/**************************************GPIO Resgisters*********************************************/
+#define  GPIO_Port_A_APB_BASE_ADDRESS		 0x40004000
+#define  GPIO_Port_A_AHB_BASE_ADDRESS		 0x40058000
+#define  GPIO_Port_B_APB_BASE_ADDRESS		 0x40005000
+#define  GPIO_Port_B_AHB_BASE_ADDRESS		 0x40059000
+#define  GPIO_Port_C_APB_BASE_ADDRESS		 0x40006000
+#define  GPIO_Port_C_AHB_BASE_ADDRESS		 0x4005A000
+#define  GPIO_Port_D_APB_BASE_ADDRESS		 0x40007000
+#define  GPIO_Port_D_AHB_BASE_ADDRESS		 0x4005B000
+#define  GPIO_Port_E_APB_BASE_ADDRESS		 0x40024000
+#define  GPIO_Port_E_AHB_BASE_ADDRESS		 0x4005C000
+#define  GPIO_Port_F_APB_BASE_ADDRESS		 0x40025000
+#define  GPIO_Port_F_AHB_BASE_ADDRESS		 0x4005D000
+
+	
+#define  GPIODATA_OFFSET 		  0x000		//GPIO Data 
+#define  GPIODIR_OFFSET 		  0x400		//GPIO Direction 
+#define  GPIOIS_OFFSET 		 	  0x404		//GPIO Interrupt Sense 
+#define  GPIOIBE_OFFSET		 	  0x408		//GPIO Interrupt Both Edges 
+#define  GPIOIEV_OFFSET 		  0x40C		//GPIO Interrupt Event 
+#define  GPIOIM_OFFSET 		 	  0x410		//GPIO Interrupt Mask
+#define  GPIORIS_OFFSET		 	  0x414		//GPIO Raw Interrupt Status 
+#define  GPIOMIS_OFFSET		 	  0x418		//GPIO Masked Interrupt Status 
+#define  GPIOICR_OFFSET		 	  0x41C		//GPIO Interrupt Clear 
+#define  GPIOAFSEL_OFFSET		  0x420		//GPIO Alternate Function Select 
+#define  GPIODR2R_OFFSET		  0x500		//GPIO 2-mA Drive Select 
+#define  GPIODR4R_OFFSET		  0x504		//GPIO 4-mA Drive Select 
+#define  GPIODR8R_OFFSET		  0x508		//GPIO 8-mA Drive Select 
+#define  GPIOODR_OFFSET		 	  0x50C		//GPIO Open Drain Select 
+#define  GPIOPUR_OFFSET		 	  0x510		//GPIO Pull-Up Select 
+#define  GPIOPDR_OFFSET		 	  0x514		//GPIO Pull-Down Select 
+#define  GPIOSLR_OFFSET		 	  0x518		//GPIO Slew Rate Control Select 
+#define  GPIODEN_OFFSET		 	  0x51C		//GPIO Digital Enable 
+#define  GPIOLOCK_OFFSET 		  0x520		//GPIO Lock 
+#define  GPIOCR_OFFSET 		      0x524		//GPIO Commit
+#define  GPIOAMSEL_OFFSET		  0x528		//GPIO Analog Mode Select 
+#define  GPIOPCTL_OFFSET 		  0x52C		//GPIO Port Control
+#define  GPIOADCCTL_OFFSET		  0x530		//GPIO ADC Control 
+#define  GPIODMACTL_OFFSET		  0x534		//GPIO DMA Control 
+#define  GPIOPeriphID4_OFFSET 	  0xFD0 	//GPIO Peripheral Identification 4 
+#define  GPIOPeriphID5_OFFSET 	  0xFD4	 	//GPIO Peripheral Identification 5 
+#define  GPIOPeriphID6_OFFSET 	  0xFD8	 	//GPIO Peripheral Identification 6 
+#define  GPIOPeriphID7_OFFSET 	  0xFDC	 	//GPIO Peripheral Identification 7 
+#define  GPIOPeriphID0_OFFSET 	  0xFE0	 	//GPIO Peripheral Identification 0 
+#define  GPIOPeriphID1_OFFSET 	  0xFE4	 	//GPIO Peripheral Identification 1 
+#define  GPIOPeriphID2_OFFSET 	  0xFE8	 	//GPIO Peripheral Identification 2 
+#define  GPIOPeriphID3_OFFSET 	  0xFEC	 	//GPIO Peripheral Identification 3 
+#define  GPIOPCellID0_OFFSET	  0xFF0		//GPIO PrimeCell Identification 0 
+#define  GPIOPCellID1_OFFSET	  0xFF4		//GPIO PrimeCell Identification 1 
+#define  GPIOPCellID2_OFFSET	  0xFF8		//GPIO PrimeCell Identification 2 
+#define  GPIOPCellID3_OFFSET	  0xFFC		//GPIO PrimeCell Identification 3 
+		 			
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#define  GPIODATA(base_address)				(*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
+#define  GPIODIR(base_address)              (*((volatile uint32*) (base_address + GPIODIR_OFFSET 	 )))
+#define  GPIOIS(base_address)               (*((volatile uint32*) (base_address + GPIOIS_OFFSET 	 )))
+#define  GPIOIBE(base_address)              (*((volatile uint32*) (base_address + GPIOIBE_OFFSET	 )))
+#define  GPIOIEV(base_address)              (*((volatile uint32*) (base_address + GPIOIEV_OFFSET 	 )))
+#define  GPIOIM(base_address)               (*((volatile uint32*) (base_address + GPIOIM_OFFSET 	 )))
+#define  GPIORIS(base_address)              (*((volatile uint32*) (base_address + GPIORIS_OFFSET	 )))
+#define  GPIOMIS(base_address)              (*((volatile uint32*) (base_address + GPIOMIS_OFFSET	 )))
+#define  GPIOICR(base_address)              (*((volatile uint32*) (base_address + GPIOICR_OFFSET	 )))
+#define  GPIOAFSEL(base_address)             (*((volatile uint32*) (base_address + GPIOAFSEL_OFFSET	 )))
+#define  GPIODR2R(base_address)             (*((volatile uint32*) (base_address + GPIODR2R_OFFSET	 )))
+#define  GPIODR4R(base_address)             (*((volatile uint32*) (base_address + GPIODR4R_OFFSET	 )))
+#define  GPIODR8R(base_address)             (*((volatile uint32*) (base_address + GPIODR8R_OFFSET	 )))
+#define  GPIOODR(base_address)              (*((volatile uint32*) (base_address + GPIOODR_OFFSET	 )))
+#define  GPIOPUR(base_address)              (*((volatile uint32*) (base_address + GPIOPUR_OFFSET	 )))
+#define  GPIOPDR(base_address)              (*((volatile uint32*) (base_address + GPIOPDR_OFFSET	 )))
+#define  GPIOSLR(base_address)              (*((volatile uint32*) (base_address + GPIOSLR_OFFSET	 )))
+#define  GPIODEN(base_address)              (*((volatile uint32*) (base_address + GPIODEN_OFFSET	 )))
+#define  GPIOLOCK(base_address)             (*((volatile uint32*) (base_address + GPIOLOCK_OFFSET 	 )))
+#define  GPIOCR(base_address)               (*((volatile uint32*) (base_address + GPIOCR_OFFSET 	 )))
+#define  GPIOAMSEL(base_address)            (*((volatile uint32*) (base_address + GPIOAMSEL_OFFSET	 )))
+#define  GPIOPCTL(base_address)             (*((volatile uint32*) (base_address + GPIOPCTL_OFFSET 	 )))
+#define  GPIOADCCTL(base_address)           (*((volatile uint32*) (base_address + GPIOADCCTL_OFFSET	 )))
+#define  GPIODMACTL(base_address)           (*((volatile uint32*) (base_address + GPIODMACTL_OFFSET	 )))
+#define  GPIOPeriphID4(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID4_OFFSE)))
+#define  GPIOPeriphID5(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID5_OFFSE)))
+#define  GPIOPeriphID6(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID6_OFFSE)))
+#define  GPIOPeriphID7(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID7_OFFSE)))
+#define  GPIOPeriphID0(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID0_OFFSE)))
+#define  GPIOPeriphID1(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID1_OFFSE)))
+#define  GPIOPeriphID2(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID2_OFFSE)))
+#define  GPIOPeriphID3(base_address)        (*((volatile uint32*) (base_address + GPIOPeriphID3_OFFSE)))
+#define  GPIOPCellID0(base_address)         (*((volatile uint32*) (base_address + GPIOPCellID0_OFFSET)))
+#define  GPIOPCellID1(base_address)         (*((volatile uint32*) (base_address + GPIOPCellID1_OFFSET)))
+#define  GPIOPCellID2(base_address)         (*((volatile uint32*) (base_address + GPIOPCellID2_OFFSET)))
+#define  GPIOPCellID3(base_address)         (*((volatile uint32*) (base_address + GPIOPCellID3_OFFSET)))
 
 
 

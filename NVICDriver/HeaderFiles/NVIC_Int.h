@@ -154,6 +154,7 @@ uint8 NVIC_ClearPendingInterrupt(uint8 interruptVTValue);								//this fiunctio
 uint8 NVIC_GetIsPendingInterupt(uint8 interruptVTValue);								//This function returns if interrupt is pending
 uint8 NVIC_SWActivateInterrupt(uint8 interruptVTValue);									//This function activates interrupt by softwarre
 uint8 NVIC_SetInterruptPriority(NVIC_interruptConfigStructure desiredInterrupt);		//This function configures the interrupt priority		
+uint8 NVIC_DisableInterrupt(uint8 interruptVTValue);									//This function disable interrupt
 
  
 #endif  /* NVIC_INT_H */
