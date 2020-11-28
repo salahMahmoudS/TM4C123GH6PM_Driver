@@ -39,25 +39,15 @@ extern portPinsConfig pinsConfigArray[];
  *  LOCAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 static	uint8 Port_UnlockIfSpecialPin(uint16 pinNum,uint32 baseRegisterAddress,uint8 offset);
+static uint8 Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 pinAddress,uint8 offset);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+static uint8 Port_ConfigureAttachresistor(uint8 resistorType, uint32 regaddress, uint8 offset);
+static uint8 Port_ConfigureAlternatingFunction(uint8 alternatingFun,uint32 regAddress,uint8 offset);
+
 
 /**********************************************************************************************************************
  *  LOCAL FUNCTIONS
  *********************************************************************************************************************/
-static	uint8 Port_UnlockIfSpecialPin(uint16 pinNum,uint32 baseRegisterAddress,uint8 offset)
-{
-	switch(pinNum)
-	{
-		case PORT_PIN0: case PORT_PIN1: case PORT_PIN2: case PORT_PIN3:case PORT_PIN4:
-		case PORT_PIN5: case PORT_PIN10:case PORT_PIN11:case PORT_PIN16:case PORT_PIN17:
-		case PORT_PIN18:case PORT_PIN19:case PORT_PIN31:case PORT_PIN38:
-		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;break;
-		SET_BIT(GPIOCR(baseRegisterAddress),offset);
-		default:;//Do nothing
-			
-		
-	}
-	return PORT_SUCCESS;
-}
+
 /**********************************************************************************************************************
  *  GLOBAL FUNCTIONS
  *********************************************************************************************************************/
@@ -143,50 +133,27 @@ SET_BIT(RCGCGPIO,R5);
 
 for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 {
-
-	
 	uint32 pinBaseAddress = portAHBbaseAddressArray[pinsConfigArray[i].portPinNumber/8];
 	uint8 pinOffset = pinsConfigArray[i].portPinNumber%8;
 	
 	Port_UnlockIfSpecialPin(pinsConfigArray[i].portPinNumber,pinBaseAddress,pinOffset);
-	
+	Port_ConfigureAlternatingFunction(pinsConfigArray[i].portPinMode,pinBaseAddress,pinOffset);
+	Port_ConfigureAttachresistor(pinsConfigArray[i].portPinResistorAttchIfInput, pinBaseAddress, pinOffset);
+
 	if (pinsConfigArray[i].portPinDirection == PORT_OUTPUT)
 	{
+		
 		SET_BIT(GPIODIR(pinBaseAddress),pinOffset);				//set direction to output
+		Port_ConfigOutputCurrent(pinsConfigArray[i].portOutputCurrent,pinBaseAddress,pinOffset);
+		//GPIODATA(pinBaseAddress + (pinOffset<<2))|=(uint32) 0x1<<pinOffset;
+		GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) 0x1<<pinOffset;	
 		
-		switch(pinsConfigArray[i].portOutputCurrent)
-		{
-			case PORT_OCURRENT_2mA: SET_BIT(GPIODR2R(pinBaseAddress),pinOffset);break;
-			case PORT_OCURRENT_4mA: SET_BIT(GPIODR4R(pinBaseAddress),pinOffset);break;
-			case PORT_OCURRENT_8mA: SET_BIT(GPIODR8R(pinBaseAddress),pinOffset);break;
-			case PORT_NA: break;//Do nothing
-			default: return PORT_ERROR;
-	
-		}
-		
-		if (pinsConfigArray[i].portPinResistorAttchIfInput == PORT_ATTACH_OPEN_DRAIN)
-		{
-			SET_BIT(GPIOODR(pinBaseAddress),pinOffset); 		//This is available configuration in case of output
-		}
-		else if (pinsConfigArray[i].portPinResistorAttchIfInput == PORT_NA)
-		{
-			//do nothing
-		}
-		else
-		{
-			return PORT_ERROR;
-		}
 	}
+	
 	else if (pinsConfigArray[i].portPinDirection == PORT_INPUT)
 	{
 		CLEAR_BIT(GPIODIR(pinBaseAddress),pinOffset);					//set direction to input
-			switch (pinsConfigArray[i].portPinResistorAttchIfInput)
-			{
-				case PORT_ATTACH_PULL_DOWN_RESISTOR: SET_BIT(GPIOPDR(pinBaseAddress),pinOffset);break;
-				case PORT_ATTACH_PULL_UP_RESISTOR: SET_BIT(GPIOPUR(pinBaseAddress),pinOffset);break;
-				case PORT_ATTACH_OPEN_DRAIN: SET_BIT(GPIOODR(pinBaseAddress),pinOffset);break;
-				default : return PORT_ERROR;
-			}			
+		Port_ConfigOutputCurrent(PORT_NA,pinBaseAddress,pinOffset);
 	}
 	else 
 	{
@@ -194,45 +161,87 @@ for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 	}
 	
 	/*********************Step 3 configure alternating functions for each pin*********************************************/
-	if (pinsConfigArray[i].portPinMode == PORT_PINx_ANALOG_FUNC)
-	{
-		//ENABLE ANALOG
-		CLEAR_BIT(GPIODEN(pinBaseAddress),pinOffset);		//Disable digital mode
-		SET_BIT(GPIOAMSEL(pinBaseAddress),pinOffset);		//Enable digital mode
-	}
-	else if(pinsConfigArray[i].portPinMode == PORT_PINx_DIO)
-	{
-		
-		CLEAR_BIT(GPIOAFSEL(pinBaseAddress),pinOffset);
-		SET_BIT(GPIODEN(pinBaseAddress),pinOffset);			//Enable digital mode
-		CLEAR_BIT(GPIOAMSEL(pinBaseAddress),pinOffset);		//Disable digital mode
-	}
-	else if (pinsConfigArray[i].portPinMode > PORT_PINx_DIO && pinsConfigArray[i].portPinMode <= 15)
-	{
-		SET_BIT(GPIOAFSEL(pinBaseAddress),pinOffset);					
-		GPIOPCTL(pinBaseAddress) &=(uint32) 0x0<<(pinOffset*4);						//Clear any previous recording
-		GPIOPCTL(pinBaseAddress) |=(uint32) pinsConfigArray[i].portPinMode<<(pinOffset*4);		//configure the pin to the correct mode
-		SET_BIT(GPIODEN(pinBaseAddress),pinOffset);				//Enable digital mode
-		CLEAR_BIT(GPIOAMSEL(pinBaseAddress),pinOffset);		//Disable digital mode
-	}
-	else
-	{
-		return PORT_ERROR;			//Do nothing and return error
-	}
-	
-	
-	
+	//Port_ConfigureAlternatingFunction(pinsConfigArray[i].portPinMode,pinBaseAddress,pinOffset);
 	
 }
-
-
 
 return PORT_SUCCESS;
 }
 
 
+static uint8 Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 regAddress,uint8 offset)                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+		{
+		switch(portOutputCurrent)
+		{
+			case PORT_OCURRENT_2mA: SET_BIT(GPIODR2R(regAddress),offset);break;
+			case PORT_OCURRENT_4mA: SET_BIT(GPIODR4R(regAddress),offset);break;
+			case PORT_OCURRENT_8mA: SET_BIT(GPIODR8R(regAddress),offset);break;
+			case PORT_NA: break;//Do nothing
+			default: return PORT_ERROR;
+	
+		}
+		return PORT_SUCCESS;
+	}
 
-
+	static uint8 Port_ConfigureAttachresistor(uint8 resistorType, uint32 regaddress, uint8 offset)
+	{
+	switch (resistorType)
+			{
+				case PORT_ATTACH_PULL_DOWN_RESISTOR: SET_BIT(GPIOPDR(regaddress),offset);break;
+				case PORT_ATTACH_PULL_UP_RESISTOR: SET_BIT(GPIOPUR(regaddress),offset);break;
+				case PORT_ATTACH_OPEN_DRAIN: SET_BIT(GPIOODR(regaddress),offset);break;
+				case PORT_NA:break;
+				default : return PORT_ERROR;
+			}			
+			return PORT_SUCCESS;
+	}
+	
+	static uint8 Port_ConfigureAlternatingFunction(uint8 alternatingFun,uint32 regAddress,uint8 offset)
+	{
+		if (alternatingFun == PORT_PINx_ANALOG_FUNC)
+	{
+		//ENABLE ANALOG
+		CLEAR_BIT(GPIODEN(regAddress),offset);		//Disable digital mode
+		SET_BIT(GPIOAMSEL(regAddress),offset);		//Enable alternative mode
+	}
+	else if(alternatingFun == PORT_PINx_DIO)
+	{
+		
+		CLEAR_BIT(GPIOAFSEL(regAddress),offset);
+		SET_BIT(GPIODEN(regAddress),offset);			//Enable digital mode
+		CLEAR_BIT(GPIOAMSEL(regAddress),offset);		//Disable alternative mode
+	}
+	else if (alternatingFun > PORT_PINx_DIO && alternatingFun <= 15)
+	{
+		SET_BIT(GPIOAFSEL(regAddress),offset);					
+		GPIOPCTL(regAddress) &=(uint32) 0x0<<(offset*4);						//Clear any previous recording
+		GPIOPCTL(regAddress) |=(uint32) alternatingFun<<(offset*4);		//configure the pin to the correct mode
+		SET_BIT(GPIODEN(regAddress),offset);				//Enable digital mode
+		CLEAR_BIT(GPIOAMSEL(regAddress),offset);		//Disable alternative mode
+	}
+	else
+	{
+		return PORT_ERROR;			//Do nothing and return error
+	}
+	return PORT_SUCCESS;
+	}
+	
+	
+	static	uint8 Port_UnlockIfSpecialPin(uint16 pinNum,uint32 baseRegisterAddress,uint8 offset)
+{
+	switch(pinNum)
+	{
+		case PORT_PIN0: case PORT_PIN1: case PORT_PIN2: case PORT_PIN3:case PORT_PIN4:
+		case PORT_PIN5: case PORT_PIN10:case PORT_PIN11:case PORT_PIN16:case PORT_PIN17:
+		case PORT_PIN18:case PORT_PIN19:case PORT_PIN31:case PORT_PIN38:
+		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;break;
+		SET_BIT(GPIOCR(baseRegisterAddress),offset);
+		default:;//Do nothing
+			
+		
+	}
+	return PORT_SUCCESS;
+}
 
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c

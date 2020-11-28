@@ -44,7 +44,7 @@
 #define PORTF_ENABLE	PORT_ENABLE
 
 /*****************PLEASE STATE NUMBER OF PINS YOU WILL CONFIGURE HERE&*************/
-#define NUNBER_OF_CONFIGURED_PINS 3 
+#define NUNBER_OF_CONFIGURED_PINS 4 
 
 
 /**********************************************************************************************************************
