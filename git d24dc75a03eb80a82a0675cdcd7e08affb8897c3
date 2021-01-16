@@ -1,0 +1,46 @@
+[33mcommit b12d47e252dbb1ecda4fa3b2433446b3f3e71ff7[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;32mexperimentation[m[33m)[m
+Merge: fc81c62 d24dc75
+Author: Salah Mahmoud <SalahMahmoud202@gmail.com>
+Date:   Sat Jan 16 04:01:40 2021 +0200
+
+    Merge branch 'HEAD' of https://github.com/salahMahmoudS/TM4C123GH6PM_Driver
+    
+    # Conflicts:
+    #       PortDriver/Config/Port_Lcfg.c
+    #       PortDriver/Program/Port_Prog.c
+
+[33mcommit fc81c62b16bd290332fd490d3a0983e5be2baf20[m
+Author: Salah Mahmoud <SalahMahmoud202@gmail.com>
+Date:   Sat Jan 16 03:40:46 2021 +0200
+
+    Organized PORT.h
+
+[33mcommit d24dc75a03eb80a82a0675cdcd7e08affb8897c3[m
+Author: Salah Mahmoud <salahMahmoud202@gmail.com>
+Date:   Sat Jan 16 03:34:06 2021 +0200
+
+    breakdown to Port_prog logic to functions
+
+[33mcommit b98e10e15b7de192c07ac34b1a3f3de46c0305a6[m
+Author: Salah Mahmoud <salahMahmoud202@gmail.com>
+Date:   Fri Nov 27 16:53:46 2020 -0800
+
+    refactored port driver with local functions and added initial output setting in case of output
+
+[33mcommit 95dd9f02b7e54982bf050816dacd99665f154253[m
+Author: Salah Mahmoud <salahMahmoud202@gmail.com>
+Date:   Sun Nov 22 03:17:13 2020 -0800
+
+    initial commit for PORT driver
+
+[33mcommit f62b7a37ce32bd8a1b04d30b2c1d5950168b4399[m
+Author: SalahMahmoudS <salahMahmoud202@gmail.com>
+Date:   Sat Nov 14 03:41:02 2020 +0200
+
+    initial commit after fixing git issues
+
+[33mcommit cf94a589b946c8580384ecf4158f4e3445fd2f95[m
+Author: SalahMahmoudS <salahMahmoud202@gmail.com>
+Date:   Sat Nov 14 03:34:04 2020 +0200
+
+    initial commit
