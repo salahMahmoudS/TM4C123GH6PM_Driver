@@ -145,7 +145,7 @@ for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 		
 		SET_BIT(GPIODIR(pinBaseAddress),pinOffset);				//set direction to output
 		Port_ConfigOutputCurrent(pinsConfigArray[i].portOutputCurrent,pinBaseAddress,pinOffset);
-		//GPIODATA(pinBaseAddress + (pinOffset<<2))|=(uint32) 0x1<<pinOffset;
+		//GPIODATA(pinBaseAddress + (0x0008))= 0xff;
 		GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) 0x1<<pinOffset;	
 		
 	}
@@ -231,9 +231,9 @@ static uint8 Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 regAddress,
 {
 	switch(pinNum)
 	{
-		case PORT_PIN0: case PORT_PIN1: case PORT_PIN2: case PORT_PIN3:case PORT_PIN4:
-		case PORT_PIN5: case PORT_PIN10:case PORT_PIN11:case PORT_PIN16:case PORT_PIN17:
-		case PORT_PIN18:case PORT_PIN19:case PORT_PIN31:case PORT_PIN38:
+		case PORT_PINA0: case PORT_PINA1: case PORT_PINA2: case PORT_PINA3:case PORT_PINA4:
+		case PORT_PINA5: case PORT_PINB2:case PORT_PINB3:case PORT_PINC0:case PORT_PINC1:
+		case PORT_PINC2:case PORT_PINC3:case PORT_PIND7:case PORT_PINF0:
 		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;break;
 		SET_BIT(GPIOCR(baseRegisterAddress),offset);
 		default:;//Do nothing

@@ -38,49 +38,49 @@ typedef struct
 
 typedef enum
 {
-	PORT_PINA0=0,		//PA0
-	PORT_PINA1,          //PA1
-	PORT_PINA2,          //PA2
-	PORT_PINA3,          //PA3
-	PORT_PINA4,          //PA4
-	PORT_PINA5,          //PA5
-	PORT_PINA6,          //PA6
-	PORT_PINA7,          //PA7
-	PORT_PINB0,          //PB0
-	PORT_PINB1,          //PB1
-	PORT_PINB2,         //PB2
-	PORT_PINB3,         //PB3
-	PORT_PINB4,         //PB4
-	PORT_PINB5,         //PB5
-	PORT_PINB6,         //PB6
-	PORT_PINB7,         //PB7
-	PORT_PINC0,         //PC0
-	PORT_PINC1,         //PC1
-	PORT_PINC2,         //PC2
-	PORT_PINC3,         //PC3
-	PORT_PINC4,         //PC4
-	PORT_PINC5,         //PC5
-	PORT_PINC6,         //PC6
-	PORT_PINC7,         //PC7
-	PORT_PIND0,         //PD0
-	PORT_PIND1,         //PD1
-	PORT_PIND2,         //PD2
-	PORT_PIND3,         //PD3
-	PORT_PIND4,         //PD4
-	PORT_PIND5,         //PD5
-	PORT_PIND6,         //PD6
-	PORT_PIND7,         //PD7
-	PORT_PINE0,         //PE0
-	PORT_PINE1,         //PE1
-	PORT_PINE2,         //PE2
-	PORT_PINE3,         //PE3
-	PORT_PINE4,         //PE4
-	PORT_PINE5,         //PE5
-	PORT_PINF0=40,      //PF0				----To make pins divisble by 8 
-	PORT_PINF1,         //PF1
-	PORT_PINF2,         //PF2
-	PORT_PINF3,         //PF3
-	PORT_PINF4,         //PF4
+	PORT_PINA0=0,		//PIN0
+	PORT_PINA1,         //PIN1
+	PORT_PINA2,         //PIN2
+	PORT_PINA3,         //PIN3
+	PORT_PINA4,         //PIN4
+	PORT_PINA5,         //PIN5
+	PORT_PINA6,         //PIN6
+	PORT_PINA7,         //PIN7
+	PORT_PINB0,         //PIN8
+	PORT_PINB1,         //PIN9
+	PORT_PINB2,         //PIN10
+	PORT_PINB3,         //PIN11
+	PORT_PINB4,         //PIN12
+	PORT_PINB5,         //PIN13
+	PORT_PINB6,         //PIN14
+	PORT_PINB7,         //PIN15
+	PORT_PINC0,         //PIN16
+	PORT_PINC1,         //PIN17
+	PORT_PINC2,         //PIN18
+	PORT_PINC3,         //PIN19
+	PORT_PINC4,         //PIN20
+	PORT_PINC5,         //PIN21
+	PORT_PINC6,         //PIN22
+	PORT_PINC7,         //PIN23
+	PORT_PIND0,         //PIN24
+	PORT_PIND1,         //PIN25
+	PORT_PIND2,         //PIN26
+	PORT_PIND3,         //PIN27
+	PORT_PIND4,         //PIN28
+	PORT_PIND5,         //PIN29
+	PORT_PIND6,         //PIN30
+	PORT_PIND7,         //PIN31
+	PORT_PINE0,         //PIN32
+	PORT_PINE1,         //PIN33
+	PORT_PINE2,         //PIN34
+	PORT_PINE3,         //PIN35
+	PORT_PINE4,         //PIN36
+	PORT_PINE5,         //PIN37
+	PORT_PINF0=40,      //PIN38				----To make pins divisble by 8 
+	PORT_PINF1,         //PIN39
+	PORT_PINF2,         //PIN40
+	PORT_PINF3,         //PIN41
+	PORT_PINF4,         //PIN42
 	
 	
 }portArmPins;
