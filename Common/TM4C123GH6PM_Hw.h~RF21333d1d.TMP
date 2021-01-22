@@ -167,7 +167,7 @@
 		 			
 
 
-#define  GPIODATA(base_address)		        (*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
+#define  GPIODATA(base_address)				(*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
 #define  GPIODIR(base_address)              (*((volatile uint32*) (base_address + GPIODIR_OFFSET 	 )))
 #define  GPIOIS(base_address)               (*((volatile uint32*) (base_address + GPIOIS_OFFSET 	 )))
 #define  GPIOIBE(base_address)              (*((volatile uint32*) (base_address + GPIOIBE_OFFSET	 )))

@@ -8,13 +8,13 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef <FILE_NAME_H>
-#define <FILE_NAME_H>
+#ifndef DIO_H
+#define DIO_H
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-
+#include "DIO_Types.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
@@ -29,26 +29,24 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
-typedef enum 
-{
-	DIO_PORTA,
-	DIO_PORTB,
-	DIO_PORTC,
-	DIO_PORTD,
-	DIO_PORTE,
-	DIO_PORTF,
 
-}DioPortTypes;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
+#define DIO_SUCCESS 		0
+#define DIO_FAIL 			1
+#define DIO_ERROR			99
 
- 
+
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-
+uint8 DIO_uint8WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevel);
+Dio_LevelType DIO_uint8ReadChannel(Dio_ChannelType pinNumber);
+uint8 DIO_uint8ToggleChannel(Dio_ChannelType pinNumber);
+uint8 DIO_uint8WritePort(Dio_PortType portNumber, uint8 portValue);
+uint8 DIO_uint8ReadPort(Dio_PortType portNumber); 
  
 #endif  /* FILE_NAME_H */
 

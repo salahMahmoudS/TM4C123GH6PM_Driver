@@ -26,8 +26,8 @@
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-static uint32 portAHBbaseAddressArray[] = {GPIO_Port_A_AHB_BASE_ADDRESS,GPIO_Port_B_AHB_BASE_ADDRESS,GPIO_Port_C_AHB_BASE_ADDRESS,
-																					 GPIO_Port_D_AHB_BASE_ADDRESS,GPIO_Port_E_AHB_BASE_ADDRESS,GPIO_Port_F_AHB_BASE_ADDRESS};
+static uint32 portAPBbaseAddressArray[] = {GPIO_Port_A_APB_BASE_ADDRESS,GPIO_Port_B_APB_BASE_ADDRESS,GPIO_Port_C_APB_BASE_ADDRESS,
+																					 GPIO_Port_D_APB_BASE_ADDRESS,GPIO_Port_E_APB_BASE_ADDRESS,GPIO_Port_F_APB_BASE_ADDRESS};
 			
 	
 /**********************************************************************************************************************
@@ -133,7 +133,7 @@ SET_BIT(RCGCGPIO,R5);
 
 for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 {
-	uint32 pinBaseAddress = portAHBbaseAddressArray[pinsConfigArray[i].portPinNumber/8];
+	uint32 pinBaseAddress = portAPBbaseAddressArray[pinsConfigArray[i].portPinNumber/8];
 	uint8 pinOffset = pinsConfigArray[i].portPinNumber%8;
 	
 	Port_UnlockIfSpecialPin(pinsConfigArray[i].portPinNumber,pinBaseAddress,pinOffset);
@@ -146,7 +146,8 @@ for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 		SET_BIT(GPIODIR(pinBaseAddress),pinOffset);				//set direction to output
 		Port_ConfigOutputCurrent(pinsConfigArray[i].portOutputCurrent,pinBaseAddress,pinOffset);
 		//GPIODATA(pinBaseAddress + (0x0008))= 0xff;
-		GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) 0x1<<pinOffset;	
+                //Bit banding will be added in next level
+		GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) pinsConfigArray[i].portInitialValueIfOutput<<pinOffset;	
 		
 	}
 	
@@ -234,8 +235,8 @@ static uint8 Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 regAddress,
 		case PORT_PINA0: case PORT_PINA1: case PORT_PINA2: case PORT_PINA3:case PORT_PINA4:
 		case PORT_PINA5: case PORT_PINB2:case PORT_PINB3:case PORT_PINC0:case PORT_PINC1:
 		case PORT_PINC2:case PORT_PINC3:case PORT_PIND7:case PORT_PINF0:
-		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;break;
-		SET_BIT(GPIOCR(baseRegisterAddress),offset);
+		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;
+		SET_BIT(GPIOCR(baseRegisterAddress),offset);break;
 		default:;//Do nothing
 			
 		

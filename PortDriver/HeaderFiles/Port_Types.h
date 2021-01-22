@@ -412,23 +412,10 @@ defining each pin mode configuration, below section contains all possible config
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-typedef enum 
-{
-	GPIO_Port_A_APB,
-	GPIO_Port_A_AHB,
-	GPIO_Port_B_APB,
-	GPIO_Port_B_AHB,
-	GPIO_Port_C_APB,
-	GPIO_Port_C_AHB,
-	GPIO_Port_D_APB,
-	GPIO_Port_D_AHB,
-	GPIO_Port_E_APB,
-	GPIO_Port_E_AHB,
-	GPIO_Port_F_APB,
-	GPIO_Port_F_AHB,
-}Ports;
+
 	
-	
+
+
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES

@@ -8,8 +8,8 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef <FILE_NAME_H>
-#define <FILE_NAME_H>
+#ifndef DIO_TYPES_H
+#define DIO_TYPES_H
 
 /**********************************************************************************************************************
  * INCLUDES
@@ -19,8 +19,7 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define DIO_HIGH	1
-#define DIO_LOW		0
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -30,6 +29,77 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
+
+typedef enum 
+{
+        DIO_LOW,
+        DIO_HIGH
+}Dio_LevelType;
+
+
+
+typedef enum 
+{
+	DIO_PORTA = GPIO_Port_A_APB_BASE_ADDRESS,
+	DIO_PORTB = GPIO_Port_B_APB_BASE_ADDRESS,
+	DIO_PORTC = GPIO_Port_C_APB_BASE_ADDRESS,
+	DIO_PORTD = GPIO_Port_D_APB_BASE_ADDRESS,
+	DIO_PORTE = GPIO_Port_E_APB_BASE_ADDRESS,
+	DIO_PORTF = GPIO_Port_F_APB_BASE_ADDRESS
+
+
+}Dio_PortType;
+
+typedef enum
+{
+	
+	DIO_PINA0=0,		//PIN0
+	DIO_PINA1,         //PIN1
+	DIO_PINA2,         //PIN2
+	DIO_PINA3,         //PIN3
+	DIO_PINA4,         //PIN4
+	DIO_PINA5,         //PIN5
+	DIO_PINA6,         //PIN6
+	DIO_PINA7,         //PIN7
+	DIO_PINB0,         //PIN8
+	DIO_PINB1,         //PIN9
+	DIO_PINB2,         //PIN10
+	DIO_PINB3,         //PIN11
+	DIO_PINB4,         //PIN12
+	DIO_PINB5,         //PIN13
+	DIO_PINB6,         //PIN14
+	DIO_PINB7,         //PIN15
+	DIO_PINC0,         //PIN16
+	DIO_PINC1,         //PIN17
+	DIO_PINC2,         //PIN18
+	DIO_PINC3,         //PIN19
+	DIO_PINC4,         //PIN20
+	DIO_PINC5,         //PIN21
+	DIO_PINC6,         //PIN22
+	DIO_PINC7,         //PIN23
+	DIO_PIND0,         //PIN24
+	DIO_PIND1,         //PIN25
+	DIO_PIND2,         //PIN26
+	DIO_PIND3,         //PIN27
+	DIO_PIND4,         //PIN28
+	DIO_PIND5,         //PIN29
+	DIO_PIND6,         //PIN30
+	DIO_PIND7,         //PIN31
+	DIO_PINE0,         //PIN32
+	DIO_PINE1,         //PIN33
+	DIO_PINE2,         //PIN34
+	DIO_PINE3,         //PIN35
+	DIO_PINE4,         //PIN36
+	DIO_PINE5,         //PIN37
+	DIO_PINF0=40,      //PIN38				----To make pins divisble by 8 
+	DIO_PINF1,         //PIN39
+	DIO_PINF2,         //PIN40
+	DIO_PINF3,         //PIN41
+	DIO_PINF4,         //PIN42
+	
+	
+}Dio_ChannelType;
+
 
 
 /**********************************************************************************************************************

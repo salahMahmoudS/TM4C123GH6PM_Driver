@@ -36,7 +36,7 @@ typedef struct
 /**************Use below in "portPinNumber" configuration in Port_Lcfg********/
 //portPinNumber 
 
-typedef enum
+ typedef enum
 {
 	PORT_PINA0=0,		//PIN0
 	PORT_PINA1,         //PIN1
@@ -84,6 +84,8 @@ typedef enum
 	
 	
 }portArmPins;
+
+
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
  *********************************************************************************************************************/
@@ -97,7 +99,21 @@ typedef enum
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-
+typedef enum 
+{
+	GPIO_Port_A_APB,
+	GPIO_Port_A_AHB,
+	GPIO_Port_B_APB,
+	GPIO_Port_B_AHB,
+	GPIO_Port_C_APB,
+	GPIO_Port_C_AHB,
+	GPIO_Port_D_APB,
+	GPIO_Port_D_AHB,
+	GPIO_Port_E_APB,
+	GPIO_Port_E_AHB,
+	GPIO_Port_F_APB,
+	GPIO_Port_F_AHB,
+}Ports;
  
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
