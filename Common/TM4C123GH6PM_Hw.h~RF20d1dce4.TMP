@@ -8,8 +8,8 @@
  *  Description:  <This file contains the TM4C123GH6PM registers and pins which are mapped to the real board>     
  *  
  *********************************************************************************************************************/
-#ifndef TM4C123GH6PM_HW_H
-#define TM4C123GH6PM_HW_H
+#ifndef TM4C123GH6PM_HW_H_
+#define TM4C123GH6PM_HW_H_
 
 
 /**********************************************************************************************************************
@@ -37,7 +37,7 @@
 
 /****************** Nested Vectored Interrupt Controller (NVIC) Registers *****************************************************/
 #define DDRA *((u8 volatile *) 0x3A)
-#define	 EN0           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x100 ))	   // Interrupt 0-31 Set Enable
+#define	 EN0           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x100 ))			// Interrupt 0-31 Set Enable
 #define	 EN1           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x104 ))        // Interrupt 32-63 Set Enable 
 #define	 EN2           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x108 ))        // Interrupt 64-95 Set Enable 
 #define	 EN3           *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x10C ))        // Interrupt 96-127 Set Enable
@@ -103,14 +103,14 @@
 
 /**************************************************SYSTICK Registers*****************************************************************/
 
-#define		SYSTICK_STCTRL_ENABLE		0x00
-#define		SYSTICK_STCTRL_INTEN		0x01	 
-#define		SYSTICK_STCTRL_CLK_SRC		0x02
-#define		SYSTICK_STCTRL_COUNT		16
+#define		STCTRL        						 *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 ))
+#define		STCTRL_ENABLE		0
+#define		STCTRL_INTEN		1	 
+#define		STCTRL_CLK_SRC		2
+#define		STCTRL_COUNT		16
 
-#define		SYSTICK_STCTRL        				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 ))
-#define		SYSTICK_STRELOAD       				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x014 ))
-#define		SYSTICK_STCURRENT      				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x018 ))
+#define		STRELOAD       				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x014 ))
+#define		STCURRENT      				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x018 ))
 
 /**************************************************GPIO Registers*****************************************************************/
 
@@ -167,7 +167,7 @@
 		 			
 
 
-#define  GPIODATA(base_address)		        (*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
+#define  GPIODATA(base_address)				(*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
 #define  GPIODIR(base_address)              (*((volatile uint32*) (base_address + GPIODIR_OFFSET 	 )))
 #define  GPIOIS(base_address)               (*((volatile uint32*) (base_address + GPIOIS_OFFSET 	 )))
 #define  GPIOIBE(base_address)              (*((volatile uint32*) (base_address + GPIOIBE_OFFSET	 )))

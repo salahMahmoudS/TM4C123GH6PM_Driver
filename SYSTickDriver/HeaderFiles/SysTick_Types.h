@@ -29,9 +29,11 @@
 #define SYSTICK_LOW             0X00
 typedef enum
 {
-	SYSTICK_SUCCESS	=	0x00,
-	SYSTICK_FAIL	=	0x01,
-	SYSTICK_ERROR	=	0x99,
+	SYSTICK_SUCCESS	=	        0x00,
+	SYSTICK_FAIL	=	        0x01,
+        SYSTICK_TIMER_FINISH =          0x10,
+        SYSTICK_TIMER_NOT_FINISH =      0xF0,
+	SYSTICK_ERROR	=	        0x99,
 }SysTick_returnCodes;
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS

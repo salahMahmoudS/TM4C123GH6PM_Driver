@@ -42,7 +42,7 @@
 *********************************************************************************************************************/
 SysTick_returnCodes Systick_Init(void);								//set timer value
 SysTick_returnCodes Systick_SetTimerMS(uint32 timerValue);			//set timer in milli seconds value
-SysTick_returnCodes Systick_SetTimerHexa(uint32 timerValue);			//set timer in hexavalue timer
+SysTick_returnCodes Systick_SetTimerReg(uint32 Systick_timerRegisterValue);			//set timer in hexavalue timer
 uint32 Systick_GetTimerValue(void);									//get_timer value
 SysTick_returnCodes Systick_IsTimerFinished(void);					//checks if timer finished 
 SysTick_returnCodes Systick_delayMS(uint32 milliSeconds);			//makes a delay by desired milliseconds

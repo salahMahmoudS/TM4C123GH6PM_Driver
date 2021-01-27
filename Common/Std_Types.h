@@ -30,11 +30,7 @@ typedef unsigned long long uint64;	//define unsigned long long as uint64
 typedef float f32;					//define float as f32 
 typedef double f64;		
 
-typedef enum
-{
-	STD_LOW,
-	STD_HIGH
-}std_level;
+
  
 #endif  /* STD_TYPES_H */
 

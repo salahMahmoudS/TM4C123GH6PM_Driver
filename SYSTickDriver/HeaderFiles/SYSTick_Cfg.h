@@ -19,9 +19,9 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define SYSTICK_CLK_SRC					SYSTEM_CLOCK
+#define SYSTICK_OSCILLATOR_SRC			SYSTEM_CLOCK
 #define SYSTICK_INTERRUPT_ENABLE 		SYSTICK_ENABLE
-#define SYSTICK_SET_ENABLE				SYSTICK_ENABLE
+#define SYSTICK_SET_ENABLE			SYSTICK_ENABLE
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS

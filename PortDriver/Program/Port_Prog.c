@@ -147,7 +147,10 @@ for (int i=0;i<NUNBER_OF_CONFIGURED_PINS;i++)
 		Port_ConfigOutputCurrent(pinsConfigArray[i].portOutputCurrent,pinBaseAddress,pinOffset);
 		//GPIODATA(pinBaseAddress + (0x0008))= 0xff;
                 //Bit banding will be added in next level
-		GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) pinsConfigArray[i].portInitialValueIfOutput<<pinOffset;              //set address register with desired pin	
+                volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));
+                *pinAddress = pinsConfigArray[i].portInitialValueIfOutput<<pinOffset;
+                
+		//GPIODATA(pinBaseAddress + 0x3FC)|=(uint32) pinsConfigArray[i].portInitialValueIfOutput<<pinOffset;	
 		
 	}
 	
@@ -233,9 +236,8 @@ static uint8 Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 regAddress,
 	switch(pinNum)
 	{
 		case PORT_PINA0: case PORT_PINA1: case PORT_PINA2: case PORT_PINA3:case PORT_PINA4:
-		case PORT_PINA5: case PORT_PINB2:case PORT_PINB3:
-                //case PORT_PINC0:case PORT_PINC1:case PORT_PINC2:case PORT_PINC3:
-                case PORT_PIND7:case PORT_PINF0:
+		case PORT_PINA5: case PORT_PINB2:case PORT_PINB3:case PORT_PINC0:case PORT_PINC1:
+		case PORT_PINC2:case PORT_PINC3:case PORT_PIND7:case PORT_PINF0:
 		GPIOLOCK(baseRegisterAddress) = 0x4C4F434B;
 		SET_BIT(GPIOCR(baseRegisterAddress),offset);break;
 		default:;//Do nothing

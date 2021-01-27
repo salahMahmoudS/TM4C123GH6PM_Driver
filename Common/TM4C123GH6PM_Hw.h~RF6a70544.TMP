@@ -103,12 +103,12 @@
 
 /**************************************************SYSTICK Registers*****************************************************************/
 
-#define		SYSTICK_STCTRL_ENABLE		0x00
+#define		SYSTICK_STCTRL        				        *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 ))
+#define		SYSTICK_STCTRL_ENABLE		0
 #define		SYSTICK_STCTRL_INTEN		0x01	 
 #define		SYSTICK_STCTRL_CLK_SRC		0x02
 #define		SYSTICK_STCTRL_COUNT		16
 
-#define		SYSTICK_STCTRL        				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 ))
 #define		SYSTICK_STRELOAD       				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x014 ))
 #define		SYSTICK_STCURRENT      				     *((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x018 ))
 

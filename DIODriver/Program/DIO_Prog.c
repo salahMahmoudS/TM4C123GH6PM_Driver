@@ -58,15 +58,22 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
+uint8 DIO_Init(void)
+{
+  return DIO_SUCCESS;
+}
+
 uint8 DIO_uint8WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelType)
 {
 	uint32 pinBaseAddress = portIndex[pinNumber/8];
 	uint8 pinOffset = pinNumber%8;
 	//will be set by bit banding later
         //(*volatile uint32) pinAddressPointer = 
-        volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x3FC)));
+        volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));
+        *pinAddress = pinLevelType<<pinOffset;
+        return DIO_SUCCESS;
        //GPIODATA(pinBaseAddress + 0x3FC)= pinLevelType<<pinOffset;               //Write 1 or 0 on the desired pin in address register
-        
+       /* 
         if (pinLevelType == DIO_LOW)
         {
           CLEAR_BIT((*pinAddress),pinOffset);
@@ -81,6 +88,7 @@ uint8 DIO_uint8WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelTyp
         }
 
         return DIO_SUCCESS;
+        */
 }
 
 
@@ -88,11 +96,12 @@ Dio_LevelType DIO_uint8ReadChannel(Dio_ChannelType pinNumber)
 {
   uint32 pinBaseAddress = portIndex[pinNumber/8];
   uint8 pinOffset = pinNumber%8;
-  if ((CHECK_BIT(GPIODATA(pinBaseAddress+0x3FC),pinOffset)) == DIO_HIGH)
+  volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));
+  if (*pinAddress >= DIO_HIGH)
   {
     return DIO_HIGH;
   }
-    else if ((CHECK_BIT(GPIODATA(pinBaseAddress+0x3FC),pinOffset)) == DIO_LOW)
+    else if (*pinAddress <= DIO_LOW)
     {
       return DIO_LOW;
       
