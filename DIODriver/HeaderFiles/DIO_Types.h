@@ -32,8 +32,8 @@
 
 typedef enum 
 {
-        DIO_LOW,
-        DIO_HIGH
+        DIO_LOW = 0,
+        DIO_HIGH = 1
 }Dio_LevelType;
 
 

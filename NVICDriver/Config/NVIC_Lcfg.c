@@ -15,7 +15,7 @@
 #include "Std_Types.h"
 #include "NVIC_Types.h"
 #include "NVIC_Cfg.h"
-#include "NVIC_Int.h"
+#include "NVIC.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION

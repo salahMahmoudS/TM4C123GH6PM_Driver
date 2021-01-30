@@ -18,7 +18,7 @@
 
 /******************* BASE ADDRESSES ***************************************************************************************/
 
-#define CORE_PERIPHERAL_BASE_ADDRESS 		        0xE000E000
+#define CORE_PERIPHERAL_BASE_ADDRESS 		0xE000E000
 #define SYSTEM_CONTROL_BASE_ADDRESS			0x400FE000
 /******************************************************************************************************************************/
 
@@ -33,13 +33,13 @@
 #define R4									4          			//pin for portE clock
 #define R5									5          			//pin for portF clock
 
-#define MCU_RIS_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x050)))			//Raw interrupt status register
+#define MCU_RIS_REGISTER					(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x050)))			//Raw interrupt status register
 #define MCU_PLLRIS_BIT						0x06					//This bit indicates that PLL timer reached ready state to lock
 
-#define MCU_RCC_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x060)))			//Run-mode clock configuration register
+#define MCU_RCC_REGISTER					(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x060)))			//Run-mode clock configuration register
 #define MCU_USESYSDIV_BIT					0x16
 
-#define MCU_RCC2_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x070)))			//Run-mode clock configuration 2 register
+#define MCU_RCC2_REGISTER					(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x070)))			//Run-mode clock configuration 2 register
 #define MCU_USERRCC2_BIT					0x1f					//This bit identifies main run mode clock configuration register to be RCC2
 #define MCU_DIV400_BIT						0x1E					//This bit Add SYSDIV2LSB to the SYSDIV2 bit field, which makes the bitfield 7 divisor bits that control 400MHz PLL output
 #define MCU_SYSDIV2LSB_BIT					0x16					//when SCB_DIV400_BIT is set, this acts as the least signifacnt bit in the SYSDIV2 divisor

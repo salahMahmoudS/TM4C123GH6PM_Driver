@@ -20,7 +20,7 @@
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
 #define SYSTICK_OSCILLATOR_SRC			SYSTEM_CLOCK
-#define SYSTICK_INTERRUPT_ENABLE 		SYSTICK_ENABLE
+#define SYSTICK_INTERRUPT_ENABLE 		SYSTICK_DISABLE
 #define SYSTICK_SET_ENABLE			SYSTICK_ENABLE
 
 /**********************************************************************************************************************
@@ -36,7 +36,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-#define SYSTICK_TIMER_INITIAL_VALUE		1600
+#define SYSTICK_TIMER_INITIAL_VALUE		16000000
 #define SYSTICK_TIMER_T1_VALUE	 		1000
 #define SYSTICK_TIMER_T2_VALUE			500 
 

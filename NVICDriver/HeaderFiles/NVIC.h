@@ -9,8 +9,8 @@
  *  Description:  <This file contains the prototype functions used in this driver>     
  *  
  *********************************************************************************************************************/
-#ifndef NVIC_INT_H_
-#define NVIC_INT_H_
+#ifndef NVIC_H
+#define NVIC_H
 
 /**********************************************************************************************************************
  * INCLUDES
@@ -95,9 +95,9 @@ typedef struct
 #define 	INTERRUPT_VT_CAN1                                   40 
 #define 	INTERRUPT_VT_HIBERNATION_MODULE                     43 
 #define 	INTERRUPT_VT_USB                                    44 
-#define 	INTERRUPT_VT_PWM_GENERATOR 3                        45 
-#define 	INTERRUPT_VT_ΜDMA_SOFTWARE                          46 
-#define 	INTERRUPT_VT_ΜDMA_ERROR                             47 
+#define 	INTERRUPT_VT_PWM_GENERATOR_3                        45
+#define         INTERRUPT_VT_ΜDMA_SOFTWARE                          46 
+#define         INTERRUPT_VT_ΜDMA_ERROR                             47 
 #define 	INTERRUPT_VT_ADC1_SEQUENCE_0                        48 
 #define 	INTERRUPT_VT_ADC1_SEQUENCE_1                        49 
 #define 	INTERRUPT_VT_ADC1_SEQUENCE_2                        50 

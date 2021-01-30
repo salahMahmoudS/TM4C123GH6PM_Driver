@@ -12,6 +12,9 @@
 /**********************************************************************************************************************
  *  INCLUDES
  *********************************************************************************************************************/
+#include "Std_Types.h"
+#include "Bit_Math.h"
+#include "NVIC_Int.h"
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
@@ -49,12 +52,23 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
-/*Std_ReturnType FunctionName(AnyType parameterName)
+int main(void)
 {
 	
+__asm("MRS r0, control");
+
+	NVIC_Init();
+	NVIC_SetInterruptToPending(INTERRUPT_VT_GPIO_PORT_A);
+	NVIC_GetIsPendingInterupt(INTERRUPT_VT_GPIO_PORT_A);
+
+	NVIC_ClearPendingInterrupt(INTERRUPT_VT_GPIO_PORT_A);
+	
+	//NVIC_SWActivateInterrupt(); 
+	while(1);
 	
 }
-*/
+
+
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c
  *********************************************************************************************************************/
