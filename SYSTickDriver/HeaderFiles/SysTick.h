@@ -46,6 +46,9 @@ SysTick_returnCodes Systick_SetTimerReg(uint32 Systick_timerRegisterValue);			//
 uint32 Systick_GetTimerValue(void);									//get_timer value
 SysTick_returnCodes Systick_IsTimerFinished(void);					//checks if timer finished 
 SysTick_returnCodes Systick_delayMS(uint32 milliSeconds);			//makes a delay by desired milliseconds
+SysTick_returnCodes Systick_SystickReturnCodesEnableSystickInterrupt(void);     //Enables Systick timer interrupt
+SysTick_returnCodes Systick_SystickReturnCodesDisableSystickInterrupt(void);    //Disables Systick timer interrupt
+
 #endif  /* FILE_NAME_H */
 
 /**********************************************************************************************************************

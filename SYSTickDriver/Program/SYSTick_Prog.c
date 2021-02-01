@@ -26,6 +26,7 @@
  *  LOCAL DATA 
  *********************************************************************************************************************/
 uint32 clockInitialFrequency = 16000000;
+#define SYTICK_RELOAD_REGISTER_DEFAULT_VALUE        16000000                //This is the default value put in the timer register and calculations are based on it
 
 /**********************************************************************************************************************
  *  GLOBAL DATA
@@ -58,33 +59,46 @@ uint32 clockInitialFrequency = 16000000;
 SysTick_returnCodes Systick_Init(void)								//set timer value
 {
  
+/*Step 1 disable the systick register while doing the configurations */
+  CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_ENABLE);                      //Turn off the systick control during initialization
 
-  CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_ENABLE);
+#if (SYSTICK_SET_ENABLE == SYSTICK_DISABLE)                             // if it is disabld do nothing and halt program
 
-#if (SYSTICK_SET_ENABLE == SYSTICK_DISABLE)
-
-#elif (SYSTICK_SET_ENABLE == SYSTICK_ENABLE)
-        Systick_SetTimerReg(SYSTICK_TIMER_INITIAL_VALUE);
-        SYSTICK_STCURRENT = 0x00;                               //clearing the STCURRENT register with writing dummy data on it
-        #if (SYSTICK_OSCILLATOR_SRC  == SYSTEM_CLOCK)
-        SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_CLK_SRC);
-        #elif (SYSTICK_CLK_SRC  == PIOSC_DIVIDED_4)
-        CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_CLK_SRC);        
+#elif (SYSTICK_SET_ENABLE == SYSTICK_ENABLE)                            //if enabled 
+       
+ /*Step 2 set the reload register with the initial value RELOAD_REGISTER_DEFAULT_VALUE */
+        
+  Systick_SetTimerReg(SYSTICK_TIMER_INITIAL_VALUE);        
+            
+/*Step 3 choose system clock */
+        
+        #if (SYSTICK_OSCILLATOR_SRC  == SYSTEM_CLOCK)           //if clock source is the 16Mhz system clock
+        SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_CLK_SRC);         //set the clock source to system clock 
+        #elif (SYSTICK_CLK_SRC  == PIOSC_DIVIDED_4)             //if clock source is the precision internal oscillator/4   (PIOSC)
+        CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_CLK_SRC);        //set the clock source to PIOSC
         #else
         #error "Wrong defined mode for Systick clock, please choose between SYSTEM_CLOCK and PIOSC_DIVIDED_4";
         #endif
-      
-        #if (SYSTICK_INTERRUPT_ENABLE == SYSTICK_ENABLE)
-        SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN);
+ 
+  /*Step 4 Enable or Disable systick interrupts */
         
-        #elif (SYSTICK_INTERRUPT_ENABLE == SYSTICK_DISABLE)
-        CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN);
+        #if (SYSTICK_INTERRUPT_ENABLE == SYSTICK_ENABLE)        //if Systick interrupt configuration is enabled
+          SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
+
+         Systick_SystickReturnCodesEnableSystickInterrupt();          //enable the interrupts in systick control register
+        
+        #elif (SYSTICK_INTERRUPT_ENABLE == SYSTICK_DISABLE)     //if Systick interrupt configuration is disabled
+         SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
+
+         Systick_SystickReturnCodesDiableSystickInterrupt();     //disable the interrupt in systick control resgister
         
         #else
-        #error "Wrong defined mode for interrupt enable , please choose between SYSTICK_ENABLE and SYSTICK_DINABLE";
+        #error "Wrong defined mode for interrupt enable , please choose between SYSTICK_ENABLE and SYSTICK_DINABLE";    //throw compilation error
         #endif
 
-        SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_ENABLE);
+  /*Step 5 Enable the systick timer to stop counting */
+        
+        SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_ENABLE);          //Enable the systick timer to work again
 #else
 #error "Wrong defined mode for Systick set enable, please choose between SYSTICK_ENABLE and SYSTICK_DINABLE";   
 #endif
@@ -100,15 +114,21 @@ SysTick_returnCodes Systick_SetTimerMS(uint32 timerValue)			//set timer in milli
   SYSTICK_STRELOAD = STRELOADValue-1;
   return SYSTICK_SUCCESS;
 }
+
+
 SysTick_returnCodes Systick_SetTimerReg(uint32 Systick_timerRegisterValue)			//set timer in hexavalue timer
 {
-  SYSTICK_STRELOAD = Systick_timerRegisterValue-1;
+  SYSTICK_STRELOAD = --Systick_timerRegisterValue;
+  SYSTICK_STCURRENT = 0x00;
   return SYSTICK_SUCCESS;
 }
+
+
 uint32 Systick_GetTimerValue(void)									//get_timer value
 {
 return SYSTICK_STCURRENT;
 }
+
 SysTick_returnCodes Systick_IsTimerFinished(void)					//checks if timer finished 
 {
 if (CHECK_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_COUNT) == SYSTICK_HIGH)
@@ -121,15 +141,20 @@ else
 }
 SysTick_returnCodes Systick_delayMS(uint32 milliSeconds)			//makes a delay by desired milliseconds
 {
- // uint16 numberOfClockCycles = 32;         //Hard coded value corresponds to total execution clock cycles in the below loop
-  clockInitialFrequency= clockInitialFrequency/1000;
-  uint32 numberOfClockCycles = milliSeconds*clockInitialFrequency;
-  uint32 numberOfIterations = (uint32)numberOfClockCycles/0x00FFFFFF;
-  uint32 remainingIterations = numberOfClockCycles%16777215;
-  if (remainingIterations>0)
+  Systick_SystickReturnCodesDisableSystickInterrupt();
+  f32 numberOfSeconds= milliSeconds/1000.0;                              //Transforming the milli seconds to seconds to know number of iteraitons
+  uint32 numberOfClockCycles = (uint32)(numberOfSeconds*clockInitialFrequency);
+  uint32 numberOfIterations = (uint32) (numberOfClockCycles/16000000);
+  uint32 remainingIterationValue = numberOfClockCycles%16000000;
+  if (remainingIterationValue>0)
   {
-  Systick_SetTimerReg(remainingIterations);
+  Systick_SetTimerReg(remainingIterationValue);
+  SYSTICK_STRELOAD = SYTICK_RELOAD_REGISTER_DEFAULT_VALUE;
   numberOfIterations++;
+  }
+  else
+  {
+    /* Do nothing */
   }
   for (int i=0;i<numberOfIterations;i++)
   {
@@ -139,8 +164,27 @@ SysTick_returnCodes Systick_delayMS(uint32 milliSeconds)			//makes a delay by de
   }
   
   }
+  Systick_SystickReturnCodesEnableSystickInterrupt();
   return SYSTICK_SUCCESS;
 }
+
+SysTick_returnCodes Systick_SystickReturnCodesEnableSystickInterrupt(void)
+{
+  
+  SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
+  return SYSTICK_SUCCESS;
+}
+
+SysTick_returnCodes Systick_SystickReturnCodesDisableSystickInterrupt(void)
+{
+  CLEAR_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
+  return SYSTICK_SUCCESS;
+}
+
+
+
+
+
 /**********************************************************************************************************************
  *  END OF FILE: FileName.c
  *********************************************************************************************************************/

@@ -37,14 +37,14 @@
 
 /******THIS CONFIGURATION ACTIVATES PORTx IN ORDER TO PROGRAM IT**********/
 #define PORTA_ENABLE	PORT_DISABLE
-#define PORTB_ENABLE	PORT_ENABLE
-#define PORTC_ENABLE	PORT_ENABLE
-#define PORTD_ENABLE	PORT_ENABLE
-#define PORTE_ENABLE	PORT_ENABLE
+#define PORTB_ENABLE	PORT_DISABLE
+#define PORTC_ENABLE	PORT_DISABLE
+#define PORTD_ENABLE	PORT_DISABLE
+#define PORTE_ENABLE	PORT_DISABLE
 #define PORTF_ENABLE	PORT_ENABLE
 
 /*****************PLEASE STATE NUMBER OF PINS YOU WILL CONFIGURE HERE&*************/
-#define NUNBER_OF_CONFIGURED_PINS 4 
+#define NUNBER_OF_CONFIGURED_PINS 5 
 
 
 /**********************************************************************************************************************
