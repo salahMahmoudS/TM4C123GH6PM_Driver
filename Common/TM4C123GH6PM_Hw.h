@@ -2,7 +2,7 @@
 
  *  FILE DESCRIPTION
  *  -------------------------------------------------------------------------------------------------------------------
- *         File:  <TM4C123GH6PM_HW.h>
+ *         File:  <TM4C123GH6PM_Hw.h>
  *       Module:  Common
  *
  *  Description:  <This file contains the TM4C123GH6PM registers and pins which are mapped to the real board>     
@@ -145,13 +145,6 @@
 	
 #define  GPIODATA_OFFSET 		  			0x000		//GPIO Data 
 #define  GPIODIR_OFFSET 		  			0x400		//GPIO Direction 
-#define  GPIOIS_OFFSET 		 	  			0x404		//GPIO Interrupt Sense 
-#define  GPIOIBE_OFFSET		 	  			0x408		//GPIO Interrupt Both Edges 
-#define  GPIOIEV_OFFSET 		  			0x40C		//GPIO Interrupt Event 
-#define  GPIOIM_OFFSET 		 	  			0x410		//GPIO Interrupt Mask
-#define  GPIORIS_OFFSET		 	  			0x414		//GPIO Raw Interrupt Status 
-#define  GPIOMIS_OFFSET		 	  			0x418		//GPIO Masked Interrupt Status 
-#define  GPIOICR_OFFSET		 	  			0x41C		//GPIO Interrupt Clear 
 #define  GPIOAFSEL_OFFSET		  			0x420		//GPIO Alternate Function Select 
 #define  GPIODR2R_OFFSET		  			0x500		//GPIO 2-mA Drive Select 
 #define  GPIODR4R_OFFSET		  			0x504		//GPIO 4-mA Drive Select 
@@ -184,13 +177,6 @@
 
 #define  GPIODATA(base_address)		        (*((volatile uint32*) (base_address + GPIODATA_OFFSET 	 )))
 #define  GPIODIR(base_address)              (*((volatile uint32*) (base_address + GPIODIR_OFFSET 	 )))
-#define  GPIOIS(base_address)               (*((volatile uint32*) (base_address + GPIOIS_OFFSET 	 )))
-#define  GPIOIBE(base_address)              (*((volatile uint32*) (base_address + GPIOIBE_OFFSET	 )))
-#define  GPIOIEV(base_address)              (*((volatile uint32*) (base_address + GPIOIEV_OFFSET 	 )))
-#define  GPIOIM(base_address)               (*((volatile uint32*) (base_address + GPIOIM_OFFSET 	 )))
-#define  GPIORIS(base_address)              (*((volatile uint32*) (base_address + GPIORIS_OFFSET	 )))
-#define  GPIOMIS(base_address)              (*((volatile uint32*) (base_address + GPIOMIS_OFFSET	 )))
-#define  GPIOICR(base_address)              (*((volatile uint32*) (base_address + GPIOICR_OFFSET	 )))
 #define  GPIOAFSEL(base_address)            (*((volatile uint32*) (base_address + GPIOAFSEL_OFFSET	 )))
 #define  GPIODR2R(base_address)             (*((volatile uint32*) (base_address + GPIODR2R_OFFSET	 )))
 #define  GPIODR4R(base_address)             (*((volatile uint32*) (base_address + GPIODR4R_OFFSET	 )))
@@ -220,12 +206,26 @@
 #define  GPIOPCellID3(base_address)         (*((volatile uint32*) (base_address + GPIOPCellID3_OFFSET)))
 
 
+/**************************************************ICU Registers*****************************************************************/
 
 
 
+#define  ICU_GPIOIS_OFFSET 		 	  			0x404		//GPIO Interrupt Sense 
+#define  ICU_GPIOIBE_OFFSET		 	  			0x408		//GPIO Interrupt Both Edges 
+#define  ICU_GPIOIEV_OFFSET 		  			0x40C		//GPIO Interrupt Event 
+#define  ICU_GPIOIM_OFFSET 		 	  			0x410		//GPIO Interrupt Mask
+#define  ICU_GPIORIS_OFFSET		 	  			0x414		//GPIO Raw Interrupt Status 
+#define  ICU_GPIOMIS_OFFSET		 	  			0x418		//GPIO Masked Interrupt Status 
+#define  ICU_GPIOICR_OFFSET		 	  			0x41C		//GPIO Interrupt Clear 
 
 
-
+#define  ICU_GPIOIS_REGISTER(base_address)               (*((volatile uint32*) (base_address + ICU_GPIOIS_OFFSET 	 )))
+#define  ICU_GPIOIBE_REGISTER(base_address)              (*((volatile uint32*) (base_address + ICU_GPIOIBE_OFFSET	 )))
+#define  ICU_GPIOIEV_REGISTER(base_address)              (*((volatile uint32*) (base_address + ICU_GPIOIEV_OFFSET 	 )))
+#define  ICU_GPIOIM_REGISTER(base_address)               (*((volatile uint32*) (base_address + ICU_GPIOIM_OFFSET 	 )))
+#define  ICU_GPIORIS_REGISTER(base_address)              (*((volatile uint32*) (base_address + ICU_GPIORIS_OFFSET	 )))
+#define  ICU_GPIOMIS_REGISTER(base_address)              (*((volatile uint32*) (base_address + ICU_GPIOMIS_OFFSET	 )))
+#define  ICU_GPIOICR_REGISTER(base_address)              (*((volatile uint32*) (base_address + ICU_GPIOICR_OFFSET	 )))
 
 
 
@@ -237,7 +237,7 @@
  
 
  
-#endif  /* TM4C123GH6PM_HW_H_ */
+#endif  /* TM4C123GH6PM_HW_H */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h

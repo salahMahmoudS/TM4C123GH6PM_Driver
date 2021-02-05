@@ -157,7 +157,7 @@ NVIC_interruptConfigStructure NVIC_interruptConfiguration[NVIC_NUMBER_OF_ENABLED
 {
 //{interruptVTValue1,interruptPriorityLevelGroup1,interruptPriorityLevelSubGroup1},
 //{interruptVTValue2,interruptPriorityLevelGroup2,interruptPriorityLevelSubGroup2}
-	{INTERRUPT_VT_GPIO_PORT_B,1,3},{INTERRUPT_VT_GPIO_PORT_C,0,2},{INTERRUPT_VT_GPIO_PORT_D,1,1}
+	{INTERRUPT_VT_GPIO_PORT_F,1,3},{INTERRUPT_VT_GPIO_PORT_C,0,2},{INTERRUPT_VT_GPIO_PORT_D,1,1}
 };
 
 

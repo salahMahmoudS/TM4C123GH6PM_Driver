@@ -8,20 +8,18 @@
  *  Description:  <Write File DESCRIPTION here>     
  *  
  *********************************************************************************************************************/
-#ifndef SYSTICK_CFG_H
-#define SYSTICK_CFG_H
+#ifndef ICU_H
+#define ICU_H
 
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
-
+#include "ICU_Types.h"
 
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define SYSTICK_OSCILLATOR_SRC			SYSTEM_CLOCK
-#define SYSTICK_INTERRUPT_ENABLE 		SYSTICK_DISABLE
-#define SYSTICK_SET_ENABLE			SYSTICK_ENABLE
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -36,14 +34,16 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-#define SYSTICK_TIMER_INITIAL_VALUE		16000000
-#define SYSTICK_TIMER_T1_VALUE	 		1000
-#define SYSTICK_TIMER_T2_VALUE			500 
 
+ 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-
+ICU_ReturnCodes ICU_ICUReturnCodesInit(void);
+ICU_ReturnCodes ICU_ICUReturnCodesClearInterruptFlag(ICU_ChannelType ICU_Channel);
+ICU_ReturnCodes ICU_ICUReturnCodesEnableInterrupt(ICU_ChannelType ICU_Channel);
+ICU_ReturnCodes ICU_ICUReturnCodesDisableInterrupt(ICU_ChannelType ICU_Channel);
+ICU_ActiveType  ICU_ICUReturnCodesIsInterruptActive(ICU_ChannelType ICU_Channel);
  
 #endif  /* FILE_NAME_H */
 

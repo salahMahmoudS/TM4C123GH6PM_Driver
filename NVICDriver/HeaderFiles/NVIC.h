@@ -44,7 +44,7 @@ typedef struct
  *********************************************************************************************************************/
 #define NVIC_SUCCESS 		0
 #define NVIC_FAIL 			1
-#define NVIC_ERROR			99
+#define NVIC_ERROR			95
 #define NVIC_IS_ACTIVE		2
 #define NVIC_IS_NOT_ACTIVE	3
 #define NVIC_IS_ENABLED		4

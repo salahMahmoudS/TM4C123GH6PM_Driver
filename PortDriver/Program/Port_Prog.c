@@ -27,7 +27,7 @@
  *  LOCAL DATA 
  *********************************************************************************************************************/
 static uint32 portAPBbaseAddressArray[] = {GPIO_Port_A_APB_BASE_ADDRESS,GPIO_Port_B_APB_BASE_ADDRESS,GPIO_Port_C_APB_BASE_ADDRESS,
-																					 GPIO_Port_D_APB_BASE_ADDRESS,GPIO_Port_E_APB_BASE_ADDRESS,GPIO_Port_F_APB_BASE_ADDRESS};
+                                              GPIO_Port_D_APB_BASE_ADDRESS,GPIO_Port_E_APB_BASE_ADDRESS,GPIO_Port_F_APB_BASE_ADDRESS};
 			
 	
 /**********************************************************************************************************************

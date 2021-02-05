@@ -90,7 +90,7 @@ SysTick_returnCodes Systick_Init(void)								//set timer value
         #elif (SYSTICK_INTERRUPT_ENABLE == SYSTICK_DISABLE)     //if Systick interrupt configuration is disabled
          SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
 
-         Systick_SystickReturnCodesDiableSystickInterrupt();     //disable the interrupt in systick control resgister
+         Systick_SystickReturnCodesDisableSystickInterrupt();     //disable the interrupt in systick control resgister
         
         #else
         #error "Wrong defined mode for interrupt enable , please choose between SYSTICK_ENABLE and SYSTICK_DINABLE";    //throw compilation error
@@ -141,7 +141,6 @@ else
 }
 SysTick_returnCodes Systick_delayMS(uint32 milliSeconds)			//makes a delay by desired milliseconds
 {
-  Systick_SystickReturnCodesDisableSystickInterrupt();
   f32 numberOfSeconds= milliSeconds/1000.0;                              //Transforming the milli seconds to seconds to know number of iteraitons
   uint32 numberOfClockCycles = (uint32)(numberOfSeconds*clockInitialFrequency);
   uint32 numberOfIterations = (uint32) (numberOfClockCycles/16000000);
@@ -164,13 +163,11 @@ SysTick_returnCodes Systick_delayMS(uint32 milliSeconds)			//makes a delay by de
   }
   
   }
-  Systick_SystickReturnCodesEnableSystickInterrupt();
   return SYSTICK_SUCCESS;
 }
 
 SysTick_returnCodes Systick_SystickReturnCodesEnableSystickInterrupt(void)
 {
-  
   SET_BIT(SYSTICK_STCTRL,SYSTICK_STCTRL_INTEN); //enable the interrupts in systick control register
   return SYSTICK_SUCCESS;
 }
