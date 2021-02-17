@@ -30,8 +30,28 @@ typedef unsigned long long uint64;	//define unsigned long long as uint64
 typedef float f32;					//define float as f32 
 typedef double f64;		
 
+typedef uint8 Std_returnType;
 
- 
+
+typedef struct
+{
+    uint16 vendorID;
+    uint16 moduleID;
+    uint8 sw_major_version;
+    uint8 sw_minor_version;
+    uint8 sw_patch_version;
+} Std_VersionInfoType;
+
+#define STD_HIGH        0x01    /*physical state 5V or 3.3V */
+#define STD_LOW         0x00    /*physical state 0V */
+
+#define STD_ACTIVE      0x01    /* Logical state active */
+#define STD_IDLE        0x00    /* Logical state idle */ 
+
+#define STD_ON          0x01    /* Logical state ON */
+#define STD_OFF         0x00    /* Logical state OFF */
+
+
 #endif  /* STD_TYPES_H */
 
 /**********************************************************************************************************************
