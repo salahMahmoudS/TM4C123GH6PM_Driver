@@ -14,12 +14,14 @@
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
+#include "Std_Types.h"
 #include "DIO_Types.h"
-
+#include "DIO_Cfg.h"
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-
+#define DIO_AR_RELEASE_MAJOR_VERSION    2
+#define DIO_AR_RELEASE_MINOR_VERSION    5
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -102,11 +104,11 @@
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
 uint8 DIO_Init(void);
-uint8 DIO_uint8WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevel);
-Dio_LevelType DIO_uint8ReadChannel(Dio_ChannelType pinNumber);
-uint8 DIO_uint8ToggleChannel(Dio_ChannelType pinNumber);
-uint8 DIO_uint8WritePort(Dio_PortType portNumber, uint8 portValue);
-uint8 DIO_uint8ReadPort(Dio_PortType portNumber); 
+uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevel);
+Dio_LevelType DIO_ReadChannel(Dio_ChannelType pinNumber);
+uint8 DIO_ToggleChannel(Dio_ChannelType pinNumber);
+uint8 DIO_WritePort(Dio_PortType portNumber, uint8 portValue);
+uint8 DIO_ReadPort(Dio_PortType portNumber); 
  
 #endif  /* FILE_NAME_H */
 
