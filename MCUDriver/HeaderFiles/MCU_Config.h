@@ -34,7 +34,7 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-f32 MCU_PLLClockFrequencyConfigurationValue = 8;
+float32 MCU_PLLClockFrequencyConfigurationValue = 8;
 //define the crystal frequency DONOT CHANGE UNLESS THE uC crystal is different than 16 MHz, below are allowed values for uCs
 
    /*

@@ -103,12 +103,12 @@
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-uint8 DIO_Init(void);
-uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevel);
-Dio_LevelType DIO_ReadChannel(Dio_ChannelType pinNumber);
-uint8 DIO_ToggleChannel(Dio_ChannelType pinNumber);
-uint8 DIO_WritePort(Dio_PortType portNumber, uint8 portValue);
-uint8 DIO_ReadPort(Dio_PortType portNumber); 
+void Dio_Init(void);
+void Dio_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType Level);
+Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
+Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId);
+void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level);
+Dio_PortLevelType Dio_ReadPort(Dio_PortType portId); 
  
 #endif  /* FILE_NAME_H */
 

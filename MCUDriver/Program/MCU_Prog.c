@@ -27,7 +27,7 @@ static MCU_ReturnCodes MCU_PLLInit(void);
  *********************************************************************************************************************/
 
 
-f32 MCU_clkFrequenciesAllowedValues[] = {                                         
+float32 MCU_clkFrequenciesAllowedValues[] = {                                         
                                               2,
                                               4,
                                               8,

@@ -23,15 +23,17 @@
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
 
+
 /**********************************************************************************************************************
  *  LOCAL DATA 
  *********************************************************************************************************************/
-   uint32 portIndex[] = {DIO_PORTA,DIO_PORTB,DIO_PORTC,DIO_PORTD,DIO_PORTE,DIO_PORTF};
-
-
-
-
-
+   uint32 portAddressMapper[] =  {GPIO_Port_A_APB_BASE_ADDRESS,
+                                  GPIO_Port_B_APB_BASE_ADDRESS,
+                                  GPIO_Port_C_APB_BASE_ADDRESS,
+                                  GPIO_Port_D_APB_BASE_ADDRESS,
+                                  GPIO_Port_E_APB_BASE_ADDRESS,
+                                  GPIO_Port_F_APB_BASE_ADDRESS
+                                  };                    /*This array contains the physical addresses of each port in the MCU */
 
 
   
@@ -64,12 +66,12 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
-	uint8 DIO_Init(void)
+	void Dio_Init(void)
 {
-  return DIO_SUCCESS;
+  
 }
 
-uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelType)
+void Dio_WriteChannel(Dio_ChannelType ChannelId, Dio_LevelType pinLevelType)
 {
 	/* Step 1 validate that the channel is output channel */
 		/*
@@ -78,12 +80,10 @@ uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelType)
   */
   
 		/* Step 2 write the desired value on the desired channel */
-  
-		uint32 pinBaseAddress = portIndex[pinNumber/8];
-	uint8 pinOffset = pinNumber%8;
-	//will be set by bit banding later
+                uint32 pinBaseAddress = portAddressMapper[ChannelId/8];
+                uint8 pinOffset = ChannelId%8;	
 		//(*volatile uint32) pinAddressPointer = 
-		volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));    /* Create a pointer to the desired PIN */
+		volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));    /* Create a pointer to the desired PIN using bitbanding */
 		if (pinLevelType == DIO_HIGH)             /* if desired value is high */
 		{  
 		*pinAddress = STD_HIGH<<pinOffset;      /* Set the desired channel to high */
@@ -96,7 +96,6 @@ uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelType)
 		{
 		  /* Do nothing*/
 		}
-		return DIO_SUCCESS;
 	   //GPIODATA(pinBaseAddress + 0x3FC)= pinLevelType<<pinOffset;               //Write 1 or 0 on the desired pin in address register
 	   /* 
 		if (pinLevelType == DIO_LOW)
@@ -117,10 +116,10 @@ uint8 DIO_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType pinLevelType)
 }
 
 
-Dio_LevelType DIO_ReadChannel(Dio_ChannelType pinNumber)
+Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId)
 {
-  uint32 pinBaseAddress = portIndex[pinNumber/8];
-  uint8 pinOffset = pinNumber%8;
+  uint32 pinBaseAddress = portAddressMapper[ChannelId/8];
+  uint8 pinOffset = ChannelId%8;
   volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<pinOffset)));
   if (*pinAddress >= DIO_HIGH)
   {
@@ -133,38 +132,42 @@ Dio_LevelType DIO_ReadChannel(Dio_ChannelType pinNumber)
 	}
 	else 
 	{
-	  return DIO_ERROR;
+          /* TODO implement return Deterror  */
+          return DIO_ERROR;
 	}
 }
-uint8 DIO_ToggleChannel(Dio_ChannelType pinNumber)
+Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId)
 {
- if (DIO_ReadChannel(pinNumber) == DIO_HIGH)
+ if (Dio_ReadChannel(ChannelId) == DIO_HIGH)
  {
-   DIO_WriteChannel(pinNumber,DIO_LOW);
+   Dio_WriteChannel(ChannelId,DIO_LOW);
+   return DIO_LOW;
  }
- else if (DIO_ReadChannel(pinNumber) == DIO_LOW)
+ else if (Dio_ReadChannel(ChannelId) == DIO_LOW)
  {
-   DIO_WriteChannel(pinNumber,DIO_HIGH);
+   Dio_WriteChannel(ChannelId,DIO_HIGH);
+   return DIO_HIGH;
  }
  else
  {
    return DIO_ERROR;
  }
- return DIO_SUCCESS;
-}
-uint8 DIO_WritePort(Dio_PortType portNumber, uint8 portValue)
-{
- uint32 portAddress = portNumber;
  
- GPIODATA((portAddress + 0x3FC))= portValue; 
- 
- return DIO_SUCCESS;
 }
-uint8 DIO_ReadPort(Dio_PortType portNumber)
+void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level)
 {
- uint32 portAddress = portNumber;
+ uint32 portAddress = PortId;
+ 
+ GPIODATA((portAddress + 0x3FC))= Level; 
+ 
+}
 
-  return GPIODATA((portAddress+0x3FC));
+
+Dio_PortLevelType Dio_ReadPort(Dio_PortType PortId)
+{
+ uint32 portAddress = portAddressMapper[PortId];        /* Get the physical address of the desired port */
+
+  return GPIODATA((portAddress+0x3FC));                /* Read the desired port and return result */
 }
  
 

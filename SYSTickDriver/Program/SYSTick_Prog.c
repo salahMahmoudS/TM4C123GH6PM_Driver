@@ -141,7 +141,7 @@ else
 }
 SysTick_returnCodes Systick_delayMS(uint32 milliSeconds)			//makes a delay by desired milliseconds
 {
-  f32 numberOfSeconds= milliSeconds/1000.0;                              //Transforming the milli seconds to seconds to know number of iteraitons
+  float32 numberOfSeconds= milliSeconds/1000.0;                              //Transforming the milli seconds to seconds to know number of iteraitons
   uint32 numberOfClockCycles = (uint32)(numberOfSeconds*clockInitialFrequency);
   uint32 numberOfIterations = (uint32) (numberOfClockCycles/16000000);
   uint32 remainingIterationValue = numberOfClockCycles%16000000;

@@ -30,25 +30,37 @@
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
+
+typedef uint8   Dio_PortLevelType; 
+   
 typedef enum 
 {
-        DIO_LOW = 0,
-        DIO_HIGH = 1
+        DIO_LOW = STD_LOW,
+        DIO_HIGH = STD_HIGH
 }Dio_LevelType;
 
 
 
 typedef enum 
 {
-	DIO_PORTA = GPIO_Port_A_APB_BASE_ADDRESS,
-	DIO_PORTB = GPIO_Port_B_APB_BASE_ADDRESS,
-	DIO_PORTC = GPIO_Port_C_APB_BASE_ADDRESS,
-	DIO_PORTD = GPIO_Port_D_APB_BASE_ADDRESS,
-	DIO_PORTE = GPIO_Port_E_APB_BASE_ADDRESS,
-	DIO_PORTF = GPIO_Port_F_APB_BASE_ADDRESS
+	DIO_PORTA,
+	DIO_PORTB,
+	DIO_PORTC,
+	DIO_PORTD,
+	DIO_PORTE,
+	DIO_PORTF
 
 
 }Dio_PortType;
+
+
+typedef struct
+{
+  uint8 mask;
+  uint8 offset;
+  Dio_PortType port;
+  
+}Dio_ChannelGroupType;
 
 typedef enum
 {
@@ -100,7 +112,11 @@ typedef enum
 	
 }Dio_ChannelType;
 
-
+typedef struct
+{
+  Dio_ChannelType       postBuildChannel;
+  Dio_LevelType         postBuildLevel;
+}Dio_ConfigType;
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
