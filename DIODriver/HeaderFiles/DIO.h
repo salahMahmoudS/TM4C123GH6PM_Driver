@@ -5,23 +5,109 @@
  *         File:  <Write File Name>
  *       Module:  -
  *
- *  Description:  <Write File DESCRIPTION here>     
+ *  Description:  <Write File DESCRIPTION here>
+ *	Author: Salah Mahmoud
  *  
  *********************************************************************************************************************/
 #ifndef DIO_H
 #define DIO_H
 
-/**********************************************************************************************************************
- * INCLUDES
- *********************************************************************************************************************/
-#include "Std_Types.h"
-#include "DIO_Types.h"
-#include "DIO_Cfg.h"
+
+
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
-#define DIO_AR_RELEASE_MAJOR_VERSION    2
-#define DIO_AR_RELEASE_MINOR_VERSION    5
+/* Defining the company ID in the AUTOSAR */
+/* I am using a dummy ID for now */
+
+#define COMPILER_VENDOR_ID					(2007U)
+
+
+/* Defining the Module software verison by Major.Minor.Patch format */
+
+#define DIO_SW_MAJOR_VERSION				(1U)
+#define DIO_SW_MINOR_VERSION				(0U)
+#define DIO_SW_PATCH_VERSION				(0U)
+
+/* Defining the autosar version ued for the module */
+
+#define DIO_AR_RELEASE_MAJOR_VERSION		(4U)
+#define DIO_AR_RELEASE_MINOR_VERSION		(0U)
+#define DIO_AR_RELEASE_PATCH_VERSION		(3U)
+
+/**********************************************************************************************************************
+ * INCLUDES
+ *********************************************************************************************************************/
+
+#include "Std_Types.h"
+
+
+/* checking AUTOSAR compatability */
+
+
+#if ((DIO_AR_MAJOR_VERSION != STD_TYPES_AR_MAJOR_VERSION)\
+||	 (DIO_AR_MINOR_VERSION != STD_TYPES_AR_MINOR_VERSION)\
+||	 (DIO_AR_PATCH_VERSION != STD_TYPES_AR_PATCH_VERSION))
+#error "The autosar version of Std_types is not matching this module version"
+#endif
+
+
+#include "DIO_Cfg.h"
+
+/* checking AUTOSAR compatability */
+
+/* checking Software version compatability */
+
+#if ((DIO_SW_MAJOR_VERSION != DIO_CFG_SW_MAJOR_VERSION)\
+||	 (DIO_SW_MINOR_VERSION != DIO_CFG_SW_MINOR_VERSION)\
+||	 (DIO_SW_PATCH_VERSION != DIO_CFG_SW_PATCH_VERSION))
+#error "The autosar version of Dio_Cfg is not matching this module version"
+#endif
+
+
+
+/* checking AUTOSAR compatability */
+
+#if ((DIO_AR_MAJOR_VERSION != DIO_CFG_AR_MAJOR_VERSION)\
+||	 (DIO_AR_MINOR_VERSION != DIO_CFG_AR_MINOR_VERSION)\
+||	 (DIO_AR_PATCH_VERSION != DIO_CFG_AR_PATCH_VERSION))
+#error "The autosar version of Dio_Cfg is not matching this module version"
+#endif
+
+
+
+
+#include "DIO_Types.h"
+
+
+/* checking Software version compatability */
+
+#if ((DIO_SW_MAJOR_VERSION != DIO_TYPES_SW_MAJOR_VERSION)\
+||	 (DIO_SW_MINOR_VERSION != DIO_TYPES_SW_MINOR_VERSION)\
+||	 (DIO_SW_PATCH_VERSION != DIO_TYPES_SW_PATCH_VERSION))
+#error "The autosar version of Dio_types is not matching this module version"
+#endif
+
+
+
+/* checking AUTOSAR compatability */
+
+#if ((DIO_AR_MAJOR_VERSION != DIO_TYPES_AR_MAJOR_VERSION)\
+||	 (DIO_AR_MINOR_VERSION != DIO_TYPES_AR_MINOR_VERSION)\
+||	 (DIO_AR_PATCH_VERSION != DIO_TYPES_AR_PATCH_VERSION))
+#error "The autosar version of Dio_types is not matching this module version"
+#endif
+
+
+
+
+
+/*
+ * Macros for module Status
+ */
+#define DIO_INITIALIZED                ((uint8) 0x01)
+#define DIO_NOT_INITIALIZED            ((uint8) 0x00)
+
 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION MACROS
@@ -32,86 +118,125 @@
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
-/*Use THE BELOW PORTS NAMING CONVENTION
-  
-     DIO_PORTA
-     DIO_PORTB 
-     DIO_PORTC 
-     DIO_PORTD 
-     DIO_PORTE 
-     DIO_PORTF 
-*/
-
-
-/* USE THE BELOW PINS
-	DIO_PINA0,	   //PIN0
-	DIO_PINA1,         //PIN1
-	DIO_PINA2,         //PIN2
-	DIO_PINA3,         //PIN3
-	DIO_PINA4,         //PIN4
-	DIO_PINA5,         //PIN5
-	DIO_PINA6,         //PIN6
-	DIO_PINA7,         //PIN7
-	DIO_PINB0,         //PIN8
-	DIO_PINB1,         //PIN9
-	DIO_PINB2,         //PIN10
-	DIO_PINB3,         //PIN11
-	DIO_PINB4,         //PIN12
-	DIO_PINB5,         //PIN13
-	DIO_PINB6,         //PIN14
-	DIO_PINB7,         //PIN15
-	DIO_PINC0,         //PIN16
-	DIO_PINC1,         //PIN17
-	DIO_PINC2,         //PIN18
-	DIO_PINC3,         //PIN19
-	DIO_PINC4,         //PIN20
-	DIO_PINC5,         //PIN21
-	DIO_PINC6,         //PIN22
-	DIO_PINC7,         //PIN23
-	DIO_PIND0,         //PIN24
-	DIO_PIND1,         //PIN25
-	DIO_PIND2,         //PIN26
-	DIO_PIND3,         //PIN27
-	DIO_PIND4,         //PIN28
-	DIO_PIND5,         //PIN29
-	DIO_PIND6,         //PIN30
-	DIO_PIND7,         //PIN31
-	DIO_PINE0,         //PIN32
-	DIO_PINE1,         //PIN33
-	DIO_PINE2,         //PIN34
-	DIO_PINE3,         //PIN35
-	DIO_PINE4,         //PIN36
-	DIO_PINE5,         //PIN37
-	DIO_PINF0,         //PIN38			
-	DIO_PINF1,         //PIN39
-	DIO_PINF2,         //PIN40
-	DIO_PINF3,         //PIN41
-	DIO_PINF4,         //PIN42
-*/	
-
-
-
 
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-#define DIO_SUCCESS 		0
-#define DIO_FAIL 			1
-#define DIO_ERROR			99
 
-
+ 
 /**********************************************************************************************************************
  *  GLOBAL FUNCTION PROTOTYPES
  *********************************************************************************************************************/
-void Dio_Init(void);
+void Dio_Init(const Dio_ConfigType* ConfigPtr);
 void Dio_WriteChannel(Dio_ChannelType pinNumber, Dio_LevelType Level);
 Dio_LevelType Dio_ReadChannel(Dio_ChannelType ChannelId);
 Dio_LevelType Dio_FlipChannel(Dio_ChannelType ChannelId);
 void Dio_WritePort(Dio_PortType PortId, Dio_PortLevelType Level);
 Dio_PortLevelType Dio_ReadPort(Dio_PortType portId); 
  
+/******************************************************************************
+ *                      API Service Id Macros                                 *
+ ******************************************************************************/
+
+/* Service ID for DIO read channel */
+#define DIO_READ_CHANNEL_SID          	 	((uint8)0x00)
+
+/* Service ID for DIO write channel */
+#define DIO_WRITE_CHANNEL_SID           	((uint8)0x01)
+
+/* Service ID for DIO read port */
+#define DIO_READ_PORT_SID           		((uint8)0x02)
+
+/* Service ID for DIO write port */
+#define DIO_WRITE_PORT_SID           		((uint8)0x03)
+
+/* Service ID for DIO read channel group */
+#define DIO_READ_CHANNEL_GROUP_SID          ((uint8)0x04)
+
+/* Service ID for DIO write channel group */
+#define DIO_WRITE_CHANNEL_GROUP_SID    		((uint8)0x05)
+
+/* Service ID to get version information */
+#define DIO_GET_VERSION_INFO_SID          	((uint8)0x12)
+
+/* Service ID to intialize DIO driver */
+#define DIO_INIT_SID          				((uint8)0x10)
+
+/* Service ID to intialize DIO driver */
+#define DIO_FLIP_CHANNEL_SID          		((uint8)0x11)
+
+
+/*******************************************************************************
+ *                      DET Error Codes                                        *
+ *******************************************************************************/
+
+/* DET code for Invalid channel name requested */
+#define DIO_E_PARAM_INVALID_CHANNEL_ID				        ((uint8) 0x0A)	
+
+/* DET code for API service called with NULL pointer parameter */
+#define DIO_E_PARAM_CONFIG					        ((uint8)0x10)			
+
+/* DET code for Invalid port name requested */
+#define DIO_E_PARAM_INVALID_PORT_ID					((uint8)0x14)			
+
+/* DET code for Invalid ChannelGroup */
+#define DIO_E_PARAM_INVALID_GROUP					((uint8)0x1F)
+
+/* DET code for service called with a NULL pointer */
+/* The API service shall return immediately without any further action,
+ * beside reporting this development error.
+ */
+#define DIO_E_PARAM_POINTER						((uint8)0x20)
+
+/*
+ * API service used without module initialization is reported using following
+ * error code (Not exist in AUTOSAR 4.0.3 DIO SWS Document.
+ */
+#define DIO_E_UNINIT                   				((uint8)0xF0)
+
+
+
+
+/*******************************************************************************
+ *                              Module Data Types                              *
+ *******************************************************************************/
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+ *                      Function Prototypes                                    *
+ *******************************************************************************/
+
+
+
+
+
+
+
+
+
+
+
+/*******************************************************************************
+ *                       External Variables                                    *
+ *******************************************************************************/
+
+extern const Dio_ConfigType Dio_Configuration;
+
+ 
 #endif  /* FILE_NAME_H */
 
 /**********************************************************************************************************************
  *  END OF FILE: Std_Types.h
  *********************************************************************************************************************/
+
+
+
+
+

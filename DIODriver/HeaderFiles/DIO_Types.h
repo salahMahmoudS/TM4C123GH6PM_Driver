@@ -19,6 +19,23 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
+/* Defining the company ID in the AUTOSAR */
+/* I am using a dummy ID for now */
+
+#define COMPILER_VENDOR_ID					(2007U)
+
+
+/* Defining the Module software verison by Major.Minor.Patch format */
+
+#define DIO_TYPES_SW_MAJOR_VERSION			(1U)
+#define DIO_TYPES_SW_MINOR_VERSION			(0U)
+#define DIO_TYPES_SW_PATCH_VERSION			(0U)
+
+/* Defining the autosar version ued for the module */
+
+#define DIO_TYPES_AR_RELEASE_MAJOR_VERSION		(4U)
+#define DIO_TYPES_AR_RELEASE_MINOR_VERSION		(0U)
+#define DIO_TYPES_AR_RELEASE_PATCH_VERSION		(3U)
 
 
 /**********************************************************************************************************************
@@ -30,30 +47,74 @@
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 
-
+/* Type definition for portLevel Type */
 typedef uint8   Dio_PortLevelType; 
+
+/* Type definition for channel Level type */
+typedef uint8	Dio_LevelType;
+
+/* Type definition for channelType and the allowed channels */
+typedef uint8	Dio_ChannelType;
+
+#define	DIO_PINA0 			((Dio_ChannelType) 0x00)		//PIN0
+#define	DIO_PINA1 			((Dio_ChannelType) 0x01)     	//PIN1
+#define	DIO_PINA2 			((Dio_ChannelType) 0x02)     	//PIN2
+#define	DIO_PINA3 			((Dio_ChannelType) 0x03)     	//PIN3
+#define	DIO_PINA4 			((Dio_ChannelType) 0x04)     	//PIN4
+#define	DIO_PINA5 			((Dio_ChannelType) 0x05)     	//PIN5
+#define	DIO_PINA6 			((Dio_ChannelType) 0x06)     	//PIN6
+#define	DIO_PINA7 			((Dio_ChannelType) 0x07)     	//PIN7
+#define	DIO_PINB0 			((Dio_ChannelType) 0x00)     	//PIN8
+#define	DIO_PINB1 			((Dio_ChannelType) 0x01)     	//PIN9
+#define	DIO_PINB2 			((Dio_ChannelType) 0x02)     	//PIN10
+#define	DIO_PINB3 			((Dio_ChannelType) 0x03)     	//PIN11
+#define	DIO_PINB4 			((Dio_ChannelType) 0x04)     	//PIN12
+#define	DIO_PINB5 			((Dio_ChannelType) 0x05)     	//PIN13
+#define	DIO_PINB6 			((Dio_ChannelType) 0x06)     	//PIN14
+#define	DIO_PINB7 			((Dio_ChannelType) 0x07)     	//PIN15
+#define	DIO_PINC0 			((Dio_ChannelType) 0x00)     	//PIN16
+#define	DIO_PINC1 			((Dio_ChannelType) 0x01)     	//PIN17
+#define	DIO_PINC2 			((Dio_ChannelType) 0x02)     	//PIN18
+#define	DIO_PINC3 			((Dio_ChannelType) 0x03)     	//PIN19
+#define	DIO_PINC4 			((Dio_ChannelType) 0x04)     	//PIN20
+#define	DIO_PINC5 			((Dio_ChannelType) 0x05)     	//PIN21
+#define	DIO_PINC6 			((Dio_ChannelType) 0x06)     	//PIN22
+#define	DIO_PINC7 			((Dio_ChannelType) 0x07)     	//PIN23
+#define	DIO_PIND0 			((Dio_ChannelType) 0x00)     	//PIN24
+#define	DIO_PIND1 			((Dio_ChannelType) 0x01)     	//PIN25
+#define	DIO_PIND2 			((Dio_ChannelType) 0x02)     	//PIN26
+#define	DIO_PIND3 			((Dio_ChannelType) 0x03)     	//PIN27
+#define	DIO_PIND4 			((Dio_ChannelType) 0x04)     	//PIN28
+#define	DIO_PIND5 			((Dio_ChannelType) 0x05)     	//PIN29
+#define	DIO_PIND6 			((Dio_ChannelType) 0x06)     	//PIN30
+#define	DIO_PIND7 			((Dio_ChannelType) 0x07)     	//PIN31
+#define	DIO_PINE0 			((Dio_ChannelType) 0x00)     	//PIN32
+#define	DIO_PINE1 			((Dio_ChannelType) 0x01)     	//PIN33
+#define	DIO_PINE2 			((Dio_ChannelType) 0x02)     	//PIN34
+#define	DIO_PINE3 			((Dio_ChannelType) 0x03)     	//PIN35
+#define	DIO_PINE4 			((Dio_ChannelType) 0x04)     	//PIN36
+#define	DIO_PINE5 			((Dio_ChannelType) 0x05)     	//PIN37
+#define	DIO_PINF0 			((Dio_ChannelType) 0x00)     	//PIN38 
+#define	DIO_PINF1 			((Dio_ChannelType) 0x01)     	//PIN39
+#define	DIO_PINF2 			((Dio_ChannelType) 0x02)     	//PIN40
+#define	DIO_PINF3 			((Dio_ChannelType) 0x03)     	//PIN41
+#define	DIO_PINF4 			((Dio_ChannelType) 0x04)     	//PIN42
+	                                           
+
+/*Type definition for port types and their allowed values */
+typedef uint8 	Dio_PortType;
    
-typedef enum 
-{
-        DIO_LOW = STD_LOW,
-        DIO_HIGH = STD_HIGH
-}Dio_LevelType;
+#define DIO_PORTA	    	((Dio_PortType) 0x00U)	     	 //PORTA
+#define DIO_PORTB           ((Dio_PortType) 0x01U)           //PORTB
+#define DIO_PORTC           ((Dio_PortType) 0x02U)           //PORTC
+#define DIO_PORTD           ((Dio_PortType) 0x03U)           //PORTD
+#define DIO_PORTE           ((Dio_PortType) 0x04U)           //PORTE
+#define DIO_PORTF           ((Dio_PortType) 0x05U)           //PORTF
+                                               
 
 
 
-typedef enum 
-{
-	DIO_PORTA,
-	DIO_PORTB,
-	DIO_PORTC,
-	DIO_PORTD,
-	DIO_PORTE,
-	DIO_PORTF
-
-
-}Dio_PortType;
-
-
+/* Type definition for the channel group type and their parameters */
 typedef struct
 {
   uint8 mask;
@@ -62,60 +123,17 @@ typedef struct
   
 }Dio_ChannelGroupType;
 
-typedef enum
+
+/*Type definition for the channel configuration type */ 
+typedef struct
 {
-	
-	DIO_PINA0=0,		//PIN0
-	DIO_PINA1,         //PIN1
-	DIO_PINA2,         //PIN2
-	DIO_PINA3,         //PIN3
-	DIO_PINA4,         //PIN4
-	DIO_PINA5,         //PIN5
-	DIO_PINA6,         //PIN6
-	DIO_PINA7,         //PIN7
-	DIO_PINB0,         //PIN8
-	DIO_PINB1,         //PIN9
-	DIO_PINB2,         //PIN10
-	DIO_PINB3,         //PIN11
-	DIO_PINB4,         //PIN12
-	DIO_PINB5,         //PIN13
-	DIO_PINB6,         //PIN14
-	DIO_PINB7,         //PIN15
-	DIO_PINC0,         //PIN16
-	DIO_PINC1,         //PIN17
-	DIO_PINC2,         //PIN18
-	DIO_PINC3,         //PIN19
-	DIO_PINC4,         //PIN20
-	DIO_PINC5,         //PIN21
-	DIO_PINC6,         //PIN22
-	DIO_PINC7,         //PIN23
-	DIO_PIND0,         //PIN24
-	DIO_PIND1,         //PIN25
-	DIO_PIND2,         //PIN26
-	DIO_PIND3,         //PIN27
-	DIO_PIND4,         //PIN28
-	DIO_PIND5,         //PIN29
-	DIO_PIND6,         //PIN30
-	DIO_PIND7,         //PIN31
-	DIO_PINE0,         //PIN32
-	DIO_PINE1,         //PIN33
-	DIO_PINE2,         //PIN34
-	DIO_PINE3,         //PIN35
-	DIO_PINE4,         //PIN36
-	DIO_PINE5,         //PIN37
-	DIO_PINF0=40,      //PIN38				----To make pins divisble by 8 
-	DIO_PINF1,         //PIN39
-	DIO_PINF2,         //PIN40
-	DIO_PINF3,         //PIN41
-	DIO_PINF4,         //PIN42
-	
-	
-}Dio_ChannelType;
+   Dio_PortType         	postBuildPortID;
+   Dio_ChannelType       postBuildChannelID;
+}Dio_ChannelConfigType;
 
 typedef struct
 {
-  Dio_ChannelType       postBuildChannel;
-  Dio_LevelType         postBuildLevel;
+	Dio_ChannelConfigType ConfiguredChannelsArray[DIO_NUMBER_OF_CONFIGURED_CHANNELS];
 }Dio_ConfigType;
 
 /**********************************************************************************************************************
