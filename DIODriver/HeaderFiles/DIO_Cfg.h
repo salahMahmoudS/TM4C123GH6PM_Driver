@@ -77,11 +77,13 @@ If you will include file in Dio.h and Dio_Types then you need to check software 
 #define DIO_DEV_ERROR_DETECT                (STD_ON)
 
 /* Pre-compile option for Version Info API */
-#define DIO_VERSION_INFO_API                (STD_ON)
+#define DIO_VERSION_INFO_API                (STD_OFF)
 
 /* Pre-compile option for presence of OptionalFunction API */
 /* to be inserted here */
 
+/* Pre-compile option for Flip Channel API */
+#define DIO_FLIP_CHANNEL_API                (STD_ON)
 
 
 

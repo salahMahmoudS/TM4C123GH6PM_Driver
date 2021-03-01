@@ -17,6 +17,13 @@
 /**********************************************************************************************************************
  *  GLOBAL CONSTANT MACROS
  *********************************************************************************************************************/
+/* Dio Module Id */
+#define DIO_MODULE_ID    (120U)                
+
+/* Dio Instance Id */
+#define DIO_INSTANCE_ID  (0U)
+
+   
 /* Defining the company ID in the AUTOSAR */
 /* I am using a dummy ID for now */
 
