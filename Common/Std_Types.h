@@ -33,9 +33,9 @@
 
 /* Defining the autosar version ued for the module */
 
-#define STD_TYPES_AR_RELEASE_MAJOR_VERSION		(U)
-#define STD_TYPES_AR_RELEASE_MINOR_VERSION		(U)
-#define STD_TYPES_AR_RELEASE_PATCH_VERSION		(U)
+#define STD_TYPES_AR_RELEASE_MAJOR_VERSION		(4U)
+#define STD_TYPES_AR_RELEASE_MINOR_VERSION		(0U)
+#define STD_TYPES_AR_RELEASE_PATCH_VERSION		(3U)
 
 
 
@@ -48,11 +48,14 @@
 /**********************************************************************************************************************
  * INCLUDES
  *********************************************************************************************************************/
+/*TODO add checker on version and autosar on compiler.h */
+#include "Compiler.h"
 
 /**********************************************************************************************************************
  *  GLOBAL DATA TYPES AND STRUCTURES
  *********************************************************************************************************************/
 typedef char sint8;					//define signed char as int8 
+typedef unsigned char boolean;           //define unsigned char as boolean
 typedef unsigned char uint8;		//define unsigned char as uint8 
 typedef short sint16;				//define signed short as int16 
 typedef unsigned short uint16;		//define unsigned short as uint16 
@@ -63,7 +66,7 @@ typedef unsigned long long uint64;	//define unsigned long long as uint64
 typedef float float32;					//define float as f32 
 typedef double float64;		
 
-typedef uint8 Std_returnType;
+typedef uint8 Std_ReturnType;
 
 
 typedef struct
@@ -75,6 +78,17 @@ typedef struct
     uint8 sw_patch_version;
 } Std_VersionInfoType;
 
+/*
+ * Boolean Values
+ */
+#ifndef FALSE
+#define FALSE       (0u)
+#endif
+#ifndef TRUE
+#define TRUE        (1u)
+#endif
+    
+    
 #define STD_HIGH        (0x01U)    /*physical state 5V or 3.3V */
 #define STD_LOW         (0x00U)    /*physical state 0V */
 
@@ -84,8 +98,8 @@ typedef struct
 #define STD_ON          (0x01U)    /* Logical state ON */
 #define STD_OFF         (0x00U)    /* Logical state OFF */
 
-#define E_OK			((Std_returnType)0x00U))
-#define E_NOT_OK		((Std_returnType)0x01U))
+#define E_OK			((Std_ReturnType)(0x00U))
+#define E_NOT_OK		((Std_ReturnType)(0x01U))
 
 #endif  /* STD_TYPES_H */
 
