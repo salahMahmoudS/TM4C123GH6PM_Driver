@@ -15,38 +15,38 @@
 /**********************************************************************************************************************
  *  GLOBAL DATA PROTOTYPES
  *********************************************************************************************************************/
-#define MCU_NUMBER_OF_PORTS                                 (6U)
-#define MCU_NUMBER_OF_PINS                                  (43U)
+#define MCU_NUMBER_OF_PORTS                                 6
+#define MCU_NUMBER_OF_PINS                                  43
 /******************* BASE ADDRESSES ***************************************************************************************/
 
-#define CORE_PERIPHERAL_BASE_ADDRESS 		        (0xE000E000)
-#define SYSTEM_CONTROL_BASE_ADDRESS			(0x400FE000)
+#define CORE_PERIPHERAL_BASE_ADDRESS 		        0xE000E000
+#define SYSTEM_CONTROL_BASE_ADDRESS			0x400FE000
 /******************************************************************************************************************************/
 
 /*******************************************System control block (MCU) registers **********************************************/
 
 #define APINT 								(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0xD0C )))  		//Application Interrupt and Reset Control
 #define RCGCGPIO							(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS +  0x608 )))		//General-Purpose Input/Output Run Mode Clock Gating control	
-#define R0									(0)		   			//pin for portA clock
-#define R1									(1)          			//pin for portB clock
-#define R2									(2)          			//pin for portC clock
-#define R3									(3)          			//pin for portD clock
-#define R4									(4)          			//pin for portE clock
-#define R5									(5)          			//pin for portF clock
+#define R0									0		   			//pin for portA clock
+#define R1									1          			//pin for portB clock
+#define R2									2          			//pin for portC clock
+#define R3									3          			//pin for portD clock
+#define R4									4          			//pin for portE clock
+#define R5									5          			//pin for portF clock
 
 #define MCU_RIS_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x050)))			//Raw interrupt status register
-#define MCU_PLLRIS_BIT						((uint8)0x06)					//This bit indicates that PLL timer reached ready state to lock
+#define MCU_PLLRIS_BIT						0x06					//This bit indicates that PLL timer reached ready state to lock
 
 #define MCU_RCC_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x060)))			//Run-mode clock configuration register
-#define MCU_USESYSDIV_BIT					((uint8)0x16)
+#define MCU_USESYSDIV_BIT					0x16
 
 #define MCU_RCC2_REGISTER					(*((volatile uint32*)(SYSTEM_CONTROL_BASE_ADDRESS + 0x070)))			//Run-mode clock configuration 2 register
-#define MCU_USERRCC2_BIT					((uint8) 0x1f)					//This bit identifies main run mode clock configuration register to be RCC2
-#define MCU_DIV400_BIT						((uint8) 0x1E)					//This bit Add SYSDIV2LSB to the SYSDIV2 bit field, which makes the bitfield 7 divisor bits that control 400MHz PLL output
-#define MCU_SYSDIV2LSB_BIT					((uint8) 0x16)					//when SCB_DIV400_BIT is set, this acts as the least signifacnt bit in the SYSDIV2 divisor
-#define MCU_USBPWRDWN_BIT					((uint8) 0x0E)					//This bit powers down the USB PLL
-#define MCU_PWRDWN2_BIT						((uint8) 0x0D)					//This bit powers down the PLL 
-#define MCU_BYPASS2_BIT						((uint8) 0x0B)					//Configures the system output clock to be either PLL or Oscillator
+#define MCU_USERRCC2_BIT					0x1f					//This bit identifies main run mode clock configuration register to be RCC2
+#define MCU_DIV400_BIT						0x1E					//This bit Add SYSDIV2LSB to the SYSDIV2 bit field, which makes the bitfield 7 divisor bits that control 400MHz PLL output
+#define MCU_SYSDIV2LSB_BIT					0x16					//when SCB_DIV400_BIT is set, this acts as the least signifacnt bit in the SYSDIV2 divisor
+#define MCU_USBPWRDWN_BIT					0x0E					//This bit powers down the USB PLL
+#define MCU_PWRDWN2_BIT						0x0D					//This bit powers down the PLL 
+#define MCU_BYPASS2_BIT						0x0B					//Configures the system output clock to be either PLL or Oscillator
 
 #define SYSCTL_RCGC2_R          			(*((volatile unsigned long *)0x400FE108))
 
@@ -119,29 +119,29 @@
 
 /**************************************************SYSTICK Registers*****************************************************************/
 
-#define		SYSTICK_STCTRL_ENABLE			((uint8) 0x00)
-#define		SYSTICK_STCTRL_INTEN			((uint8) 0x01)	 
-#define		SYSTICK_STCTRL_CLK_SRC			((uint8) 0x02)
-#define		SYSTICK_STCTRL_COUNT			( 16U  )
+#define		SYSTICK_STCTRL_ENABLE			0x00
+#define		SYSTICK_STCTRL_INTEN			0x01	 
+#define		SYSTICK_STCTRL_CLK_SRC			0x02
+#define		SYSTICK_STCTRL_COUNT			16
 
-#define		SYSTICK_STCTRL        			(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 )))
-#define		SYSTICK_STRELOAD       			(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x014 )))
-#define		SYSTICK_STCURRENT      			(*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x018 )))
+#define		SYSTICK_STCTRL        			*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x010 ))
+#define		SYSTICK_STRELOAD       			*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x014 ))
+#define		SYSTICK_STCURRENT      			*((volatile uint32*)(CORE_PERIPHERAL_BASE_ADDRESS + 0x018 ))
 
 /**************************************************GPIO Registers*****************************************************************/
 
-#define  GPIO_Port_A_APB_BASE_ADDRESS		((uint32) 0x40004000)
-#define  GPIO_Port_A_AHB_BASE_ADDRESS		((uint32) 0x40058000)
-#define  GPIO_Port_B_APB_BASE_ADDRESS		((uint32) 0x40005000)
-#define  GPIO_Port_B_AHB_BASE_ADDRESS		((uint32) 0x40059000)
-#define  GPIO_Port_C_APB_BASE_ADDRESS		((uint32) 0x40006000)
-#define  GPIO_Port_C_AHB_BASE_ADDRESS		((uint32) 0x4005A000)
-#define  GPIO_Port_D_APB_BASE_ADDRESS		((uint32) 0x40007000)
-#define  GPIO_Port_D_AHB_BASE_ADDRESS		((uint32) 0x4005B000)
-#define  GPIO_Port_E_APB_BASE_ADDRESS		((uint32) 0x40024000)
-#define  GPIO_Port_E_AHB_BASE_ADDRESS		((uint32) 0x4005C000)
-#define  GPIO_Port_F_APB_BASE_ADDRESS		((uint32) 0x40025000)
-#define  GPIO_Port_F_AHB_BASE_ADDRESS		((uint32) 0x4005D000)
+#define  GPIO_Port_A_APB_BASE_ADDRESS		0x40004000
+#define  GPIO_Port_A_AHB_BASE_ADDRESS		0x40058000
+#define  GPIO_Port_B_APB_BASE_ADDRESS		0x40005000
+#define  GPIO_Port_B_AHB_BASE_ADDRESS		0x40059000
+#define  GPIO_Port_C_APB_BASE_ADDRESS		0x40006000
+#define  GPIO_Port_C_AHB_BASE_ADDRESS		0x4005A000
+#define  GPIO_Port_D_APB_BASE_ADDRESS		0x40007000
+#define  GPIO_Port_D_AHB_BASE_ADDRESS		0x4005B000
+#define  GPIO_Port_E_APB_BASE_ADDRESS		0x40024000
+#define  GPIO_Port_E_AHB_BASE_ADDRESS		0x4005C000
+#define  GPIO_Port_F_APB_BASE_ADDRESS		0x40025000
+#define  GPIO_Port_F_AHB_BASE_ADDRESS		0x4005D000
 
 	
 #define  GPIODATA_OFFSET 		  			0x000		//GPIO Data 
@@ -156,23 +156,23 @@
 #define  GPIOSLR_OFFSET		 	  			0x518		//GPIO Slew Rate Control Select 
 #define  GPIODEN_OFFSET		 	  			0x51C		//GPIO Digital Enable 
 #define  GPIOLOCK_OFFSET 		  			0x520		//GPIO Lock 
-#define  GPIOCR_OFFSET 		      			        0x524		//GPIO Commit
+#define  GPIOCR_OFFSET 		      			0x524		//GPIO Commit
 #define  GPIOAMSEL_OFFSET		  			0x528		//GPIO Analog Mode Select 
 #define  GPIOPCTL_OFFSET 		  			0x52C		//GPIO Port Control
 #define  GPIOADCCTL_OFFSET		  			0x530		//GPIO ADC Control 
 #define  GPIODMACTL_OFFSET		  			0x534		//GPIO DMA Control 
-#define  GPIOPeriphID4_OFFSET 	  			        0xFD0 	        //GPIO Peripheral Identification 4 
-#define  GPIOPeriphID5_OFFSET 	  			        0xFD4	 	//GPIO Peripheral Identification 5 
-#define  GPIOPeriphID6_OFFSET 	  			        0xFD8	 	//GPIO Peripheral Identification 6 
-#define  GPIOPeriphID7_OFFSET 	  			        0xFDC	 	//GPIO Peripheral Identification 7 
-#define  GPIOPeriphID0_OFFSET 	  			        0xFE0	 	//GPIO Peripheral Identification 0 
-#define  GPIOPeriphID1_OFFSET 	  			        0xFE4	 	//GPIO Peripheral Identification 1 
-#define  GPIOPeriphID2_OFFSET 	  			        0xFE8	 	//GPIO Peripheral Identification 2 
-#define  GPIOPeriphID3_OFFSET 	  			        0xFEC	 	//GPIO Peripheral Identification 3 
-#define  GPIOPCellID0_OFFSET	  			        0xFF0		//GPIO PrimeCell Identification 0 
-#define  GPIOPCellID1_OFFSET	  			        0xFF4		//GPIO PrimeCell Identification 1 
-#define  GPIOPCellID2_OFFSET	  			        0xFF8		//GPIO PrimeCell Identification 2 
-#define  GPIOPCellID3_OFFSET	  			        0xFFC		//GPIO PrimeCell Identification 3 
+#define  GPIOPeriphID4_OFFSET 	  			0xFD0 	//GPIO Peripheral Identification 4 
+#define  GPIOPeriphID5_OFFSET 	  			0xFD4	 	//GPIO Peripheral Identification 5 
+#define  GPIOPeriphID6_OFFSET 	  			0xFD8	 	//GPIO Peripheral Identification 6 
+#define  GPIOPeriphID7_OFFSET 	  			0xFDC	 	//GPIO Peripheral Identification 7 
+#define  GPIOPeriphID0_OFFSET 	  			0xFE0	 	//GPIO Peripheral Identification 0 
+#define  GPIOPeriphID1_OFFSET 	  			0xFE4	 	//GPIO Peripheral Identification 1 
+#define  GPIOPeriphID2_OFFSET 	  			0xFE8	 	//GPIO Peripheral Identification 2 
+#define  GPIOPeriphID3_OFFSET 	  			0xFEC	 	//GPIO Peripheral Identification 3 
+#define  GPIOPCellID0_OFFSET	  			0xFF0		//GPIO PrimeCell Identification 0 
+#define  GPIOPCellID1_OFFSET	  			0xFF4		//GPIO PrimeCell Identification 1 
+#define  GPIOPCellID2_OFFSET	  			0xFF8		//GPIO PrimeCell Identification 2 
+#define  GPIOPCellID3_OFFSET	  			0xFFC		//GPIO PrimeCell Identification 3 
 		 			
 
 
