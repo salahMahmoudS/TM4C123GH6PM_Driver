@@ -1,20 +1,20 @@
 /**********************************************************************************************************************
 
-*  FILE DESCRIPTION
-*  -------------------------------------------------------------------------------------------------------------------
-*         File:  <Write File Name>
-*       Module:  -
-*
-*  Description:  <Write File DESCRIPTION here>     
-*  
-*********************************************************************************************************************/
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *         File:  <Write File Name>
+ *       Module:  -
+ *
+ *  Description:  <Write File DESCRIPTION here>     
+ *  
+ *********************************************************************************************************************/
 #ifndef PORT_CFG_H
 #define PORT_CFG_H
 
 
 /**********************************************************************************************************************
-*  GLOBAL CONSTANT MACROS
-*********************************************************************************************************************/
+ *  GLOBAL CONSTANT MACROS
+ *********************************************************************************************************************/
 /* Defining the Module software verison by Major.Minor.Patch format */
 #define PORT_CFG_SW_MAJOR_VERSION				(1U)
 #define PORT_CFG_SW_MINOR_VERSION				(0U)
@@ -30,19 +30,22 @@
 /*************************** DEFAULT CONFIGURATIONS FOR PORT DRIVER ****************************************/
 /* Enable precompile configurations in case configuration tool will not configure all pins by default*/
 #define PORT_ENABLE_PRE_COMPILE_CONFIGURATIONS  (STD_ON)
-/* configuration to enable or disable DET errrors */
+
 #define PORT_DEV_ERROR_DETECT			(STD_ON)
-/* Configuration to enable or disable Port_SetPinDirection API */
+
 #define PORT_SET_PIN_DIRECTION_API		(STD_ON)
-/* Configuration to enable or disable Port_SetPinMode API */
+
 #define PORT_SET_PIN_MODE_API			(STD_ON)
-/* Configuration to enable or disable VersionInfo API */
-#define PORT_VERSION_INFO_API		        (STD_ON)
+
+#define PORT_VERSION_INFO_API		(STD_ON)
+
+
+
 
 
 
 /******THIS CONFIGURATION ACTIVATES PORTx IN ORDER TO PROGRAM IT  ************
-ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
+								ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 #define PORTA_ENABLE	PORT_ENABLE
 #define PORTB_ENABLE	PORT_ENABLE
 #define PORTC_ENABLE	PORT_ENABLE
@@ -52,32 +55,27 @@ ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 
 
 
+
+
 /****************************** DEFAULT CONFIGURATIONS FOR PORT PINS *************************************/
-/* Configuration for default pinMode configuration for all pins */
 #define PORT_DEFAULT_PIN_MODE                   (PORT_PINx_DIO)  
-/* Configuration for default pinDirection configuration for all pins */
 #define PORT_DEFAULT_PIN_DIRECTION              (PORT_PIN_OUT)
-/* Configuration for default pinLevel configuration for all pins */
 #define PORT_DEFAULT_LEVEL                      (STD_HIGH)
-/* Configuration for default pinOutputCurrent configuration for all pins */
-#define PORT_DEFAULT_OUTPUT_CURRENT             (PORT_OCURRENT_2_MA)  
-/* Configuration for default pinResistorType configuration for all pins */
+#define PORT_DEFAULT_OUTPUT_CURRENT             (PORT_OCURRENT_2mA)  
 #define PORT_DEFAULT_RESISTOR_TYPE              (PORT_NA)   
-/* Configuration for default configuration if pinDirection is changeable for all pins */
 #define PORT_DEFAULT_IS_DIRECTION_CHANGEABLE    (FALSE)
-/* Configuration for default configuration if pinMode is changeable for all pins */
 #define PORT_DEFAULT_IS_PIN_MODE_CHANGEABLE     (FALSE)
-
-
-
-
-
-
+      
+   
+   
+   
+   
+   
 
 /* Number of configured pins*/
-#define PORT_NUMBER_OF_CONFIGURED_PINS		(39U)
+#define PORT_NUMBER_OF_CONFIGURED_PINS		(43U)
 
-
+   
 
 /* Indeces of configured pins */
 #define PortConf_PORT_PIN_00_INDEX             ((uint8)0x00)
@@ -98,10 +96,10 @@ ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 #define PortConf_PORT_PIN_15_INDEX             ((uint8)0x0F)
 
 /* Exclude JTAG PINS
-PortConf_PORT_C_PIN_16_ID_INDEX             
-PortConf_PORT_C_PIN_17_ID_INDEX             
-PortConf_PORT_C_PIN_18_ID_INDEX             
-PortConf_PORT_C_PIN_19_ID_INDEX             
+    PortConf_PORT_C_PIN_16_ID_INDEX             
+    PortConf_PORT_C_PIN_17_ID_INDEX             
+    PortConf_PORT_C_PIN_18_ID_INDEX             
+    PortConf_PORT_C_PIN_19_ID_INDEX             
 */
 #define PortConf_PORT_PIN_20_INDEX              ((uint8)0x10)
 #define PortConf_PORT_PIN_21_INDEX              ((uint8)0x11)
@@ -126,7 +124,7 @@ PortConf_PORT_C_PIN_19_ID_INDEX
 #define PortConf_PORT_PIN_40_INDEX              ((uint8)0x24)
 #define PortConf_PORT_PIN_41_INDEX              ((uint8)0x25)
 #define PortConf_SW1_PIN_ID_INDEX               ((uint8)0x26)
-
+  
 /* Port Configured Port ID's  */
 #define PortConf_PORT_PIN_00_PORT                     ((Port_PortType)PORT_PORT_A) /* PORTA */
 #define PortConf_PORT_PIN_01_PORT                     ((Port_PortType)PORT_PORT_A) /* PORTA */
@@ -333,8 +331,8 @@ PortConf_PORT_C_PIN_19_ID_INDEX
 #define PortConf_PORT_PIN_40_LEVEL                               PORT_DEFAULT_PIN_LEVEL 
 #define PortConf_PORT_PIN_41_LEVEL                               PORT_DEFAULT_PIN_LEVEL 
 #define PortConf_SW1_PIN_ID_LEVEL                                PORT_DEFAULT_PIN_LEVEL 
-
-
+    
+    
 /* Port Configured pins output current  */   
 #define PortConf_PORT_PIN_00_OUTPUT_CURRENT                      PORT_DEFAULT_OUTPUT_CURRENT
 #define PortConf_PORT_PIN_01_OUTPUT_CURRENT                      PORT_DEFAULT_OUTPUT_CURRENT
@@ -375,11 +373,11 @@ PortConf_PORT_C_PIN_19_ID_INDEX
 #define PortConf_PORT_PIN_40_OUTPUT_CURRENT                      PORT_DEFAULT_OUTPUT_CURRENT
 #define PortConf_PORT_PIN_41_OUTPUT_CURRENT                      PORT_DEFAULT_OUTPUT_CURRENT
 #define PortConf_SW1_PIN_ID_OUTPUT_CURRENT                       PORT_DEFAULT_OUTPUT_CURRENT
-
-
-
-
-
+    
+    
+    
+    
+    
 /* Port Configured pins attached resistor */    
 #define PortConf_PORT_PIN_00_RESISTOR_TYPE                       PORT_DEFAULT_RESISTOR_TYPE
 #define PortConf_PORT_PIN_01_RESISTOR_TYPE                       PORT_DEFAULT_RESISTOR_TYPE
@@ -420,10 +418,10 @@ PortConf_PORT_C_PIN_19_ID_INDEX
 #define PortConf_PORT_PIN_40_RESISTOR_TYPE                       PORT_DEFAULT_RESISTOR_TYPE
 #define PortConf_PORT_PIN_41_RESISTOR_TYPE                       PORT_DEFAULT_RESISTOR_TYPE
 #define PortConf_SW1_PIN_ID_RESISTOR_TYPE                        PORT_DEFAULT_RESISTOR_TYPE
-
-
-
-
+    
+    
+    
+    
 /* is configured pin direction changeable configuration */   
 #define PortConf_PORT_PIN_00_IS_DIRECTION_CHANGEABLE            PORT_DEFAULT_IS_DIRECTION_CHANGEABLE
 #define PortConf_PORT_PIN_01_IS_DIRECTION_CHANGEABLE            PORT_DEFAULT_IS_DIRECTION_CHANGEABLE
@@ -508,6 +506,6 @@ PortConf_PORT_C_PIN_19_ID_INDEX
 #define PortConf_SW1_PIN_ID_IS_PIN_MODE_CHANGEABLE    PORT_DEFAULT_IS_PIN_MODE_CHANGEABLE
 
 
-
+ 
 #endif  /* PORT_CFG_H */
 

@@ -37,7 +37,10 @@
 /* Configuration to enable or disable Port_SetPinMode API */
 #define PORT_SET_PIN_MODE_API			(STD_ON)
 /* Configuration to enable or disable VersionInfo API */
-#define PORT_VERSION_INFO_API		        (STD_ON)
+#define PORT_VERSION_INFO_API		        (STD_OFF)
+
+
+
 
 
 
@@ -49,6 +52,8 @@ ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 #define PORTD_ENABLE	PORT_ENABLE
 #define PORTE_ENABLE	PORT_ENABLE
 #define PORTF_ENABLE	PORT_ENABLE
+
+
 
 
 

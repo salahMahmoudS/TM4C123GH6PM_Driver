@@ -1,44 +1,73 @@
 /**********************************************************************************************************************
- *  FILE DESCRIPTION
- *  -----------------------------------------------------------------------------------------------------------------*/
-/**        \file  FileName.c
- *        \brief  
- *
- *      \details  
- *
- *
- *********************************************************************************************************************/
+*  FILE DESCRIPTION
+*  -----------------------------------------------------------------------------------------------------------------*/
+/**        \file  Port_Lcfg.c
+*        \brief  Link time Configuration Source file for TM4C123GH6PM Microcontroller - Port Driver
+*
+*      \details  
+*       Author: Salah Mahmoud
+*
+*********************************************************************************************************************/
 
+
+/* Defining the Module software verison by Major.Minor.Patch format */
+/* Module 1.0.0 */
+
+#define PORT_LCFG_SW_MAJOR_VERSION				(1U)
+#define PORT_LCFG_SW_MINOR_VERSION				(0U)
+#define PORT_LCFG_SW_PATCH_VERSION				(0U)
+
+/* Defining the autosar version ued for the module */
+/* Autosar version 4.0.3 */
+#define PORT_LCFG_AR_RELEASE_MAJOR_VERSION		        (4U)
+#define PORT_LCFG_AR_RELEASE_MINOR_VERSION		        (0U)
+#define PORT_LCFG_AR_RELEASE_PATCH_VERSION		        (3U)
+
+
+/* Checking for software version compitability */
+/* Checking for autosar veriosn compitability */
 /**********************************************************************************************************************
- *  INCLUDES
- *********************************************************************************************************************/
-#include "Std_Types.h"
-#include "Port_Types.h"
+*  INCLUDES
+*********************************************************************************************************************/
 #include "Port.h"
+
+/* checking autosar and software version compatability between port.h and port_cfg.h */
+#if ((PORT_LCFG_SW_MAJOR_VERSION != PORT_SW_MAJOR_VERSION)\
+||   (PORT_LCFG_SW_MINOR_VERSION != PORT_SW_MINOR_VERSION)\
+||   (PORT_LCFG_SW_PATCH_VERSION != PORT_SW_PATCH_VERSION))
+#error "The software version of Port.h is not matching this module version"
+#endif
+
+#if ((PORT_LCFG_AR_RELEASE_MAJOR_VERSION != PORT_AR_RELEASE_MAJOR_VERSION)\
+||   (PORT_LCFG_AR_RELEASE_MINOR_VERSION != PORT_AR_RELEASE_MINOR_VERSION)\
+  || (PORT_LCFG_AR_RELEASE_PATCH_VERSION != PORT_AR_RELEASE_PATCH_VERSION))
+#error "The autosar version of Port.h is not matching this module version"
+#endif
+
 
 /**********************************************************************************************************************
 *  LOCAL MACROS CONSTANT\FUNCTION
 *********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  LOCAL DATA 
- *********************************************************************************************************************/
+*  LOCAL DATA 
+*********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  GLOBAL DATA
- *********************************************************************************************************************/
+*  GLOBAL DATA
+*********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  LOCAL FUNCTION PROTOTYPES
- *********************************************************************************************************************/
+*  LOCAL FUNCTION PROTOTYPES
+*********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  LOCAL FUNCTIONS
- *********************************************************************************************************************/
+*  LOCAL FUNCTIONS
+*********************************************************************************************************************/
 
 /**********************************************************************************************************************
- *  GLOBAL FUNCTIONS
- *********************************************************************************************************************/
+*  GLOBAL FUNCTIONS
+*********************************************************************************************************************/
 
 
 /******************************************************************************
@@ -52,19 +81,7 @@
 * \Return value:   : Std_ReturnType  E_OK
 *                                    E_NOT_OK                                  
 *******************************************************************************/
-portPinsConfig pinsConfigArray[] =
-{
-	//define your configuration files in the below order 
-	//{portPinNumber,portPinMode,portPinDirection,portInitialValueIfOutput,portOutputCurrent,portPinResistorAttchIfInput}
-	{PORT_PINF0,PORT_PF0_DIO,PORT_INPUT,PORT_NA,PORT_NA,PORT_ATTACH_PULL_UP_RESISTOR},
-	{PORT_PINF4,PORT_PF4_DIO,PORT_INPUT,PORT_NA,PORT_NA,PORT_ATTACH_PULL_UP_RESISTOR},
-	{PORT_PINF1,PORT_PF1_DIO,PORT_OUTPUT,PORT_LOW,PORT_OCURRENT_4mA, PORT_NA},
-	{PORT_PINF2,PORT_PF2_DIO,PORT_OUTPUT,PORT_LOW,PORT_OCURRENT_2mA, PORT_NA},
-        {PORT_PINF3,PORT_PF3_DIO,PORT_OUTPUT,PORT_LOW,PORT_OCURRENT_2mA, PORT_NA}
-
-	
-};
 
 /**********************************************************************************************************************
- *  END OF FILE: FileName.c
- *********************************************************************************************************************/
+*  END OF FILE: FileName.c
+*********************************************************************************************************************/

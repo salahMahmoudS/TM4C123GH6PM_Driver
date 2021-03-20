@@ -30,14 +30,17 @@
 /*************************** DEFAULT CONFIGURATIONS FOR PORT DRIVER ****************************************/
 /* Enable precompile configurations in case configuration tool will not configure all pins by default*/
 #define PORT_ENABLE_PRE_COMPILE_CONFIGURATIONS  (STD_ON)
-/* configuration to enable or disable DET errrors */
+
 #define PORT_DEV_ERROR_DETECT			(STD_ON)
-/* Configuration to enable or disable Port_SetPinDirection API */
+
 #define PORT_SET_PIN_DIRECTION_API		(STD_ON)
-/* Configuration to enable or disable Port_SetPinMode API */
+
 #define PORT_SET_PIN_MODE_API			(STD_ON)
-/* Configuration to enable or disable VersionInfo API */
-#define PORT_VERSION_INFO_API		        (STD_ON)
+
+#define PORT_VERSION_INFO_API		(STD_ON)
+
+
+
 
 
 
@@ -52,20 +55,15 @@ ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 
 
 
+
+
 /****************************** DEFAULT CONFIGURATIONS FOR PORT PINS *************************************/
-/* Configuration for default pinMode configuration for all pins */
 #define PORT_DEFAULT_PIN_MODE                   (PORT_PINx_DIO)  
-/* Configuration for default pinDirection configuration for all pins */
 #define PORT_DEFAULT_PIN_DIRECTION              (PORT_PIN_OUT)
-/* Configuration for default pinLevel configuration for all pins */
 #define PORT_DEFAULT_LEVEL                      (STD_HIGH)
-/* Configuration for default pinOutputCurrent configuration for all pins */
-#define PORT_DEFAULT_OUTPUT_CURRENT             (PORT_OCURRENT_2_MA)  
-/* Configuration for default pinResistorType configuration for all pins */
+#define PORT_DEFAULT_OUTPUT_CURRENT             (PORT_OCURRENT_2mA)  
 #define PORT_DEFAULT_RESISTOR_TYPE              (PORT_NA)   
-/* Configuration for default configuration if pinDirection is changeable for all pins */
 #define PORT_DEFAULT_IS_DIRECTION_CHANGEABLE    (FALSE)
-/* Configuration for default configuration if pinMode is changeable for all pins */
 #define PORT_DEFAULT_IS_PIN_MODE_CHANGEABLE     (FALSE)
 
 
@@ -75,7 +73,7 @@ ALL PORTS SHOULD BE ENABLED FOR AUTOSAR CONFIGURATION**********/
 
 
 /* Number of configured pins*/
-#define PORT_NUMBER_OF_CONFIGURED_PINS		(39U)
+#define PORT_NUMBER_OF_CONFIGURED_PINS		(43U)
 
 
 

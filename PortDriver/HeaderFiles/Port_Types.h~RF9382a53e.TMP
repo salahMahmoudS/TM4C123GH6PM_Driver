@@ -159,12 +159,9 @@ typedef struct
 
 
 /**defining the attached resistor mode configuration**/ 
-/* Pull up resistor is attached configuration */
-#define PORT_ATTACH_PULL_UP_RESISTOR	        (00U)
-/* Pull down resistor is attached configuration */
-#define PORT_ATTACH_PULL_DOWN_RESISTOR	        (01U)
-/* pin is open drain configuration */
-#define PORT_ATTACH_OPEN_DRAIN			(02U)
+#define PORT_ATTACH_PULL_UP_RESISTOR	0
+#define PORT_ATTACH_PULL_DOWN_RESISTOR	1
+#define PORT_ATTACH_OPEN_DRAIN			2
 //HINT: you can choose NA configuration here as well
 
 
@@ -172,6 +169,9 @@ typedef struct
 /******************************************************************************************************
 defining each pin mode configuration, below section contains all possible configurations for each pin
 *****************************************************************************************************/
+
+
+
 /**********General Mode*********/
 #define PORT_PINx_DIO				(00U)
 #define PORT_PINx_ANALOG_FUNC		        (16U)

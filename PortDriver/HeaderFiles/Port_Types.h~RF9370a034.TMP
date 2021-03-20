@@ -1,20 +1,20 @@
 /**********************************************************************************************************************
 
-*  FILE DESCRIPTION
-*  -------------------------------------------------------------------------------------------------------------------
-*         File:  <Port_Types.h>
-*       Module:  Port
-*
-*  Description:  <Write File DESCRIPTION here>     
-*  
-*********************************************************************************************************************/
+ *  FILE DESCRIPTION
+ *  -------------------------------------------------------------------------------------------------------------------
+ *         File:  <Port_Types.h>
+ *       Module:  Port
+ *
+ *  Description:  <Write File DESCRIPTION here>     
+ *  
+ *********************************************************************************************************************/
 #ifndef PORT_TYPES_H
 #define PORT_TYPES_H
 
 
 /**********************************************************************************************************************
-*  GLOBAL CONSTANT MACROS
-*********************************************************************************************************************/
+ *  GLOBAL CONSTANT MACROS
+ *********************************************************************************************************************/
 
 /* Defining the Module software verison by Major.Minor.Patch format */
 #define PORT_TYPES_SW_MAJOR_VERSION				(1U)
@@ -46,40 +46,45 @@ typedef uint8 Port_PinModeType;
 /*Definition for pin direction configuration*/
 typedef enum
 {
-  PORT_PIN_IN,
-  PORT_PIN_OUT
+	PORT_PIN_IN,
+	PORT_PIN_OUT
 }Port_PinDirectionType;
 
 
 /*Type definition for port types and their allowed values */
 typedef uint8 	Port_PortType;
-
+   
 #define PORT_PORT_A	                 	((Port_PortType) 0x00)	         //PORTA
 #define PORT_PORT_B                     ((Port_PortType) 0x01)          //PORTB
 #define PORT_PORT_C                     ((Port_PortType) 0x02)          //PORTC
 #define PORT_PORT_D                     ((Port_PortType) 0x03)          //PORTD
 #define PORT_PORT_E                     ((Port_PortType) 0x04)          //PORTE
 #define PORT_PORT_F                     ((Port_PortType) 0x05)          //PORTF
-
+                                               
 
 
 /*Definition for Port pin configurations structure*/
 typedef struct 
 
 {
-  Port_PinType                    PortConfigPinNumber;
-  Port_PortType	                  PortConfigPortNumber;
-  Port_PinModeType                PortPinMode;
-  Port_PinDirectionType           PortPinDirection;
-  uint8                           PortPinLevelValue;
-  uint8                           PortOutputCurrent;
-  uint8                           PortPinResistorAttchIfInput;
-  boolean  		      	  PortPinDirectionChangeable;
-  boolean			  PortPinModeChangeable;			
-  
+	Port_PinType                    PortConfigPinNumber;
+        Port_PortType	                PortConfigPortNumber;
+	Port_PinModeType                PortPinMode;
+	Port_PinDirectionType           PortPinDirection;
+	uint8                           PortPinLevelValue;
+	uint8                           PortOutputCurrent;
+	uint8                          	PortPinResistorAttchIfInput;
+        boolean  		      	PortPinDirectionChangeable;
+	boolean				PortPinModeChangeable;			
+	
 }Port_PinConfigType;
 
 
+typedef struct
+{
+  Port_PinType          PortCofigPinNumber;
+  uint8                 PortModeEncoding;
+}Port_ModeConfigurationEncodingType;
 
 /*Definition for port configurations structure*/
 typedef struct
@@ -138,7 +143,7 @@ typedef struct
 #define	PORT_PIN_F_2 			((Port_PinType) 0x02)     	//PIN40
 #define	PORT_PIN_F_3 			((Port_PinType) 0x03)     	//PIN41
 #define	PORT_PIN_F_4 			((Port_PinType) 0x04)     	//PIN42
-
+	                                           
 
 
 
@@ -149,22 +154,16 @@ typedef struct
 
 
 /**defining the outputcurrent configuration**/
-/* Output current 2mA */
-#define PORT_OCURRENT_2_MA	(00U)   
-/* Output current 4mA */
-#define PORT_OCURRENT_4_MA	(01U)
-/* Output current 8mA */
-#define PORT_OCURRENT_8_MA	(02U)
+#define PORT_OCURRENT_2mA	0
+#define PORT_OCURRENT_4mA	1
+#define PORT_OCURRENT_8mA	2
 //HINT: you can choose NA configuration here as well
 
 
 /**defining the attached resistor mode configuration**/ 
-/* Pull up resistor is attached configuration */
-#define PORT_ATTACH_PULL_UP_RESISTOR	        (00U)
-/* Pull down resistor is attached configuration */
-#define PORT_ATTACH_PULL_DOWN_RESISTOR	        (01U)
-/* pin is open drain configuration */
-#define PORT_ATTACH_OPEN_DRAIN			(02U)
+#define PORT_ATTACH_PULL_UP_RESISTOR	0
+#define PORT_ATTACH_PULL_DOWN_RESISTOR	1
+#define PORT_ATTACH_OPEN_DRAIN			2
 //HINT: you can choose NA configuration here as well
 
 
@@ -172,6 +171,9 @@ typedef struct
 /******************************************************************************************************
 defining each pin mode configuration, below section contains all possible configurations for each pin
 *****************************************************************************************************/
+
+
+
 /**********General Mode*********/
 #define PORT_PINx_DIO				(00U)
 #define PORT_PINx_ANALOG_FUNC		        (16U)
@@ -419,9 +421,9 @@ defining each pin mode configuration, below section contains all possible config
 #define PORT_PF4_USB0EPEN                       (08U)           //PF4 
 
 
-
+ 
 #endif  /* PORT_TYPES_H_ */
 
 /**********************************************************************************************************************
-*  END OF FILE: PORT_TYPES_H
-*********************************************************************************************************************/
+ *  END OF FILE: PORT_TYPES_H
+ *********************************************************************************************************************/
