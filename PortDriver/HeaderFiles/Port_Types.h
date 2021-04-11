@@ -54,7 +54,7 @@ typedef enum
 /*Type definition for port types and their allowed values */
 typedef uint8 	Port_PortType;
 
-#define PORT_PORT_A	                 	((Port_PortType) 0x00)	         //PORTA
+#define PORT_PORT_A	                ((Port_PortType) 0x00)	         //PORTA
 #define PORT_PORT_B                     ((Port_PortType) 0x01)          //PORTB
 #define PORT_PORT_C                     ((Port_PortType) 0x02)          //PORTC
 #define PORT_PORT_D                     ((Port_PortType) 0x03)          //PORTD
@@ -173,250 +173,257 @@ typedef struct
 defining each pin mode configuration, below section contains all possible configurations for each pin
 *****************************************************************************************************/
 /**********General Mode*********/
-#define PORT_PINx_DIO				(00U)
-#define PORT_PINx_ANALOG_FUNC		        (16U)
+#define PORT_PINx_DIO				((Port_PinModeType) 0)
+#define PORT_PINx_ANALOG_FUNC		        ((Port_PinModeType)16)
 /***********PA0 modes**********/
-#define PORT_PA0_DIO				(00U)
-#define PORT_PA0_U0Rx				(01U)
-#define PORT_PA0_CAN1Rx				(08U)
-/***********PA1 modes**********/                     
-#define PORT_PA1_DIO				(00U)
-#define PORT_PA1_U0Tx				(01U)
-#define PORT_PA1_CAN1Tx    			(08U)         	//PA1 
-/***********PA2 modes**********/                     
-#define PORT_PA2_DIO				(00U)
-#define PORT_PA2_SSI0Clk  			(02U)         	//PA2 
-/***********PA3 modes**********/                     
-#define PORT_PA3_DIO				(00U)
-#define PORT_PA3_SSI0Fss  			(02U)          	//PA3 
-/***********PA4 modes**********/                     
-#define PORT_PA4_DIO				(00U)
-#define PORT_PA4_SSI0Rx   			(02U)         	//PA4 
-/***********PA5 modes**********/                     
-#define PORT_PA5_DIO				(00U)
-#define PORT_PA5_SSI0Tx  			(02U)         	//PA5 
-/***********PA6 modes**********/                     
-#define PORT_PA6_DIO				(00U)
-#define PORT_PA6_I2C1SCL			(03U)
-#define PORT_PA6_M1PWM2  			(05U)     	//PA6 
-/***********PA7 modes**********/                     
-#define PORT_PA7_DIO				(00U)
-#define PORT_PA7_I2C1SDA			(03U)
-#define PORT_PA7_M1PWM3  			(05U)     	//PA7 
-/***********PB0 modes**********/                     
-#define PORT_PB0_DIO				(00U)
-#define PORT_PB0_USB0ID				(16U)
-#define PORT_PB0_U1Rx				(01U)
-#define PORT_PB0_T2CCP0    			(07U)           //PB0 
-/***********PB1 modes**********/                     
-#define PORT_PB1_DIO				(00U)
-#define PORT_PB1_USB0VBUS			(16U)
-#define PORT_PB1_U1Tx				(01U)
-#define PORT_PB1_T2CCP1     		        (07U)           //PB1 
-/***********PB2 modes**********/                     
-#define PORT_PB2_DIO				(00U)
-#define PORT_PB2_I2C0SCL			(03U)
-#define PORT_PB2_T3CCP0    			(07U)           //PB2 
-/***********PB3 modes**********/                     
-#define PORT_PB3_DIO				(00U)
-#define PORT_PB3I2C0SDA				(03U)
-#define PORT_PB3T3CCP1			        (07U)          //PB3 
-/***********PB4 modes**********/                     
-#define PORT_PB4_DIO				(00U)
-#define PORT_PB4_AIN10				(16U)
-#define PORT_PB4_SSI2Clk			(02U)
-#define PORT_PB4_M0PWM2				(04U)
-#define PORT_PB4_T1CCP0				(07U)
-#define PORT_PB4_CAN0Rx				(08U)           //PB4 
-/***********PB5 modes**********/                     
-#define PORT_PB5_DIO				(00U)
-#define PORT_PB5_AIN11				(16U)
-#define PORT_PB5_SSI2Fss			(02U)
-#define PORT_PB5_M0PWM3				(04U)
-#define PORT_PB5_T1CCP1				(07U)
-#define PORT_PB5_CAN0Tx				(08U)           //PB5 
-/***********PB6 modes**********/                     
-#define PORT_PB6_DIO				(0U) 
-#define PORT_PB6_SSI2Rx				(2U) 
-#define PORT_PB6_M0PWM0				(4U) 
-#define PORT_PB6_T0CCP0         	        (7U)            //PB6 
-/***********PB7 modes**********/                     
-#define PORT_PB7_DIO				(0U) 
-#define PORT_PB7_SSI2Tx				(2U) 
-#define PORT_PB7_M0PWM1				(4U) 
-#define PORT_PB7_T0CCP1        		        (7U)            //PB7 
-/***********PC0 modes**********/                     
-#define PORT_PC0_DIO				(00U)
-#define PORT_PC0_TCKSWCLK			(01U)
-#define PORT_PC0_T4CCP0     		        (07U)           //PC0 	
-/***********PC1 modes**********/                     
-#define PORT_PC1_DIO				(0U) 
-#define PORT_PC1_TMSSWDIO			(1U) 
-#define PORT_PC1_T4CCP1     	                (7U)            //PC1 
-/***********PC2 modes**********/                     
-#define PORT_PC2_DIO				(00U)
-#define PORT_PC2_TDI				(01U)
-#define PORT_PC2_T5CCP0     	                (07U)           //PC2 
-/***********PC3 modes**********/                     
-#define PORT_PC3_DIO				(00U)
-#define PORT_PC3_TDOSWO				(01U)
-#define PORT_PC3_T5CCP1     	                (07U)           //PC3 		
-/***********PC4 modes**********/                     
-#define PORT_PC4_DIO				(00U)
-#define PORT_PC4_C1_NEG				(16U)
-#define PORT_PC4_U4Rx 				(01U)
-#define PORT_PC4_U1Rx				(02U)
-#define PORT_PC4_M0PWM6				(04U)
-#define PORT_PC4_IDX1				(06U)
-#define PORT_PC4_WT0CCP0			(07U)
-#define PORT_PC4_U1RTS         		        (08U)           //PC4 	
-/***********PC5 modes**********/                     
-#define PORT_PC5_DIO				(00U)
-#define PORT_PC5_C1_POS				(16U)
-#define PORT_PC5_U4Tx				(01U)
-#define PORT_PC5_U1Tx				(02U)
-#define PORT_PC5_M0PWM7				(04U)
-#define PORT_PC5_PhA1				(06U)
-#define PORT_PC5_WT0CCP1			(07U)
-#define PORT_PC5_U1CTS         		        (08U)           //PC5 
-/***********PC6 modes**********/                     
-#define PORT_PC6_DIO				(00U)
-#define PORT_PC6_C0_POS				(16U)
-#define PORT_PC6_U3Rx				(01U)
-#define PORT_PC6_PhB1				(06U)
-#define PORT_PC6_WT1CCP0			(07U)
-#define PORT_PC6_USB0EPEN       	        (08U)           //PC6 
-/***********PC7 modes**********/                     
-#define PORT_PC7_DIO				(00U)
-#define PORT_PC7_C0_NEG 			(16U)
-#define PORT_PC7_U3Tx				(01U)
-#define PORT_PC7_WT1CCP1			(07U)
-#define PORT_PC7_USB0PFLT      		        (08U)           //PC7 
-/***********PD0 modes**********/                     
-#define PORT_PD0_DIO				(00U)
-#define PORT_PD0_AIN7				(16U)
-#define PORT_PD0_SSI3Clk			(01U)
-#define PORT_PD0_SSI1Clk			(02U)
-#define PORT_PD0_I2C3SCL			(03U)
-#define PORT_PD0_M0PWM6				(04U)
-#define PORT_PD0_M1PWM0				(05U)
-#define PORT_PD0_WT2CCP0  			(07U)           //PD0 
-/***********PD1 modes**********/                     
-#define PORT_PD1_DIO			        (00U)
-#define PORT_PD1_AIN6			        (16U)
-#define PORT_PD1_SSI3Fss		        (01U)
-#define PORT_PD1_SSI1Fss		        (02U)
-#define PORT_PD1_I2C3SDA		        (03U)
-#define PORT_PD1_M0PWM7			        (04U)
-#define PORT_PD1_M1PWM1			        (05U)
-#define PORT_PD1_WT2CCP1 		        (07U)           //PD1 
-/***********PD2 modes**********/                     
-#define PORT_PD2_DIO			        (00U)
-#define PORT_PD2_AIN5			        (16U)
-#define PORT_PD2_SSI3Rx 		        (01U)
-#define PORT_PD2_SSI1Rx			        (02U)
-#define PORT_PD2_M0FAULT0		        (04U)
-#define PORT_PD2_WT3CCP0		        (07U)
-#define PORT_PD2_USB0EPEN		        (08U)           //PD2 		 
-/***********PD3 modes**********/                     
-#define PORT_PD3_DIO			        (00U)
-#define PORT_PD3_AIN4			        (16U)
-#define PORT_PD3_SSI3Tx			        (01U)
-#define PORT_PD3_SSI1Tx			        (02U)
-#define PORT_PD3_IDX0			        (04U)
-#define PORT_PD3_WT3CCP1		        (07U)
-#define PORT_PD3_USB0PFLT                       (08U)           //PD3 
-/***********PD4 modes**********/                     
-#define PORT_PD4_DIO			        (00U)
-#define PORT_PD4_USB0DM			        (16U)
-#define PORT_PD4_U6Rx			        (01U)
-#define PORT_PD4_WT4CCP0                        (07U)           //PD4 
-/***********PD5 modes**********/                     
-#define PORT_PD5_DIO			        (00U)
-#define PORT_PD5_USB0DP 		        (16U)
-#define PORT_PD5_U6Tx 			        (01U)
-#define PORT_PD5_WT4CCP1                        (07U)           //PD5 
-/***********PD6 modes**********/                     
-#define PORT_PD6_DIO			        (00U)
-#define PORT_PD6_U2Rx			        (02U)
-#define PORT_PD6_M0FAULT0		        (05U)
-#define PORT_PD6_PhA0			        (06U)
-#define PORT_PD6_WT5CCP0                        (07U)           //PD6 
-/***********PD7 modes**********/                     
-#define PORT_PD7_DIO			        (00U)
-#define PORT_PD7_U2Tx			        (02U)
-#define PORT_PD7_PhB0			        (06U)
-#define PORT_PD7_WT5CCP1		        (07U)
-#define PORT_PD7_NMI                            (08U)          //PD7 
-/***********PE0 modes**********/                     
-#define PORT_PE0_DIO			        (00U)
-#define PORT_PE0_AIN3			        (16U)
-#define PORT_PE0_U7Rx                           (01U)           //PE0 
-/***********PE1 modes**********/                     
-#define PORT_PE1_DIO			        (00U)
-#define PORT_PE1_AIN2			        (16U)
-#define PORT_PE1_U7Tx                           (01U)           //PE1 
-/***********PE2 modes**********/                     
-#define PORT_PE2_DIO			        (00U)
-#define PORT_PE2_AIN1			        (16U)           //PE2 
-/***********PE3 modes**********/                     
-#define PORT_PE3_DIO			        (00U)
-#define PORT_PE3_AIN0                           (16U)           //PE3  
-/***********PE4 modes**********/                     
-#define PORT_PE4_DIO			        (00U)
-#define PORT_PE4_AIN9			        (16U)
-#define PORT_PE4_U5Rx			        (01U)
-#define PORT_PE4_I2C2SCL		        (03U)
-#define PORT_PE4_M0PWM4			        (04U)
-#define PORT_PE4_M1PWM2			        (05U)
-#define PORT_PE4_CAN0Rx                         (08U)           //PE4 	 
-/***********PE5 modes**********/                     
-#define PORT_PE5_DIO			        (00U)
-#define PORT_PE5_AIN8			        (16U)
-#define PORT_PE5_U5Tx			        (01U)
-#define PORT_PE5_I2C2SDA		        (03U)
-#define PORT_PE5_M0PWM5			        (04U)
-#define PORT_PE5_M1PWM3			        (05U)
-#define PORT_PE5_CAN0Tx                         (08U)           //PE5 
-/***********PF0 modes**********/                     
-#define PORT_PF0_DIO			        (00U)
-#define PORT_PF0_U1RTS			        (01U)
-#define PORT_PF0_SSI1Rx			        (02U)
-#define PORT_PF0_CAN0Rx			        (03U)
-#define PORT_PF0_M1PWM4			        (05U)
-#define PORT_PF0_PhA0			        (06U)
-#define PORT_PF0_T0CCP0			        (07U)
-#define PORT_PF0_NMI			        (08U)
-#define PORT_PF0_C0o          	                (09U)           //PF0 
-/***********PF1 modes**********/                     
-#define PORT_PF1_DIO			        (00U)
-#define PORT_PF1_U1CTS			        (01U)
-#define PORT_PF1_SSI1Tx			        (02U)
-#define PORT_PF1_M1PWM5			        (05U)
-#define PORT_PF1_PhB0			        (06U)
-#define PORT_PF1_T0CCP1 		        (07U)
-#define PORT_PF1_C1o			        (09U)
-#define PORT_PF1_TRD1			        (14U)           //PF1 
-/***********PF2 modes**********/                     
-#define PORT_PF2_DIO			        (00U)
-#define PORT_PF2_SSI1Clk		        (02U)
-#define PORT_PF2_M0FAULT0		        (04U)
-#define PORT_PF2_M1PWM6			        (05U)
-#define PORT_PF2_T1CCP0			        (07U)
-#define PORT_PF2_TRD0                           (14U)           //PF2
-/***********PF3 modes**********/                     
-#define PORT_PF3_DIO			        (00U)
-#define PORT_PF3_SSI1Fss		        (02U)
-#define PORT_PF3_CAN0Tx			        (03U)
-#define PORT_PF3_M1PWM7			        (05U)
-#define PORT_PF3_T1CCP1 		        (07U)
-#define PORT_PF3_TRCLK                          (14U)           //PF3 
-/***********PF4 modes**********/                     
-#define PORT_PF4_DIO			        (00U)
-#define PORT_PF4_M1FAULT0		        (05U)
-#define PORT_PF4_IDX0			        (06U)
-#define PORT_PF4_T2CCP0			        (07U)
-#define PORT_PF4_USB0EPEN                       (08U)           //PF4 
+#define PORT_PA0_DIO				((Port_PinModeType) 0)
+#define PORT_PA0_U0Rx				((Port_PinModeType) 1)
+#define PORT_PA0_CAN1Rx				((Port_PinModeType) 8)
+/***********PA1 modes**********/                    
+#define PORT_PA1_DIO				((Port_PinModeType) 0)
+#define PORT_PA1_U0Tx				((Port_PinModeType) 1)
+#define PORT_PA1_CAN1Tx    			((Port_PinModeType) 8)         	//PA1 
+/***********PA2 modes**********/                    
+#define PORT_PA2_DIO				((Port_PinModeType) 0)
+#define PORT_PA2_SSI0Clk  			((Port_PinModeType) 2)         	//PA2 
+/***********PA3 modes**********/                    
+#define PORT_PA3_DIO				((Port_PinModeType) 0)
+#define PORT_PA3_SSI0Fss  			((Port_PinModeType) 2)          	//PA3 
+/***********PA4 modes**********/                    
+#define PORT_PA4_DIO				((Port_PinModeType) 0)
+#define PORT_PA4_SSI0Rx   			((Port_PinModeType) 2)         	//PA4 
+/***********PA5 modes**********/                    
+#define PORT_PA5_DIO				((Port_PinModeType) 0)
+#define PORT_PA5_SSI0Tx  			((Port_PinModeType) 2)         	//PA5 
+/***********PA6 modes**********/                    
+#define PORT_PA6_DIO				((Port_PinModeType) 0)
+#define PORT_PA6_I2C1SCL			((Port_PinModeType) 3)
+#define PORT_PA6_M1PWM2  			((Port_PinModeType) 5)     	//PA6 
+/***********PA7 modes**********/                    
+#define PORT_PA7_DIO				((Port_PinModeType) 0)
+#define PORT_PA7_I2C1SDA			((Port_PinModeType) 3)
+#define PORT_PA7_M1PWM3  			((Port_PinModeType) 5)     	//PA7 
+/***********PB0 modes**********/                    
+#define PORT_PB0_DIO				((Port_PinModeType) 0)
+#define PORT_PB0_U1Rx				((Port_PinModeType) 1)
+#define PORT_PB0_T2CCP0    			((Port_PinModeType) 7)           //PB0 
+#define PORT_PB0_USB0ID				((Port_PinModeType)16)
+/***********PB1 modes**********/                    
+#define PORT_PB1_DIO				((Port_PinModeType) 0)
+#define PORT_PB1_U1Tx				((Port_PinModeType) 1)
+#define PORT_PB1_T2CCP1     		        ((Port_PinModeType) 7)           //PB1 
+#define PORT_PB1_USB0VBUS			((Port_PinModeType)16)
+/***********PB2 modes**********/                    
+#define PORT_PB2_DIO				((Port_PinModeType) 0)
+#define PORT_PB2_I2C0SCL			((Port_PinModeType) 3)
+#define PORT_PB2_T3CCP0    			((Port_PinModeType) 7)           //PB2 
+/***********PB3 modes**********/                    
+#define PORT_PB3_DIO				((Port_PinModeType) 0)
+#define PORT_PB3I2C0SDA				((Port_PinModeType) 3)
+#define PORT_PB3T3CCP1			        ((Port_PinModeType) 7)          //PB3 
+/***********PB4 modes**********/                    
+#define PORT_PB4_DIO				((Port_PinModeType) 0)
+#define PORT_PB4_SSI2Clk			((Port_PinModeType) 2)
+#define PORT_PB4_M0PWM2				((Port_PinModeType) 4)
+#define PORT_PB4_T1CCP0				((Port_PinModeType) 7)
+#define PORT_PB4_CAN0Rx				((Port_PinModeType) 8)           //PB4 
+#define PORT_PB4_AIN10				((Port_PinModeType)16)
+/***********PB5 modes**********/               
+#define PORT_PB5_DIO				((Port_PinModeType) 0)
+#define PORT_PB5_SSI2Fss			((Port_PinModeType) 2)
+#define PORT_PB5_M0PWM3				((Port_PinModeType) 4)
+#define PORT_PB5_T1CCP1				((Port_PinModeType) 7)
+#define PORT_PB5_CAN0Tx				((Port_PinModeType) 8)           //PB5 
+#define PORT_PB5_AIN11				((Port_PinModeType)16)
+/***********PB6 modes**********/               
+#define PORT_PB6_DIO				((Port_PinModeType) 0) 
+#define PORT_PB6_SSI2Rx				((Port_PinModeType) 2) 
+#define PORT_PB6_M0PWM0				((Port_PinModeType) 4) 
+#define PORT_PB6_T0CCP0         	        ((Port_PinModeType) 7)            //PB6 
+/***********PB7 modes**********/                
+#define PORT_PB7_DIO				((Port_PinModeType) 0) 
+#define PORT_PB7_SSI2Tx				((Port_PinModeType) 2) 
+#define PORT_PB7_M0PWM1				((Port_PinModeType) 4) 
+#define PORT_PB7_T0CCP1        		        ((Port_PinModeType) 7)            //PB7 
+/***********PC0 modes**********/              
+#define PORT_PC0_DIO				((Port_PinModeType) 0)
+#define PORT_PC0_TCKSWCLK			((Port_PinModeType) 1)
+#define PORT_PC0_T4CCP0     		        ((Port_PinModeType) 7)           //PC0 	
+/***********PC1 modes**********/                  
+#define PORT_PC1_DIO				((Port_PinModeType) 0) 
+#define PORT_PC1_TMSSWDIO			((Port_PinModeType) 1) 
+#define PORT_PC1_T4CCP1     	                ((Port_PinModeType) 7)            //PC1 
+/***********PC2 modes**********/           
+#define PORT_PC2_DIO				((Port_PinModeType) 0)
+#define PORT_PC2_TDI				((Port_PinModeType) 1)
+#define PORT_PC2_T5CCP0     	                ((Port_PinModeType) 7)           //PC2 
+/***********PC3 modes**********/               
+#define PORT_PC3_DIO				((Port_PinModeType) 0)
+#define PORT_PC3_TDOSWO				((Port_PinModeType) 1)
+#define PORT_PC3_T5CCP1     	                ((Port_PinModeType) 7)           //PC3 		
+/***********PC4 modes**********/                 
+#define PORT_PC4_DIO				((Port_PinModeType) 0)
+#define PORT_PC4_U4Rx 				((Port_PinModeType) 1)
+#define PORT_PC4_U1Rx				((Port_PinModeType) 2)
+#define PORT_PC4_M0PWM6				((Port_PinModeType) 4)
+#define PORT_PC4_IDX1				((Port_PinModeType) 6)
+#define PORT_PC4_WT0CCP0			((Port_PinModeType) 7)
+#define PORT_PC4_U1RTS         		        ((Port_PinModeType) 8)           //PC4 	
+#define PORT_PC4_C1_NEG				((Port_PinModeType)16)
+/***********PC5 modes**********/                  
+#define PORT_PC5_DIO				((Port_PinModeType) 0)
+#define PORT_PC5_U4Tx				((Port_PinModeType) 1)
+#define PORT_PC5_U1Tx				((Port_PinModeType) 2)
+#define PORT_PC5_M0PWM7				((Port_PinModeType) 4)
+#define PORT_PC5_PhA1				((Port_PinModeType) 6)
+#define PORT_PC5_WT0CCP1			((Port_PinModeType) 7)
+#define PORT_PC5_U1CTS         		        ((Port_PinModeType) 8)           //PC5 
+#define PORT_PC5_C1_POS				((Port_PinModeType)16)
+/***********PC6 modes**********/                   
+#define PORT_PC6_DIO				((Port_PinModeType) 0)
+#define PORT_PC6_U3Rx				((Port_PinModeType) 1)
+#define PORT_PC6_PhB1				((Port_PinModeType) 6)
+#define PORT_PC6_WT1CCP0			((Port_PinModeType) 7)
+#define PORT_PC6_USB0EPEN       	        ((Port_PinModeType) 8)           //PC6 
+#define PORT_PC6_C0_POS				((Port_PinModeType)16)
+                                                 
+/***********PC7 modes**********/             
+#define PORT_PC7_DIO				((Port_PinModeType) 0)
+#define PORT_PC7_U3Tx				((Port_PinModeType) 1)
+#define PORT_PC7_WT1CCP1			((Port_PinModeType) 7)
+#define PORT_PC7_USB0PFLT      		        ((Port_PinModeType) 8)           //PC7 
+#define PORT_PC7_C0_NEG 			((Port_PinModeType)16)
+                                               
+/***********PD0 modes**********/                   
+#define PORT_PD0_DIO				((Port_PinModeType) 0)
+#define PORT_PD0_SSI3Clk			((Port_PinModeType) 1)
+#define PORT_PD0_SSI1Clk			((Port_PinModeType) 2)
+#define PORT_PD0_I2C3SCL			((Port_PinModeType) 3)
+#define PORT_PD0_M0PWM6				((Port_PinModeType) 4)
+#define PORT_PD0_M1PWM0				((Port_PinModeType) 5)
+#define PORT_PD0_WT2CCP0  			((Port_PinModeType) 7)           //PD0 
+#define PORT_PD0_AIN7				((Port_PinModeType)16)
+                                                
+/***********PD1 modes**********/                
+#define PORT_PD1_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD1_SSI3Fss		        ((Port_PinModeType) 1)
+#define PORT_PD1_SSI1Fss		        ((Port_PinModeType) 2)
+#define PORT_PD1_I2C3SDA		        ((Port_PinModeType) 3)
+#define PORT_PD1_M0PWM7			        ((Port_PinModeType) 4)
+#define PORT_PD1_M1PWM1			        ((Port_PinModeType) 5)
+#define PORT_PD1_WT2CCP1 		        ((Port_PinModeType) 7)           //PD1 
+#define PORT_PD1_AIN6			        ((Port_PinModeType)16)
+                                            
+/***********PD2 modes**********/                  
+#define PORT_PD2_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD2_SSI3Rx 		        ((Port_PinModeType) 1)
+#define PORT_PD2_SSI1Rx			        ((Port_PinModeType) 2)
+#define PORT_PD2_M0FAULT0		        ((Port_PinModeType) 4)
+#define PORT_PD2_WT3CCP0		        ((Port_PinModeType) 7)
+#define PORT_PD2_USB0EPEN		        ((Port_PinModeType) 8)           //PD2 		 
+#define PORT_PD2_AIN5			        ((Port_PinModeType)16)
+                                                
+/***********PD3 modes**********/             
+#define PORT_PD3_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD3_SSI3Tx			        ((Port_PinModeType) 1)
+#define PORT_PD3_SSI1Tx			        ((Port_PinModeType) 2)
+#define PORT_PD3_IDX0			        ((Port_PinModeType) 4)
+#define PORT_PD3_WT3CCP1		        ((Port_PinModeType) 7)
+#define PORT_PD3_USB0PFLT                       ((Port_PinModeType) 8)  
+#define PORT_PD3_AIN4			        ((Port_PinModeType)16)           //PD3 
+                                                 
+/***********PD4 modes**********/                   
+#define PORT_PD4_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD4_U6Rx			        ((Port_PinModeType) 1)
+#define PORT_PD4_WT4CCP0                        ((Port_PinModeType) 7)  
+#define PORT_PD4_USB0DM			        ((Port_PinModeType)16)           //PD4 
+                                               
+/***********PD5 modes**********/                
+#define PORT_PD5_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD5_U6Tx 			        ((Port_PinModeType) 1)
+#define PORT_PD5_WT4CCP1                        ((Port_PinModeType) 7)           //PD5 
+#define PORT_PD5_USB0DP 		        ((Port_PinModeType)16)
+/***********PD6 modes**********/                
+#define PORT_PD6_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD6_U2Rx			        ((Port_PinModeType) 2)
+#define PORT_PD6_M0FAULT0		        ((Port_PinModeType) 5)
+#define PORT_PD6_PhA0			        ((Port_PinModeType) 6)
+#define PORT_PD6_WT5CCP0                        ((Port_PinModeType) 7)           //PD6 
+/***********PD7 modes**********/              
+#define PORT_PD7_DIO			        ((Port_PinModeType) 0)
+#define PORT_PD7_U2Tx			        ((Port_PinModeType) 2)
+#define PORT_PD7_PhB0			        ((Port_PinModeType) 6)
+#define PORT_PD7_WT5CCP1		        ((Port_PinModeType) 7)
+#define PORT_PD7_NMI                            ((Port_PinModeType) 8)          //PD7 
+/***********PE0 modes**********/                  
+#define PORT_PE0_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE0_U7Rx                           ((Port_PinModeType) 1)           //PE0 
+#define PORT_PE0_AIN3			        ((Port_PinModeType)16)
+/***********PE1 modes**********/              
+#define PORT_PE1_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE1_U7Tx                           ((Port_PinModeType) 1)           //PE1 
+#define PORT_PE1_AIN2			        ((Port_PinModeType)16)
+/***********PE2 modes**********/                 
+#define PORT_PE2_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE2_AIN1			        ((Port_PinModeType)16)           //PE2 
+/***********PE3 modes**********/                 
+#define PORT_PE3_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE3_AIN0                           ((Port_PinModeType)16)           //PE3  
+/***********PE4 modes**********/                 
+#define PORT_PE4_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE4_U5Rx			        ((Port_PinModeType) 1)
+#define PORT_PE4_I2C2SCL		        ((Port_PinModeType) 3)
+#define PORT_PE4_M0PWM4			        ((Port_PinModeType) 4)
+#define PORT_PE4_M1PWM2			        ((Port_PinModeType) 5)
+#define PORT_PE4_CAN0Rx                         ((Port_PinModeType) 8)           //PE4 	 
+#define PORT_PE4_AIN9			        ((Port_PinModeType)16)
+/***********PE5 modes**********/               
+#define PORT_PE5_DIO			        ((Port_PinModeType) 0)
+#define PORT_PE5_U5Tx			        ((Port_PinModeType) 1)
+#define PORT_PE5_I2C2SDA		        ((Port_PinModeType) 3)
+#define PORT_PE5_M0PWM5			        ((Port_PinModeType) 4)
+#define PORT_PE5_M1PWM3			        ((Port_PinModeType) 5)
+#define PORT_PE5_CAN0Tx                         ((Port_PinModeType) 8)           //PE5 
+#define PORT_PE5_AIN8			        ((Port_PinModeType)16)
+/***********PF0 modes**********/                  
+#define PORT_PF0_DIO			        ((Port_PinModeType) 0)
+#define PORT_PF0_U1RTS			        ((Port_PinModeType) 1)
+#define PORT_PF0_SSI1Rx			        ((Port_PinModeType) 2)
+#define PORT_PF0_CAN0Rx			        ((Port_PinModeType) 3)
+#define PORT_PF0_M1PWM4			        ((Port_PinModeType) 5)
+#define PORT_PF0_PhA0			        ((Port_PinModeType) 6)
+#define PORT_PF0_T0CCP0			        ((Port_PinModeType) 7)
+#define PORT_PF0_NMI			        ((Port_PinModeType) 8)
+#define PORT_PF0_C0o          	                ((Port_PinModeType) 9)           //PF0 
+/***********PF1 modes**********/                
+#define PORT_PF1_DIO			        ((Port_PinModeType) 0)
+#define PORT_PF1_U1CTS			        ((Port_PinModeType) 1)
+#define PORT_PF1_SSI1Tx			        ((Port_PinModeType) 2)
+#define PORT_PF1_M1PWM5			        ((Port_PinModeType) 5)
+#define PORT_PF1_PhB0			        ((Port_PinModeType) 6)
+#define PORT_PF1_T0CCP1 		        ((Port_PinModeType) 7)
+#define PORT_PF1_C1o			        ((Port_PinModeType) 9)
+#define PORT_PF1_TRD1			        ((Port_PinModeType)14)           //PF1 
+/***********PF2 modes**********/                 
+#define PORT_PF2_DIO			        ((Port_PinModeType) 0)
+#define PORT_PF2_SSI1Clk		        ((Port_PinModeType) 2)
+#define PORT_PF2_M0FAULT0		        ((Port_PinModeType) 4)
+#define PORT_PF2_M1PWM6			        ((Port_PinModeType) 5)
+#define PORT_PF2_T1CCP0			        ((Port_PinModeType) 7)
+#define PORT_PF2_TRD0                           ((Port_PinModeType)14)           //PF2
+/***********PF3 modes**********/                 
+#define PORT_PF3_DIO			        ((Port_PinModeType) 0)
+#define PORT_PF3_SSI1Fss		        ((Port_PinModeType) 2)
+#define PORT_PF3_CAN0Tx			        ((Port_PinModeType) 3)
+#define PORT_PF3_M1PWM7			        ((Port_PinModeType) 5)
+#define PORT_PF3_T1CCP1 		        ((Port_PinModeType) 7)
+#define PORT_PF3_TRCLK                          ((Port_PinModeType)14)           //PF3 
+/***********PF4 modes**********/                 
+#define PORT_PF4_DIO			        ((Port_PinModeType) 0)
+#define PORT_PF4_M1FAULT0		        ((Port_PinModeType) 5)
+#define PORT_PF4_IDX0			        ((Port_PinModeType) 6)
+#define PORT_PF4_T2CCP0			        ((Port_PinModeType) 7)
+#define PORT_PF4_USB0EPEN                       ((Port_PinModeType) 8)           //PF4 
 
 
 

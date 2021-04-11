@@ -60,6 +60,434 @@ STATIC Std_VersionInfoType Port_VersionInfo =
                                       };
 
 
+
+
+
+
+
+
+
+/* Array defining allowed modes for PortA pin 0*/
+STATIC uint8 Port_A_Pin_0_Modes[] = {PORT_PA0_DIO,			
+                                     PORT_PA0_U0Rx,
+                                     PORT_PA0_CAN1Rx		
+                                   };
+
+/* Array defining allowed modes for PortA pin 1*/
+STATIC uint8 Port_A_Pin_1_Modes[] ={PORT_PA1_DIO,			
+                                    PORT_PA1_U0Tx,			
+                                    PORT_PA1_CAN1Tx 
+                                     };
+
+/* Array defining allowed modes for PortA pin 2*/
+STATIC uint8 Port_A_Pin_2_Modes[] ={PORT_PA2_DIO,			
+                                    PORT_PA2_SSI0Clk  
+                                    };
+
+/* Array defining allowed modes for PortA pin 3*/
+STATIC uint8 Port_A_Pin_3_Modes[] ={PORT_PA3_DIO,			
+                                    PORT_PA3_SSI0Fss  	
+                                    };
+/* Array defining allowed modes for PortA pin 4*/
+STATIC uint8 Port_A_Pin_4_Modes[] ={PORT_PA4_DIO,			
+                                    PORT_PA4_SSI0Rx
+                                    };
+
+/* Array defining allowed modes for PortA pin 5*/
+STATIC uint8 Port_A_Pin_5_Modes[] ={PORT_PA5_DIO,			
+                                    PORT_PA5_SSI0Tx  
+                                    };
+
+/* Array defining allowed modes for PortA pin 6*/
+STATIC uint8 Port_A_Pin_6_Modes[] ={PORT_PA6_DIO,			
+                                    PORT_PA6_I2C1SCL,		
+                                    PORT_PA6_M1PWM2 
+                                    };
+
+/* Array defining allowed modes for PortA pin 7*/
+STATIC uint8 Port_A_Pin_7_Modes[] ={PORT_PA7_DIO,			
+                                    PORT_PA7_I2C1SDA,		
+                                    PORT_PA7_M1PWM3  
+                                    };
+
+/* Array defining allowed modes for PortB pin 0*/
+STATIC uint8 Port_B_Pin_0_Modes[] ={PORT_PB0_DIO,			
+                                    PORT_PB0_USB0ID,			
+                                    PORT_PB0_U1Rx,			
+                                    PORT_PB0_T2CCP0   
+                                    };
+
+/* Array defining allowed modes for PortB pin 1*/
+STATIC uint8 Port_B_Pin_1_Modes[] ={PORT_PB1_DIO,			
+                                    PORT_PB1_USB0VBUS,		
+                                    PORT_PB1_U1Tx,			
+                                    PORT_PB1_T2CCP1
+                                    };
+
+/* Array defining allowed modes for PortB pin 2*/
+STATIC uint8 Port_B_Pin_2_Modes[] ={PORT_PB2_DIO,			
+                                    PORT_PB2_I2C0SCL,		
+                                    PORT_PB2_T3CCP0 
+                                    };
+
+/* Array defining allowed modes for PortB pin 3*/
+STATIC uint8 Port_B_Pin_3_Modes[] ={PORT_PB3_DIO,			
+                                    PORT_PB3I2C0SDA,			
+                                    PORT_PB3T3CCP1			
+                                    };
+
+/* Array defining allowed modes for PortB pin 4*/
+STATIC uint8 Port_B_Pin_4_Modes[] ={PORT_PB4_DIO,			
+                                    PORT_PB4_AIN10,			
+                                    PORT_PB4_SSI2Clk,		
+                                    PORT_PB4_M0PWM2,			
+                                    PORT_PB4_T1CCP0,
+                                    PORT_PB4_CAN0Rx			
+                                    };
+
+/* Array defining allowed modes for PortB pin 5*/
+STATIC uint8 Port_B_Pin_5_Modes[] ={PORT_PB5_DIO,			
+                                    PORT_PB5_AIN11,			
+                                    PORT_PB5_SSI2Fss,		
+                                    PORT_PB5_M0PWM3,			
+                                    PORT_PB5_T1CCP1,			
+                                    PORT_PB5_CAN0Tx,
+                                    };
+
+/* Array defining allowed modes for PortB pin 6*/
+STATIC uint8 Port_B_Pin_6_Modes[] ={PORT_PB6_DIO,			
+                                    PORT_PB6_SSI2Rx,			
+                                    PORT_PB6_M0PWM0,			
+                                    PORT_PB6_T0CCP0,   
+                                    };
+
+/* Array defining allowed modes for PortB pin 7*/
+STATIC uint8 Port_B_Pin_7_Modes[] ={PORT_PB7_DIO,			
+                                    PORT_PB7_SSI2Tx,			
+                                    PORT_PB7_M0PWM1,			
+                                    PORT_PB7_T0CCP1,
+                                    };
+
+/* Array defining allowed modes for PortC pin 0*/
+STATIC uint8 Port_C_Pin_0_Modes[] ={PORT_PC0_DIO,			
+                                    PORT_PC0_TCKSWCLK,		
+                                    PORT_PC0_T4CCP0 
+                                    };
+
+/* Array defining allowed modes for PortC pin 1*/
+STATIC uint8 Port_C_Pin_1_Modes[] ={PORT_PC1_DIO,			
+                                    PORT_PC1_TMSSWDIO,		
+                                    PORT_PC1_T4CCP1    	        
+                                    };
+
+/* Array defining allowed modes for PortC pin 2*/
+STATIC uint8 Port_C_Pin_2_Modes[] ={PORT_PC2_DIO,			
+                                    PORT_PC2_TDI,			
+                                    PORT_PC2_T5CCP0     
+                                    };
+
+/* Array defining allowed modes for PortC pin 3*/
+STATIC uint8 Port_C_Pin_3_Modes[] ={PORT_PC3_DIO,			
+                                    PORT_PC3_TDOSWO,			
+                                    PORT_PC3_T5CCP1
+                                    };
+
+/* Array defining allowed modes for PortC pin 4*/
+STATIC uint8 Port_C_Pin_4_Modes[] ={PORT_PC4_DIO,			
+                                    PORT_PC4_C1_NEG,			
+                                    PORT_PC4_U4Rx,			
+                                    PORT_PC4_U1Rx,			
+                                    PORT_PC4_M0PWM6,			
+                                    PORT_PC4_IDX1,			
+                                    PORT_PC4_WT0CCP0,		
+                                    PORT_PC4_U1RTS
+                                    };
+
+/* Array defining allowed modes for PortC pin 5*/
+STATIC uint8 Port_C_Pin_5_Modes[] ={PORT_PC5_DIO,			
+                                    PORT_PC5_C1_POS,			
+                                    PORT_PC5_U4Tx,			
+                                    PORT_PC5_U1Tx,			
+                                    PORT_PC5_M0PWM7,			
+                                    PORT_PC5_PhA1,			
+                                    PORT_PC5_WT0CCP1,		
+                                    PORT_PC5_U1CTS 
+                                    };
+
+/* Array defining allowed modes for PortC pin 6*/
+STATIC uint8 Port_C_Pin_6_Modes[] ={PORT_PC6_DIO,			
+                                    PORT_PC6_C0_POS,			
+                                    PORT_PC6_U3Rx,			
+                                    PORT_PC6_PhB1,			
+                                    PORT_PC6_WT1CCP0,		
+                                    PORT_PC6_USB0EPEN       	
+                                    };
+
+/* Array defining allowed modes for PortC pin 7*/
+STATIC uint8 Port_C_Pin_7_Modes[] ={PORT_PC7_DIO,			
+                                    PORT_PC7_C0_NEG, 		
+                                    PORT_PC7_U3Tx,			
+                                    PORT_PC7_WT1CCP1,		
+                                    PORT_PC7_USB0PFLT    
+                                    };
+
+
+
+/* Array defining allowed modes for PortD pin 0*/
+STATIC uint8 Port_D_Pin_0_Modes[] ={PORT_PD0_DIO,			
+                                    PORT_PD0_AIN7,			
+                                    PORT_PD0_SSI3Clk,		
+                                    PORT_PD0_SSI1Clk,		
+                                    PORT_PD0_I2C3SCL,		
+                                    PORT_PD0_M0PWM6,			
+                                    PORT_PD0_M1PWM0,			
+                                    PORT_PD0_WT2CCP0  		
+                                    };
+
+/* Array defining allowed modes for PortD pin 1*/
+STATIC uint8 Port_D_Pin_1_Modes[] ={PORT_PD1_DIO,			
+                                    PORT_PD1_AIN6,			
+                                    PORT_PD1_SSI3Fss,		
+                                    PORT_PD1_SSI1Fss,		
+                                    PORT_PD1_I2C3SDA,		
+                                    PORT_PD1_M0PWM7,			
+                                    PORT_PD1_M1PWM1,			
+                                    PORT_PD1_WT2CCP1    
+                                    };
+
+/* Array defining allowed modes for PortD pin 2*/
+STATIC uint8 Port_D_Pin_2_Modes[] ={PORT_PD2_DIO,			
+                                    PORT_PD2_AIN5,			
+                                    PORT_PD2_SSI3Rx, 		
+                                    PORT_PD2_SSI1Rx,			
+                                    PORT_PD2_M0FAULT0,		
+                                    PORT_PD2_WT3CCP0,	
+                                    PORT_PD2_USB0EPEN,
+                                    };
+
+/* Array defining allowed modes for PortD pin 3*/
+STATIC uint8 Port_D_Pin_3_Modes[] ={PORT_PD3_DIO,			
+                                    PORT_PD3_AIN4,			
+                                    PORT_PD3_SSI3Tx,			
+                                    PORT_PD3_SSI1Tx,			
+                                    PORT_PD3_IDX0,			
+                                    PORT_PD3_WT3CCP1,		
+                                    PORT_PD3_USB0PFLT,   
+                                    };
+
+/* Array defining allowed modes for PortD pin 4*/
+STATIC uint8 Port_D_Pin_4_Modes[] ={PORT_PD4_DIO,			
+                                    PORT_PD4_USB0DM,			
+                                    PORT_PD4_U6Rx,			
+                                    PORT_PD4_WT4CCP0,      
+                                    };
+
+/* Array defining allowed modes for PortD pin 5*/
+STATIC uint8 Port_D_Pin_5_Modes[] ={PORT_PD5_DIO,			
+                                    PORT_PD5_USB0DP, 		
+                                    PORT_PD5_U6Tx, 			
+                                    PORT_PD5_WT4CCP1,
+                                    };
+
+/* Array defining allowed modes for PortD pin 6*/
+STATIC uint8 Port_D_Pin_6_Modes[] ={PORT_PD6_DIO,			
+                                    PORT_PD6_U2Rx,			
+                                    PORT_PD6_M0FAULT0,		
+                                    PORT_PD6_PhA0,			
+                                    PORT_PD6_WT5CCP0,       
+                                    };
+
+/* Array defining allowed modes for PortD pin 7*/
+STATIC uint8 Port_D_Pin_7_Modes[] ={PORT_PD7_DIO,			
+                                    PORT_PD7_U2Tx,			
+                                    PORT_PD7_PhB0,			
+                                    PORT_PD7_WT5CCP1,		
+                                    PORT_PD7_NMI,                    
+                                    };
+
+
+/* Array defining allowed modes for PortE pin 0*/
+STATIC uint8 Port_E_Pin_0_Modes[] ={PORT_PE0_DIO,			
+                                    PORT_PE0_AIN3,			
+                                    PORT_PE0_U7Rx
+                                    };
+
+/* Array defining allowed modes for PortE pin 1*/
+STATIC uint8 Port_E_Pin_1_Modes[] ={PORT_PE1_DIO,			
+                                    PORT_PE1_AIN2,			
+                                    PORT_PE1_U7Tx      
+                                    };
+
+/* Array defining allowed modes for PortE pin 2*/
+STATIC uint8 Port_E_Pin_2_Modes[] ={PORT_PE2_DIO,			
+                                    PORT_PE2_AIN1
+                                    };
+
+/* Array defining allowed modes for PortE pin 3*/
+STATIC uint8 Port_E_Pin_3_Modes[] ={PORT_PE3_DIO,			
+                                    PORT_PE3_AIN0 
+                                    };
+
+/* Array defining allowed modes for PortE pin 4*/
+STATIC uint8 Port_E_Pin_4_Modes[] ={PORT_PE4_DIO,			
+                                    PORT_PE4_AIN9,			
+                                    PORT_PE4_U5Rx,			
+                                    PORT_PE4_I2C2SCL,		
+                                    PORT_PE4_M0PWM4,			
+                                    PORT_PE4_M1PWM2,			
+                                    PORT_PE4_CAN0Rx        
+                                    };
+
+/* Array defining allowed modes for PortE pin 5*/
+STATIC uint8 Port_E_Pin_5_Modes[] ={PORT_PE5_DIO,			
+                                    PORT_PE5_AIN8,			
+                                    PORT_PE5_U5Tx,			
+                                    PORT_PE5_I2C2SDA,		
+                                    PORT_PE5_M0PWM5,			
+                                    PORT_PE5_M1PWM3,			
+                                    PORT_PE5_CAN0Tx     
+                                    };
+
+
+ /* Array defining allowed modes for PortF pin 0*/           
+STATIC uint8 Port_F_Pin_0_Modes[] ={PORT_PF0_DIO,			
+                                    PORT_PF0_U1RTS,			
+                                    PORT_PF0_SSI1Rx,			
+                                    PORT_PF0_CAN0Rx,			
+                                    PORT_PF0_M1PWM4,			
+                                    PORT_PF0_PhA0,			
+                                    PORT_PF0_T0CCP0,			
+                                    PORT_PF0_NMI,			
+                                    PORT_PF0_C0o     
+                                    };
+
+/* Array defining allowed modes for PortF pin 1*/
+STATIC uint8 Port_F_Pin_1_Modes[] ={PORT_PF1_DIO,			
+                                    PORT_PF1_U1CTS,			
+                                    PORT_PF1_SSI1Tx,			
+                                    PORT_PF1_M1PWM5,			
+                                    PORT_PF1_PhB0,			
+                                    PORT_PF1_T0CCP1, 		
+                                    PORT_PF1_C1o,			
+                                    PORT_PF1_TRD1	
+                                    };
+
+/* Array defining allowed modes for PortF pin 2*/
+STATIC uint8 Port_F_Pin_2_Modes[] ={PORT_PF2_DIO,			
+                                    PORT_PF2_SSI1Clk,		
+                                    PORT_PF2_M0FAULT0,		
+                                    PORT_PF2_M1PWM6,			
+                                    PORT_PF2_T1CCP0,			
+                                    PORT_PF2_TRD0      
+                                    };
+
+/* Array defining allowed modes for PortF pin 3*/
+STATIC uint8 Port_F_Pin_3_Modes[] ={PORT_PF3_DIO,			
+                                    PORT_PF3_SSI1Fss,		
+                                    PORT_PF3_CAN0Tx,			
+                                    PORT_PF3_M1PWM7,			
+                                    PORT_PF3_T1CCP1, 		
+                                    PORT_PF3_TRCLK   
+                                    };
+
+/* Array defining allowed modes for PortF pin 4*/
+STATIC uint8 Port_F_Pin_4_Modes[] ={PORT_PF4_DIO,			
+                                    PORT_PF4_M1FAULT0,		
+                                    PORT_PF4_IDX0,			
+                                    PORT_PF4_T2CCP0,			
+                                    PORT_PF4_USB0EPEN    
+                                    };
+/* Array of pointer to all allowed modes for the Mcu */  	
+STATIC uint8* Port_ModesMapper[] = {Port_A_Pin_0_Modes,
+                                    Port_A_Pin_1_Modes,
+                                    Port_A_Pin_2_Modes,
+                                    Port_A_Pin_3_Modes,
+                                    Port_A_Pin_4_Modes,
+                                    Port_A_Pin_5_Modes,
+                                    Port_A_Pin_6_Modes,
+                                    Port_A_Pin_7_Modes,
+                                    Port_B_Pin_0_Modes,
+                                    Port_B_Pin_1_Modes,
+                                    Port_B_Pin_2_Modes,
+                                    Port_B_Pin_3_Modes,
+                                    Port_B_Pin_4_Modes,
+                                    Port_B_Pin_5_Modes,
+                                    Port_B_Pin_6_Modes,
+                                    Port_B_Pin_7_Modes,
+                                    Port_C_Pin_0_Modes,
+                                    Port_C_Pin_1_Modes,
+                                    Port_C_Pin_2_Modes,
+                                    Port_C_Pin_3_Modes,
+                                    Port_C_Pin_4_Modes,
+                                    Port_C_Pin_5_Modes,
+                                    Port_C_Pin_6_Modes,
+                                    Port_C_Pin_7_Modes,
+                                    Port_D_Pin_0_Modes,
+                                    Port_D_Pin_1_Modes,
+                                    Port_D_Pin_2_Modes,
+                                    Port_D_Pin_3_Modes,
+                                    Port_D_Pin_4_Modes,
+                                    Port_D_Pin_5_Modes,
+                                    Port_D_Pin_6_Modes,
+                                    Port_D_Pin_7_Modes,
+                                    Port_E_Pin_0_Modes,
+                                    Port_E_Pin_1_Modes,
+                                    Port_E_Pin_2_Modes,
+                                    Port_E_Pin_3_Modes,
+                                    Port_E_Pin_4_Modes,
+                                    Port_E_Pin_5_Modes,
+                                    Port_F_Pin_0_Modes,
+                                    Port_F_Pin_1_Modes,
+                                    Port_F_Pin_2_Modes,
+                                    Port_F_Pin_3_Modes,
+                                    Port_F_Pin_4_Modes
+                                    };
+/* Array containing number of allowed modes*/
+STATIC uint8 Port_PinNumberOfAllowedModes[] ={sizeof(Port_A_Pin_0_Modes)/sizeof(Port_A_Pin_0_Modes[0]),
+                                            sizeof(Port_A_Pin_1_Modes)/sizeof(Port_A_Pin_1_Modes[0]),
+                                            sizeof(Port_A_Pin_2_Modes)/sizeof(Port_A_Pin_2_Modes[0]),
+                                            sizeof(Port_A_Pin_3_Modes)/sizeof(Port_A_Pin_3_Modes[0]),
+                                            sizeof(Port_A_Pin_4_Modes)/sizeof(Port_A_Pin_4_Modes[0]),
+                                            sizeof(Port_A_Pin_5_Modes)/sizeof(Port_A_Pin_5_Modes[0]),
+                                            sizeof(Port_A_Pin_6_Modes)/sizeof(Port_A_Pin_6_Modes[0]),
+                                            sizeof(Port_A_Pin_7_Modes)/sizeof(Port_A_Pin_7_Modes[0]),
+                                            sizeof(Port_B_Pin_0_Modes)/sizeof(Port_B_Pin_0_Modes[0]),
+                                            sizeof(Port_B_Pin_1_Modes)/sizeof(Port_B_Pin_1_Modes[0]),
+                                            sizeof(Port_B_Pin_2_Modes)/sizeof(Port_B_Pin_2_Modes[0]),
+                                            sizeof(Port_B_Pin_3_Modes)/sizeof(Port_B_Pin_3_Modes[0]),
+                                            sizeof(Port_B_Pin_4_Modes)/sizeof(Port_B_Pin_4_Modes[0]),
+                                            sizeof(Port_B_Pin_5_Modes)/sizeof(Port_B_Pin_5_Modes[0]),
+                                            sizeof(Port_B_Pin_6_Modes)/sizeof(Port_B_Pin_6_Modes[0]),
+                                            sizeof(Port_B_Pin_7_Modes)/sizeof(Port_B_Pin_7_Modes[0]),
+                                            sizeof(Port_C_Pin_0_Modes)/sizeof(Port_C_Pin_0_Modes[0]),
+                                            sizeof(Port_C_Pin_1_Modes)/sizeof(Port_C_Pin_1_Modes[0]),
+                                            sizeof(Port_C_Pin_2_Modes)/sizeof(Port_C_Pin_2_Modes[0]),
+                                            sizeof(Port_C_Pin_3_Modes)/sizeof(Port_C_Pin_3_Modes[0]),
+                                            sizeof(Port_C_Pin_4_Modes)/sizeof(Port_C_Pin_4_Modes[0]),
+                                            sizeof(Port_C_Pin_5_Modes)/sizeof(Port_C_Pin_5_Modes[0]),
+                                            sizeof(Port_C_Pin_6_Modes)/sizeof(Port_C_Pin_6_Modes[0]),
+                                            sizeof(Port_C_Pin_7_Modes)/sizeof(Port_C_Pin_7_Modes[0]),
+                                            sizeof(Port_D_Pin_0_Modes)/sizeof(Port_D_Pin_0_Modes[0]),
+                                            sizeof(Port_D_Pin_1_Modes)/sizeof(Port_D_Pin_1_Modes[0]),
+                                            sizeof(Port_D_Pin_2_Modes)/sizeof(Port_D_Pin_2_Modes[0]),
+                                            sizeof(Port_D_Pin_3_Modes)/sizeof(Port_D_Pin_3_Modes[0]),
+                                            sizeof(Port_D_Pin_4_Modes)/sizeof(Port_D_Pin_4_Modes[0]),
+                                            sizeof(Port_D_Pin_5_Modes)/sizeof(Port_D_Pin_5_Modes[0]),
+                                            sizeof(Port_D_Pin_6_Modes)/sizeof(Port_D_Pin_6_Modes[0]),
+                                            sizeof(Port_D_Pin_7_Modes)/sizeof(Port_D_Pin_7_Modes[0]),
+                                            sizeof(Port_E_Pin_0_Modes)/sizeof(Port_E_Pin_0_Modes[0]),
+                                            sizeof(Port_E_Pin_1_Modes)/sizeof(Port_E_Pin_1_Modes[0]),
+                                            sizeof(Port_E_Pin_2_Modes)/sizeof(Port_E_Pin_2_Modes[0]),
+                                            sizeof(Port_E_Pin_3_Modes)/sizeof(Port_E_Pin_3_Modes[0]),
+                                            sizeof(Port_E_Pin_4_Modes)/sizeof(Port_E_Pin_4_Modes[0]),
+                                            sizeof(Port_E_Pin_5_Modes)/sizeof(Port_E_Pin_5_Modes[0]),
+                                            sizeof(Port_F_Pin_0_Modes)/sizeof(Port_F_Pin_0_Modes[0]),
+                                            sizeof(Port_F_Pin_1_Modes)/sizeof(Port_F_Pin_1_Modes[0]),
+                                            sizeof(Port_F_Pin_2_Modes)/sizeof(Port_F_Pin_2_Modes[0]),
+                                            sizeof(Port_F_Pin_3_Modes)/sizeof(Port_F_Pin_3_Modes[0]),
+                                            sizeof(Port_F_Pin_4_Modes)/sizeof(Port_F_Pin_4_Modes[0])
+                                            };
+
 /**********************************************************************************************************************
 *  GLOBAL DATA
 *********************************************************************************************************************/
@@ -76,7 +504,8 @@ STATIC void Port_ConfigOutputCurrent(uint8 portOutputCurrent,uint32 pinAddress,P
 STATIC void Port_ConfigureAttachresistor(uint8 resistorType, uint32 regaddress, Port_PinType offset);
 /* local function to configure pin mode */
 STATIC void Port_ConfigurePinMode(Port_PinModeType alternatingFun,uint32 regAddress,Port_PinType offset);
-
+/* local function to check if mode is valid*/
+STATIC boolean Port_IsPortModeValid(uint8 pinMode,Port_PortType portNumber ,uint8 offset);
 
 
 /**********************************************************************************************************************
@@ -220,10 +649,9 @@ void Port_Init(const Port_ConfigType * ConfigPtr)
       /***********************Step2) Configure the pinMode of the pin*****************************************/
       Port_ConfigurePinMode(Port_ConfigurationPinsPointer[i].PortPinMode,pinBaseAddress,ConfiguredPin);
       
-      /************************Step3) Configure the attached resistor to be pull-up or pull-down**************/
-      Port_ConfigureAttachresistor(Port_ConfigurationPinsPointer[i].PortPinResistorAttchIfInput, pinBaseAddress, ConfiguredPin);
       
-      /*************************Step4) Configure the pin Direction and level***********************************/
+      /*************************Step4) Configure the pin Direction ***********************************/
+      /*************************Step5) Configure output current if output and resistor config if input *****/
       
       /* if the pin direction is output*/
       if (Port_ConfigurationPinsPointer[i].PortPinDirection == PORT_PIN_OUT)
@@ -238,11 +666,15 @@ void Port_Init(const Port_ConfigType * ConfigPtr)
         *pinAddress = Port_ConfigurationPinsPointer[i].PortPinLevelValue<<ConfiguredPin;             
 	
       }
-      
+      /* if pin direction is input */
       else if (Port_ConfigurationPinsPointer[i].PortPinDirection == PORT_PIN_IN)
       {
         /*Clear direction register to set pin as input*/
         CLEAR_BIT(GPIODIR(pinBaseAddress),ConfiguredPin);
+        
+      /* Configure input resistor */
+      Port_ConfigureAttachresistor(Port_ConfigurationPinsPointer[i].PortPinResistorAttchIfInput, pinBaseAddress, ConfiguredPin);
+      
         
       }
       else 
@@ -330,13 +762,7 @@ void Port_SetPinDirection (Port_PinType Pin, Port_PinDirectionType Direction)
     {
       /*Set direction to output*/
       SET_BIT(GPIODIR(pinBaseAddress),ConfiguredPin);				
-      /*configure output current value*/
-      Port_ConfigOutputCurrent(Port_ConfigurationPinsPointer[Pin].PortOutputCurrent,pinBaseAddress,ConfiguredPin);
-      /*Get bid address for bit banding */
-      volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<ConfiguredPin)));
-      /*Set the output value */
-      *pinAddress = Port_ConfigurationPinsPointer[Pin].PortPinLevelValue<<ConfiguredPin;             
-      
+     
     }
     /* if direction is set to input */
     else if (Direction == PORT_PIN_IN)
@@ -399,22 +825,17 @@ void Port_RefreshPortDirection(void)
       /* Get pin number from configuration pointer */
       Port_PinType ConfiguredPin = Port_ConfigurationPinsPointer[i].PortConfigPinNumber;
       
-      
+      /* if pin direction is not changeable in run time*/
       if (Port_ConfigurationPinsPointer[i].PortPinDirectionChangeable == FALSE)
       {
+        /*if the direction is configured to output*/
         if (Port_ConfigurationPinsPointer[i].PortPinDirection == PORT_PIN_OUT)
         {
           /*Set direction to output*/
           SET_BIT(GPIODIR(pinBaseAddress),ConfiguredPin);				
-          /*configure output current value*/
-          Port_ConfigOutputCurrent(Port_ConfigurationPinsPointer[i].PortOutputCurrent,pinBaseAddress,ConfiguredPin);
-          /*Get bid address for bit banding */
-          volatile uint32* pinAddress = &(GPIODATA(pinBaseAddress+(0x04<<ConfiguredPin)));
-          /*Set the output value */
-          *pinAddress = Port_ConfigurationPinsPointer[i].PortPinLevelValue<<ConfiguredPin;             
-          
+           
         }
-        
+        /*if the direction is configured to input*/
         else if (Port_ConfigurationPinsPointer[i].PortPinDirection == PORT_PIN_IN)
         {
           /*Clear direction register to set pin as input*/
@@ -519,7 +940,21 @@ void Port_SetPinMode( Port_PinType Pin, Port_PinModeType Mode )
   Port_PinType ConfiguredPin = Port_ConfigurationPinsPointer[Pin].PortConfigPinNumber;
   
   /* if Det errors are enabled */        
-#if (PORT_DEV_ERROR_DETECT == STD_ON)       
+#if (PORT_DEV_ERROR_DETECT == STD_ON)  
+  /* If pin mode is not valid */
+  if (Port_IsPortModeValid(Mode, Port_ConfigurationPinsPointer[Pin].PortConfigPortNumber,ConfiguredPin) == FALSE)
+  {
+     /*Set det error status to detected*/
+    isDetErrorDetected = TRUE;
+    /*Report det error*/
+    Det_ReportError  ( PORT_MODULE_ID, PORT_INSTANCE_ID, PORT_SET_PIN_MODE_SID, PORT_E_PARAM_INVALID_MODE);
+    
+  }
+  else
+  {
+    /*Do nothing*/
+  }
+
   /* If port is not initialized*/      
   if (Port_InitializeStatus == PORT_NOT_INITIALIZED)
   {
@@ -560,6 +995,8 @@ void Port_SetPinMode( Port_PinType Pin, Port_PinModeType Mode )
   {
     /*Do nothing*/
   }
+  
+  
   
 #endif
   
@@ -614,6 +1051,52 @@ STATIC void Port_ConfigureAttachresistor(uint8 resistorType, uint32 regaddress, 
   default : /*Do nothing*/;
   }			
 }
+
+STATIC boolean Port_IsPortModeValid(uint8 pinMode,Port_PortType portNumber ,Port_PinType offset)
+{
+  /* if pi mode is greater than largest allowed value*/
+  if (pinMode >15)
+  {
+    /*return false*/
+    return FALSE;
+    
+  }
+  else
+  {
+    /*Do Nothing*/
+  }
+  /*set initial value for portOffset to 0, port offset value is the starting pin location of the current port, ex: portB starts with pin8 */
+  uint8 portOffset = 0;
+  /* get the portOffset which corresponds to location of the pin in the array*/
+  switch (portNumber)
+  {
+  case PORT_PORT_A: portOffset =  0;break;
+  case PORT_PORT_B: portOffset =  8;break;
+  case PORT_PORT_C: portOffset = 16;break;
+  case PORT_PORT_D: portOffset = 24;break;
+  case PORT_PORT_E: portOffset = 32;break;
+  case PORT_PORT_F: portOffset = 38;break;
+  default:break; 
+  }
+  /*get the allowed values array location*/
+  uint8 arrayMapperPointerLocation = portOffset + offset;
+  /*loop on all allowed modes for the current pin*/
+  for (uint8 i =0; i<Port_PinNumberOfAllowedModes[arrayMapperPointerLocation]; i++)
+  {
+    /*if current mode exists in the allowed modes*/
+    if (pinMode == Port_ModesMapper[arrayMapperPointerLocation][i])
+    {
+      /* return true*/
+      return TRUE;
+    }
+    else
+    {
+      /* Do nothing*/
+    }
+  }
+    /*if looped on all values and mode not found return false*/
+    return FALSE;
+  }
 
 /* function to configure pinMode of the port pin */
 STATIC void Port_ConfigurePinMode(uint8 alternatingFun,uint32 regAddress,uint8 offset)
